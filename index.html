@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>شركة البدر - لإنتاج زيت الزيتون الأصيل</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        body {
+            background-color: #f9f9f6;
+            color: #333;
+            line-height: 1.6;
+        }
+        /* القائمة العلوية */
+        header {
+            background-color: #1b4332;
+            color: #fff;
+            padding: 1rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        header .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #d4a373;
+        }
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 20px;
+        }
+        nav ul li a {
+            color: #fff;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        nav ul li a:hover {
+            color: #d4a373;
+        }
+        /* القسم العلوي (Hero) */
+        .hero {
+            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('olive-bg.jpg') center/cover;
+            height: 70vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: #fff;
+            padding: 0 20px;
+        }
+        .hero h1 {
+            font-size: 2.8rem;
+            margin-bottom: 15px;
+            color: #f4f1de;
+        }
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 600px;
+            margin-bottom: 25px;
+        }
+        .btn {
+            background-color: #d4a373;
+            color: #fff;
+            padding: 12px 30px;
+            border: none;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: background 0.3s;
+        }
+        .btn:hover {
+            background-color: #bc6c25;
+        }
+        /* الأقسام العامة */
+        section {
+            padding: 60px 10%;
+            text-align: center;
+        }
+        section h2 {
+            font-size: 2rem;
+            color: #1b4332;
+            margin-bottom: 20px;
+        }
+        /* المنتجات */
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-top: 40px;
+        }
+        .product-card {
+            background: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+            border: 1px solid #e0e0e0;
+        }
+        .product-card h3 {
+            color: #1b4332;
+            margin-bottom: 10px;
+        }
+        /* التذييل */
+        footer {
+            background-color: #1b4332;
+            color: #fff;
+            text-align: center;
+            padding: 20px;
+            margin-top: 40px;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- الهيدر -->
+    <header>
+        <div class="logo">زيت البدر</div>
+        <nav>
+            <ul>
+                <li><a href="#">الرئيسية</a></li>
+                <li><a href="#">من نحن</a></li>
+                <li><a href="#">منتجاتنا</a></li>
+                <li><a href="#">جودتنا</a></li>
+                <li><a href="#">تواصل معنا</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- الواجهة الرئيسية -->
+    <section class="hero">
+        <h1>زيت زيتون البدر: النقاء الأصيل من قلب الطبيعة</h1>
+        <p>معصور آلياً على البارد بأعلى معايير الجودة ليحافظ على نكهته الغنية وفوائده الصحية الفريدة.</p>
+        <a href="#" class="btn">تسوق المنتجات الآن</a>
+    </section>
+
+    <!-- نبذة عن الشركة -->
+    <section>
+        <h2>عراقة الجودة في إنتاج زيت الزيتون</h2>
+        <p style="max-width: 800px; margin: 0 auto; color: #555;">نعتني بأشجار الزيتون في مزارعنا عناية فائقة، بدءاً من الحراثة وحتى القطف في الوقت المثالي، لنضمن وصول الثمار إلى المعصرة فوراً واستخلاص زيت بكر ممتاز بأقل نسبة حموضة ليكون الأفضل على مائدتك.</p>
+    </section>
+
+    <!-- أبرز المنتجات -->
+    <section style="background-color: #f1f3ed;">
+        <h2>أبرز منتجاتنا</h2>
+        <div class="products-grid">
+            <div class="product-card">
+                <h3>زيت بكر ممتاز</h3>
+                <p>عبوة زجاجية فاخرة (500 مل)</p>
+                <p style="color: #bc6c25; font-weight: bold; margin-top: 10px;">مثالي للسلطات والاستهلاك المباشر</p>
+            </div>
+            <div class="product-card">
+                <h3>زيت زيتون عضوي</h3>
+                <p>عبوة تنك اقتصادية (5 لتر)</p>
+                <p style="color: #bc6c25; font-weight: bold; margin-top: 10px;">الخيار الأمثل للعائلات</p>
+            </div>
+            <div class="product-card">
+                <h3>زيت خاص بالطهاة</h3>
+                <p>عبوة احترافية (2 لتر)</p>
+                <p style="color: #bc6c25; font-weight: bold; margin-top: 10px;">نكهة ثابتة لمختلف الأطباق</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- التذييل -->
+    <footer>
+        <p>جميع الحقوق محفوظة لشركة البدر لإنتاج زيت الزيتون © 2026</p>
+    </footer>
+
+</body>
+                  </html>
+                  
