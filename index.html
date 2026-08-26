@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>شركة البدر - لإنتاج زيت الزيتون الأصيل</title>
+    <title>شركة البدر - لإنتاج زيت الزيتون بالعطاوية</title>
     <!-- استدعاء خط تاجوال العصري من جوجل -->
     <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;900&display=swap" rel="stylesheet">
     <style>
@@ -34,7 +34,7 @@
         /* --- الهيدر الاحترافي --- */
         header {
             background-color: var(--white);
-            padding: 1rem 7%;
+            padding: 0.8rem 7%;
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -47,18 +47,16 @@
         .logo-container {
             display: flex;
             align-items: center;
-            gap: 12px;
+            gap: 15px;
             text-decoration: none;
         }
 
+        /* تعديل احترافي لعرض اللوغو كاملاً وبشكل جذاب */
         .logo-container img {
-            width: 55px;
-            height: 55px;
+            height: 60px; /* ارتفاع متناسق وواضح */
+            width: auto;  /* الحفاظ على الأبعاد الأصلية تماماً بدون قص */
             object-fit: contain;
-            border-radius: 50%;
-            background-color: #f0f0f0;
-            padding: 2px;
-            box-shadow: 0 2px 8px rgba(197, 160, 89, 0.3);
+            display: block;
         }
 
         .brand-name {
@@ -298,26 +296,25 @@
             font-size: 0.9rem;
         }
 
-        /* متجاوب مع الشاشات الصغيرة */
         @media (max-width: 768px) {
             .hero h1 { font-size: 2.5rem; }
-            nav ul { display: none; } /* يمكن إضافة قائمة منسدلة لاحقاً للهواتف */
+            nav ul { display: none; }
             header { padding: 1rem 5%; }
         }
     </style>
 </head>
 <body>
 
-    <!-- الهيدر -->
+    <!-- الهيدر مع الروابط الصحيحة -->
     <header>
-        <a href="#" class="logo-container">
+        <a href="index.html" class="logo-container">
             <img src="logo.jpg" alt="لوغو زيت البدر">
             <span class="brand-name">زيت البدر</span>
         </a>
         <nav>
             <ul>
-                <li><a href="#">الرئيسية</a></li>
-                <li><a href="#">قصتنا</a></li>
+                <li><a href="index.html" style="color: var(--accent-gold);">الرئيسية</a></li>
+                <li><a href="about.html">من نحن</a></li>
                 <li><a href="#">منتجاتنا</a></li>
                 <li><a href="#">جودتنا</a></li>
                 <li><a href="#">تواصل معنا</a></li>
@@ -327,9 +324,9 @@
 
     <!-- الواجهة الرئيسية -->
     <section class="hero">
-        <h1>من قلب تساوت... إلى مائدتك</h1>
-        <p>اكتشف النقاء الأصيل لزيت زيتون البدر، المعصور بعناية فائقة من كنوز المغرب الطبيعية ليمنحك تجربة ذوقية لا مثيل لها.</p>
-        <a href="#" class="btn-primary">اكتشف منتجاتنا</a>
+        <h1>من قلب تساوت والعطاوية... إلى مائدتك</h1>
+        <p>اكتشف النقاء الأصيل لزيت زيتون البدر، المنتج بمعايير الصحة المعتمدة منذ 2020 ليفوق كل توقعاتك.</p>
+        <a href="about.html" class="btn-primary">تعرف على قصتنا</a>
     </section>
 
     <!-- قصة المصدر -->
@@ -345,8 +342,8 @@
                 <p>نعتمد على أجود الأنواع المحلية مثل البيشولي، المنارة، والحوزية.</p>
             </div>
             <div class="feature-card">
-                <h3>ضيعات تساوت العريقة</h3>
-                <p>مزارعنا تقع في سفوح جبال الأطلس الكبير لضمان أفضل بيئة زراعية.</p>
+                <h3>مدينة العطاوية</h3>
+                <p>مقر إنتاجنا المعتمد صحياً منذ سنة 2020 وفق أعلى المعايير.</p>
             </div>
             <div class="feature-card">
                 <h3>تربة وطقس مثاليان</h3>
@@ -364,8 +361,8 @@
                     <img src="https://images.unsplash.com/photo-1474978528675-4a50a4508dc3?q=80&w=1000&auto=format&fit=crop" alt="زيت بكر ممتاز">
                 </div>
                 <div class="product-content">
-                    <h3>زيت بكر ممتاز - تساوت</h3>
-                    <p>معصور على البارد بعناية فائقة ليحافظ على نكهته الغنية وفوائده الصحية.</p>
+                    <h3>زيت بكر ممتاز - العطاوية</h3>
+                    <p>معصور بعناية فائقة ليحافظ على نكهته الغنية وفوائده الصحية.</p>
                 </div>
             </div>
             <div class="product-card">
@@ -389,29 +386,29 @@
         </div>
     </section>
 
-    <!-- التذييل -->
+    <!-- التذييل مع روابط صحيحة -->
     <footer>
         <div class="footer-col">
             <div class="logo-container" style="margin-bottom: 15px;">
                 <img src="logo.jpg" alt="لوغو زيت البدر">
                 <span class="brand-name" style="color: var(--white);">زيت البدر</span>
             </div>
-            <p>وحدة إنتاج زيت الزيتون البدر: نلتزم بتقديم أجود أنواع الزيتون المغربي الأصيل من ضيعات تساوت إلى مائدتكم.</p>
+            <p>وحدة إنتاج زيت الزيتون البدر بالعطاوية: نلتزم بتقديم أجود أنواع الزيتون المغربي الأصيل.</p>
         </div>
         <div class="footer-col">
             <h4>روابط سريعة</h4>
             <ul>
-                <li><a href="#">الرئيسية</a></li>
-                <li><a href="#">قصتنا</a></li>
+                <li><a href="index.html">الرئيسية</a></li>
+                <li><a href="about.html">من نحن</a></li>
                 <li><a href="#">منتجاتنا</a></li>
-                <li><a href="#">معايير الجودة</a></li>
+                <li><a href="#">تواصل معنا</a></li>
             </ul>
         </div>
         <div class="footer-col">
             <h4>تواصل معنا</h4>
             <ul>
-                <li>طريق مراكش كلم 3، العطاوية؛ المغرب</li>
-                <li>الهاتف: 214 873 661 212 </li>
+                <li>العطاوية، المغرب</li>
+                <li>الهاتف: +212 600 000 000</li>
                 <li>البريد: info@zitalbadr.ma</li>
             </ul>
         </div>
