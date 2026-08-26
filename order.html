@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>طلب منتج متعدد - شركة زيت البدر بالعطاوية</title>
+    <title>طلب منتج - شركة زيت البدر بالعطاوية</title>
     <link href="https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400&family=Tajawal:wght@300;400;500;700;900&display=swap" rel="stylesheet">
     <style>
         :root {
@@ -132,19 +132,12 @@
             cursor: pointer;
         }
 
-        .form-group select option {
-            background-color: var(--white);
-            color: var(--primary-deep);
-            padding: 14px;
-        }
-
         .form-group input:focus, .form-group select:focus, .form-group textarea:focus {
             outline: none;
             border-color: var(--accent-gold);
             box-shadow: 0 0 0 4px rgba(197, 160, 89, 0.15);
         }
 
-        /* تنسيق جدول المنتجات المتعددة (Checkboxes + Quantities) */
         .products-selection-container {
             display: flex;
             flex-direction: column;
@@ -289,16 +282,16 @@
     </header>
 
     <section class="page-header">
-        <h1>حجز وتأكيد الطلبيات المتعددة</h1>
-        <p>يمكنك اختيار عدة أنواع وأحجام مختلفة في طلبية واحدة وبكل سهولة.</p>
+        <h1>حجز وتأكيد الطلبيات عبر واتساب</h1>
+        <p>اختر منتجاتك المتعددة، وحدد كمياتها، وأرسل طلبيتك مباشرة إلى هاتف الشركة.</p>
     </section>
 
     <section class="order-content">
         <div class="order-form-card">
-            <h2>استمارة الطلب المتعدد</h2>
-            <p>حدد المنتجات التي ترغب بها وضع الكمية الخاصة بكل منتج على حدة.</p>
+            <h2>استمارة الطلب المباشر</h2>
+            <p>املأ البيانات أدناه، وعند الضغط على التأكيد سيتم تحويلك تلقائياً إلى واتساب الشركة.</p>
 
-            <form action="#" method="POST" onsubmit="alert('تم استلام طلبياتكم المتعددة بنجاح! سنتواصل معكم قريباً لتأكيد المجموع والتفاصيل.'); return false;">
+            <form id="orderForm" onsubmit="sendOrderToWhatsApp(event)">
                 
                 <div class="form-section-title">1. معلومات الزبون / الموزع</div>
                 <div class="form-row">
@@ -318,52 +311,52 @@
                     <!-- المنتج الأول -->
                     <div class="product-option-row">
                         <label class="checkbox-label">
-                            <input type="checkbox" name="products" value="glass-500ml">
+                            <input type="checkbox" name="product" value="زيت بكر ممتاز - زجاج فاخر (500 مل)">
                             زيت بكر ممتاز - زجاج فاخر (500 مل)
                         </label>
-                        <input type="text" class="product-qty-input" placeholder="الكمية المطلوبة">
+                        <input type="text" class="product-qty-input" placeholder="الكمية">
                     </div>
 
                     <!-- المنتج الثاني -->
                     <div class="product-option-row">
                         <label class="checkbox-label">
-                            <input type="checkbox" name="products" value="glass-1l">
+                            <input type="checkbox" name="product" value="زيت بكر ممتاز - زجاج فاخر (1 لتر)">
                             زيت بكر ممتاز - زجاج فاخر (1 لتر)
                         </label>
-                        <input type="text" class="product-qty-input" placeholder="الكمية المطلوبة">
+                        <input type="text" class="product-qty-input" placeholder="الكمية">
                     </div>
 
                     <!-- المنتج الثالث (تنك 2 لتر) -->
                     <div class="product-option-row">
                         <label class="checkbox-label">
-                            <input type="checkbox" name="products" value="tin-2l">
+                            <input type="checkbox" name="product" value="زيت زيتون بكر - تنك عائلي (2 لتر)">
                             زيت زيتون بكر - تنك عائلي (2 لتر)
                         </label>
-                        <input type="text" class="product-qty-input" placeholder="الكمية المطلوبة">
+                        <input type="text" class="product-qty-input" placeholder="الكمية">
                     </div>
 
                     <!-- المنتج الرابع (تنك 5 لتر) -->
                     <div class="product-option-row">
                         <label class="checkbox-label">
-                            <input type="checkbox" name="products" value="tin-5l">
+                            <input type="checkbox" name="product" value="زيت زيتون بكر - تنك عائلي (5 لتر)">
                             زيت زيتون بكر - تنك عائلي (5 لتر)
                         </label>
-                        <input type="text" class="product-qty-input" placeholder="الكمية المطلوبة">
+                        <input type="text" class="product-qty-input" placeholder="الكمية">
                     </div>
 
                     <!-- المنتج الخامس -->
                     <div class="product-option-row">
                         <label class="checkbox-label">
-                            <input type="checkbox" name="products" value="chef-pro">
+                            <input type="checkbox" name="product" value="إصدار الطهاة والمهنيين (كميات كبرى)">
                             إصدار الطهاة والمهنيين (كميات كبرى للمطاعم)
                         </label>
-                        <input type="text" class="product-qty-input" placeholder="الكمية المطلوبة">
+                        <input type="text" class="product-qty-input" placeholder="الكمية">
                     </div>
                 </div>
 
                 <div class="price-display-box">
-                    <h4>طبيعة التسعير والتوزيع</h4>
-                    <span>يتم حساب الثمن الإجمالي للمنتجات المختارة وتطبيق التخفيضات عبر الاتصال الهاتفي</span>
+                    <h4>ملاحظة التسعير</h4>
+                    <span>سيتم تأكيد السعر الإجمالي والتخفيضات معك عبر واتساب فور استلام الطلب</span>
                 </div>
 
                 <div class="form-section-title">3. طريقة الأداء والتوزيع (الشحن)</div>
@@ -372,22 +365,22 @@
                         <label for="payment-method">طريقة الأداء المفضلة</label>
                         <select id="payment-method" required>
                             <option value="" disabled selected>اختر طريقة الأداء</option>
-                            <option value="cash-on-delivery">الدفع عند الاستلام (نقداً)</option>
-                            <option value="bank-transfer">تحويل بنكي مسبق</option>
-                            <option value="on-site">الأداء المباشر بمقر الشركة (العطاوية)</option>
+                            <option value="الدفع عند الاستلام (نقداً)">الدفع عند الاستلام (نقداً)</option>
+                            <option value="تحويل بنكي مسبق">تحويل بنكي مسبق</option>
+                            <option value="الأداء المباشر بمقر الشركة بالعطاوية">الأداء المباشر بمقر الشركة (العطاوية)</option>
                         </select>
                     </div>
                     <div class="form-group">
                         <label for="delivery-method">طريقة الاستلام / التوزيع</label>
                         <select id="delivery-method" required>
-                            <option value="" disabled selected>اختر المدينة أو طريقة الاستلام</option>
-                            <option value="pickup-factory">الاستلام المباشر من مقر الشركة / المعصرة (العطاوية)</option>
-                            <option value="delivery-kalaat">الشحن والتوصيل إلى: قلعة السراغنة</option>
-                            <option value="delivery-rabat">الشحن والتوصيل إلى: الرباط</option>
-                            <option value="delivery-casa">الشحن والتوصيل إلى: الدار البيضاء</option>
-                            <option value="delivery-settat">الشحن والتوصيل إلى: سطات</option>
-                            <option value="delivery-marrakech">الشحن والتوصيل إلى: مراكش</option>
-                            <option value="delivery-agadir">الشحن والتوصيل إلى: أكادير</option>
+                            <option value="" disabled selected>اختر طريقة الاستلام أو المدينة</option>
+                            <option value="الاستلام المباشر من مقر المعصرة (العطاوية)">الاستلام المباشر من مقر الشركة / المعصرة (العطاوية)</option>
+                            <option value="الشحن إلى: قلعة السراغنة">الشحن والتوصيل إلى: قلعة السراغنة</option>
+                            <option value="الشحن إلى: الرباط">الشحن والتوصيل إلى: الرباط</option>
+                            <option value="الشحن إلى: الدار البيضاء">الشحن والتوصيل إلى: الدار البيضاء</option>
+                            <option value="الشحن إلى: سطات">الشحن والتوصيل إلى: سطات</option>
+                            <option value="الشحن إلى: مراكش">الشحن والتوصيل إلى: مراكش</option>
+                            <option value="الشحن إلى: أكادير">الشحن والتوصيل إلى: أكادير</option>
                         </select>
                     </div>
                 </div>
@@ -397,7 +390,7 @@
                     <textarea id="address" placeholder="أدخل اسم الحي، الشارع، أو تفاصيل إضافية تخص التوصيل..."></textarea>
                 </div>
 
-                <button type="submit" class="btn-submit-order">تأكيد وإرسال الطلبية الكاملة</button>
+                <button type="submit" class="btn-submit-order">إرسال الطلبية عبر واتساب 💬</button>
             </form>
         </div>
     </section>
@@ -434,6 +427,40 @@
         <div class="footer-bottom"><p>جميع الحقوق محفوظة لشركة وحدة إنتاج زيت الزيتون البدر © 2026</p></div>
     </footer>
 
-    <script>function toggleMenu() { document.getElementById('nav-links').classList.toggle('show'); }</script>
-</body>
-</html>
+    <script>
+        function toggleMenu() { 
+            document.getElementById('nav-links').classList.toggle('show'); 
+        }
+
+        function sendOrderToWhatsApp(event) {
+            event.preventDefault();
+
+            const name = document.getElementById('fullname').value;
+            const phone = document.getElementById('phone').value;
+            const payment = document.getElementById('payment-method').value;
+            const delivery = document.getElementById('delivery-method').value;
+            const notes = document.getElementById('address').value;
+
+            // تجميع المنتجات والكميات المحددة
+            let productsText = "";
+            const rows = document.querySelectorAll('.product-option-row');
+            rows.forEach(row => {
+                const checkbox = row.querySelector('input[type="checkbox"]');
+                const qtyInput = row.querySelector('.product-qty-input');
+                if (checkbox.checked) {
+                    const qty = qtyInput.value ? qtyInput.value : "الكمية غير محددة";
+                    productsText += `- ${checkbox.value} (الكمية: ${qty})\n`;
+                }
+            });
+
+            if (productsText === "") {
+                alert("الرجاء اختيار منتج واحد على الأقل وتحديد كميته.");
+                return;
+            }
+
+            // صياغة رسالة الواتساب الاحترافية
+            let message = `*طلب جديد عبر موقع زيت البدر 🫒*\n\n`;
+            message += `*1. معلومات الزبون:*\n`;
+            message += `▪️ الاسم: ${name}\n`;
+            message += `▪️ الهاتف: ${phone}\n\n`;
+            message += `*2. المنتجات والكميات المطلوبة:*\n$
