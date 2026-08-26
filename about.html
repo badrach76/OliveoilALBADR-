@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>من نحن - شركة زيت البدر</title>
+    <title>من نحن - شركة زيت البدر بالعطاوية</title>
     <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;900&display=swap" rel="stylesheet">
     <style>
         :root {
@@ -23,7 +23,7 @@
         /* الهيدر */
         header {
             background-color: var(--white);
-            padding: 1rem 7%;
+            padding: 0.8rem 7%;
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -32,8 +32,8 @@
             top: 0;
             z-index: 1000;
         }
-        .logo-container { display: flex; align-items: center; gap: 12px; text-decoration: none; }
-        .logo-container img { width: 55px; height: 55px; object-fit: contain; border-radius: 50%; background-color: #f0f0f0; padding: 2px; }
+        .logo-container { display: flex; align-items: center; gap: 15px; text-decoration: none; }
+        .logo-container img { height: 60px; width: auto; object-fit: contain; display: block; }
         .brand-name { font-size: 1.5rem; font-weight: 900; color: var(--primary-dark); }
         nav ul { list-style: none; display: flex; gap: 35px; align-items: center; }
         nav ul li a { color: var(--text-dark); text-decoration: none; font-weight: 600; transition: color 0.3s; }
@@ -65,6 +65,19 @@
         .about-text h2 { color: var(--primary-dark); font-size: 2.2rem; margin-bottom: 20px; font-weight: 800; }
         .about-text p { color: var(--text-light); font-size: 1.15rem; margin-bottom: 15px; line-height: 2; }
         .about-img img { width: 100%; border-radius: 16px; box-shadow: 0 10px 30px rgba(0,0,0,0.08); }
+
+        /* قسم الاعتماد والترخيص (بارز) */
+        .onssa-badge-section {
+            background: linear-gradient(135deg, #143628, #1a4d36);
+            color: var(--white);
+            padding: 50px;
+            border-radius: 20px;
+            text-align: center;
+            margin-bottom: 80px;
+            box-shadow: 0 10px 30px rgba(20, 54, 40, 0.15);
+        }
+        .onssa-badge-section h3 { color: var(--accent-gold); font-size: 2rem; margin-bottom: 15px; font-weight: 800; }
+        .onssa-badge-section p { font-size: 1.15rem; max-width: 800px; margin: 0 auto; color: #f0f0f0; }
 
         /* قيمنا */
         .values-section {
@@ -133,21 +146,27 @@
 
     <!-- رأس الصفحة -->
     <section class="page-header">
-        <h1>قصة نجاح وعراقة أصيلة</h1>
-        <p>تعرف عن قرب على وحدة إنتاج زيت الزيتون البدر وفلسفتنا في تقديم الأفضل.</p>
+        <h1>منزل الجودة والأصالة</h1>
+        <p>تعرف على قصة تأسيس شركة البدر لإنتاج زيت الزيتون في مدينة العطاوية.</p>
     </section>
 
     <!-- تفاصيل من نحن -->
     <section class="about-content">
         <div class="about-grid">
             <div class="about-text">
-                <h2>منزل الجودة والنقاء: رحلة زيت البدر</h2>
-                <p>تأسست شركة <strong>وحدة إنتاج زيت الزيتون البدر</strong> لتكون عنواناً للأصالة والجودة العالية. نؤمن بأن زيت الزيتون ليس مجرد منتج غذائي، بل هو إرث عريق وثقافة متجذرة في أرضنا الطيبة.</p>
-                <p>نعتمد على جني ثمار الزيتون بعناية فائقة من ضيعاتنا المتميزة في <strong>منطقة تساوت بسفوح جبال الأطلس الكبير</strong>، حيث المناخ الجاف والتربة الغنية يمنحان ثمارنا نكهة لا تُضاهى وخصائص صحية فريدة.</p>
+                <h2>قصتنا من قلب مدينة العطاوية</h2>
+                <p>تأسست شركة <strong>وحدة إنتاج زيت الزيتون البدر</strong> بقلب مدينة <strong>العطاوية</strong> سنة 2020، لتشكل صرحاً متميزاً يجمع بين الأصالة الفلاحية والمعايير الصناعية الحديثة في إنتاج أجود أنواع زيت الزيتون.</p>
+                <p>منذ انطلاقتنا الأولى، وضعنا نصب أعيننا التميز والجودة العالية، لنكون الوجهة الموثوقة لكل من يبحث عن النقاء الطبيعي والفوائد الصحية المتكاملة في كل قطرة زيت.</p>
             </div>
             <div class="about-img">
-                <img src="https://images.unsplash.com/photo-1598912707044-5d558f890c22?q=80&w=1000&auto=format&fit=crop" alt="ضيعات الزيتون">
+                <img src="https://images.unsplash.com/photo-1598912707044-5d558f890c22?q=80&w=1000&auto=format&fit=crop" alt="عصر زيت الزيتون">
             </div>
+        </div>
+
+        <!-- صندوق السلامة الصحية المعزز -->
+        <div class="onssa-badge-section">
+            <h3>معايير سلامة معتمدة رسمياً</h3>
+            <p>حصلت الشركة على <strong>الترخيص الصحي لمزاولة النشاط في نفس سنة التأسيس (2020)</strong>. ومنذ ذلك الحين، لا تدخر شركة البدر جهداً في الحرص التام على إنتاج زيت زيتون ذو جودة عالية وفقاً لأدق <strong>المعايير الصحية المعتمدة من طرف المكتب الوطني للسلامة الصحية للمنتجات الغذائية (ONSSA)</strong>.</p>
         </div>
     </section>
 
@@ -156,16 +175,16 @@
         <h2 style="color: var(--primary-dark); font-size: 2.2rem; font-weight: 800;">قيمنا ومبادئنا</h2>
         <div class="values-grid">
             <div class="value-card">
-                <h3>الأصالة والجودة</h3>
-                <p>نلتزم بمعايير صارمة في العصر والتعبئة لضمان زيت بكر ممتاز بنسبة حموضة منخفضة.</p>
+                <h3>السلامة والترخيص</h3>
+                <p>نعمل بتراخيص رسمية ونلتزم بنظافة خطوط الإنتاج وفق توجيهات السلامة الصحية.</p>
             </div>
             <div class="value-card">
-                <h3>احترام الطبيعة</h3>
-                <p>نستمد قوتنا من ضيعات تساوت العريقة مع الحفاظ على التوازن البيئي واستدامة الموارد.</p>
+                <h3>الجودة العالية</h3>
+                <p>نحرص على استخلاص زيت بكر ممتاز يحافظ على قيمته الغذائية ونكهته الأصلية.</p>
             </div>
             <div class="value-card">
-                <h3>ثقة العملاء</h3>
-                <p>نسعى دائماً لبناء علاقة طويلة الأمد قائمة على الشفافية وتقديم منتج يفوق التوقعات.</p>
+                <h3>الثقة والاستمرارية</h3>
+                <p>منذ 2020 ونحن نبني جسوراً من الثقة الدائمة مع زبنائنا وشركائنا.</p>
             </div>
         </div>
     </section>
@@ -177,7 +196,7 @@
                 <img src="logo.jpg" alt="لوغو زيت البدر">
                 <span class="brand-name" style="color: var(--white);">زيت البدر</span>
             </div>
-            <p>وحدة إنتاج زيت الزيتون البدر: نلتزم بتقديم أجود أنواع الزيتون المغربي الأصيل.</p>
+            <p>وحدة إنتاج زيت الزيتون البدر بالعطاوية: التزام دائم بالجودة والمعايير الصحية الرسمية.</p>
         </div>
         <div class="footer-col">
             <h4>روابط سريعة</h4>
@@ -191,7 +210,7 @@
         <div class="footer-col">
             <h4>تواصل معنا</h4>
             <ul>
-                <li>منطقة تساوت، سفوح الأطلس الكبير، المغرب</li>
+                <li>العطاوية، المغرب</li>
                 <li>الهاتف: +212 600 000 000</li>
                 <li>البريد: info@zitalbadr.ma</li>
             </ul>
