@@ -16,14 +16,25 @@
             --white: #ffffff;
             --shadow: 0 10px 30px rgba(18, 40, 30, 0.06);
         }
+
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body { font-family: 'Tajawal', sans-serif; background-color: var(--bg-main); color: var(--text-main); line-height: 1.9; }
 
         header {
-            background-color: var(--white); padding: 1.2rem 6%; display: flex; justify-content: space-between; align-items: center; box-shadow: var(--shadow); position: sticky; top: 0; z-index: 1000; border-bottom: 1px solid var(--accent-gold-light);
+            background-color: var(--white);
+            padding: 1.2rem 6%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: var(--shadow);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 1px solid var(--accent-gold-light);
         }
         .logo-wrapper { display: flex; align-items: center; gap: 14px; text-decoration: none; }
         .logo-wrapper img { height: 52px; width: auto; object-fit: contain; }
+        
         .brand-title { display: flex; flex-direction: column; justify-content: center; }
         .brand-title .ar-name { font-family: 'Amiri', serif; font-size: 1.35rem; font-weight: 700; color: var(--primary-deep); line-height: 1.2; }
         .brand-title .en-name { font-size: 0.75rem; color: var(--accent-gold); font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; line-height: 1.2; }
@@ -35,35 +46,142 @@
 
         .page-header {
             background: linear-gradient(rgba(18, 40, 30, 0.8), rgba(18, 40, 30, 0.65)), url('https://images.unsplash.com/photo-1541604193435-245c58394cf0?q=80&w=1920&auto=format&fit=crop') center/cover no-repeat;
-            padding: 90px 10%; text-align: center; color: var(--white);
+            padding: 90px 10%;
+            text-align: center;
+            color: var(--white);
         }
         .page-header h1 { font-family: 'Amiri', serif; font-size: 3rem; margin-bottom: 10px; font-weight: 700; }
         .page-header p { font-family: 'Amiri', serif; font-size: 1.15rem; color: #eae6df; font-weight: 300; }
 
         .order-content { padding: 90px 8%; max-width: 900px; margin: 0 auto; }
-        .order-form-card { background-color: var(--white); padding: 50px; border-radius: 8px; box-shadow: var(--shadow); border-top: 5px solid var(--accent-gold); }
-        .order-form-card h2 { font-family: 'Amiri', serif; color: var(--primary-deep); font-size: 2.2rem; margin-bottom: 10px; font-weight: 700; text-align: center; }
-        .order-form-card > p { color: var(--text-muted); text-align: center; margin-bottom: 40px; font-family: 'Amiri', serif; font-size: 1.1rem; }
-        .form-section-title { font-family: 'Amiri', serif; color: var(--primary-deep); font-size: 1.3rem; margin: 30px 0 15px 0; padding-bottom: 8px; border-bottom: 1px solid var(--accent-gold-light); }
-        .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
-        .form-group { margin-bottom: 20px; }
-        .form-group.full-width { grid-column: span 2; }
-        .form-group label { display: block; margin-bottom: 8px; color: var(--primary-deep); font-weight: 600; font-size: 0.95rem; }
+        
+        .order-form-card {
+            background-color: var(--white);
+            padding: 50px;
+            border-radius: 8px;
+            box-shadow: var(--shadow);
+            border-top: 5px solid var(--accent-gold);
+        }
+
+        .order-form-card h2 {
+            font-family: 'Amiri', serif;
+            color: var(--primary-deep);
+            font-size: 2.2rem;
+            margin-bottom: 10px;
+            font-weight: 700;
+            text-align: center;
+        }
+
+        .order-form-card > p {
+            color: var(--text-muted);
+            text-align: center;
+            margin-bottom: 40px;
+            font-family: 'Amiri', serif;
+            font-size: 1.1rem;
+        }
+
+        .form-section-title {
+            font-family: 'Amiri', serif;
+            color: var(--primary-deep);
+            font-size: 1.3rem;
+            margin: 30px 0 15px 0;
+            padding-bottom: 8px;
+            border-bottom: 1px solid var(--accent-gold-light);
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group.full-width {
+            grid-column: span 2;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            color: var(--primary-deep);
+            font-weight: 600;
+            font-size: 0.95rem;
+        }
+
         .form-group input, .form-group select, .form-group textarea {
-            width: 100%; padding: 12px 15px; border: 1px solid #ddd; border-radius: 4px; font-family: 'Tajawal', sans-serif; font-size: 1rem; background-color: var(--bg-main); transition: border-color 0.3s;
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-family: 'Tajawal', sans-serif;
+            font-size: 1rem;
+            background-color: var(--bg-main);
+            transition: border-color 0.3s;
         }
-        .form-group input:focus, .form-group select:focus, .form-group textarea:focus { outline: none; border-color: var(--accent-gold); }
-        .form-group textarea { resize: vertical; height: 100px; }
-        .price-display-box { background-color: var(--bg-main); border: 1px dashed var(--accent-gold); padding: 20px; border-radius: 4px; text-align: center; margin: 25px 0; }
-        .price-display-box h4 { color: var(--text-muted); font-size: 0.95rem; margin-bottom: 5px; }
-        .price-display-box span { color: var(--primary-deep); font-size: 1.4rem; font-weight: 900; font-family: 'Amiri', serif; }
+
+        .form-group input:focus, .form-group select:focus, .form-group textarea:focus {
+            outline: none;
+            border-color: var(--accent-gold);
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            height: 100px;
+        }
+
+        .price-display-box {
+            background-color: var(--bg-main);
+            border: 1px dashed var(--accent-gold);
+            padding: 20px;
+            border-radius: 4px;
+            text-align: center;
+            margin: 25px 0;
+        }
+
+        .price-display-box h4 {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            margin-bottom: 5px;
+        }
+
+        .price-display-box span {
+            color: var(--primary-deep);
+            font-size: 1.3rem;
+            font-weight: 900;
+            font-family: 'Amiri', serif;
+        }
+
         .btn-submit-order {
-            background-color: var(--primary-deep); color: var(--white); padding: 15px; border: none; border-radius: 4px; font-weight: 700; font-size: 1.1rem; cursor: pointer; transition: background 0.3s; width: 100%; margin-top: 10px; box-shadow: 0 4px 15px rgba(18, 40, 30, 0.15);
+            background-color: var(--primary-deep);
+            color: var(--white);
+            padding: 15px;
+            border: none;
+            border-radius: 4px;
+            font-weight: 700;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: background 0.3s;
+            width: 100%;
+            margin-top: 10px;
+            box-shadow: 0 4px 15px rgba(18, 40, 30, 0.15);
         }
-        .btn-submit-order:hover { background-color: var(--accent-gold); color: var(--primary-deep); }
+
+        .btn-submit-order:hover {
+            background-color: var(--accent-gold);
+            color: var(--primary-deep);
+        }
 
         footer {
-            background-color: var(--primary-deep); color: var(--white); padding: 80px 8% 30px 8%; display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 40px; border-top: 4px solid var(--accent-gold);
+            background-color: var(--primary-deep);
+            color: var(--white);
+            padding: 80px 8% 30px 8%;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 40px;
+            border-top: 4px solid var(--accent-gold);
         }
         .footer-col h4 { font-family: 'Amiri', serif; color: var(--accent-gold); margin-bottom: 20px; font-size: 1.3rem; font-weight: 700; }
         .footer-col p, .footer-col ul li { font-family: 'Amiri', serif; color: #d1d8d3; font-size: 1rem; margin-bottom: 12px; line-height: 1.8; }
@@ -71,6 +189,8 @@
         .footer-col ul li a { color: #d1d8d3; text-decoration: none; transition: color 0.3s; }
         .footer-col ul li a:hover { color: var(--accent-gold); }
         .footer-bottom { grid-column: 1 / -1; text-align: center; border-top: 1px solid rgba(255, 255, 255, 0.1); padding-top: 25px; margin-top: 30px; color: #a3b2a8; font-size: 0.9rem; }
+        
+        .ltr-phone { direction: ltr; unicode-bidi: embed; display: inline-block; }
 
         @media (max-width: 768px) {
             .form-row { grid-template-columns: 1fr; }
@@ -127,26 +247,28 @@
                     </div>
                 </div>
 
-                <div class="form-section-title">2. تفاصيل الطلبية والمنتجات</div>
+                <div class="form-section-title">2. تفاصيل الطلبية والمنتجات (مفصولة)</div>
                 <div class="form-row">
                     <div class="form-group">
-                        <label for="product-type">نوعية زيت الزيتون المطلوبة</label>
+                        <label for="product-type">نوعية العبوة المطلوبة</label>
                         <select id="product-type" required>
-                            <option value="" disabled selected>اختر النوع المطلوب</option>
-                            <option value="extra-virgin-glass">زيت بكر ممتاز (زجاج فاخر - 500مل / 1لتر)</option>
-                            <option value="virgin-tin-family">زيت زيتون بكر (تنك عائلي - 2لتر / 5لتر)</option>
-                            <option value="chef-pro">إصدار الطهاة والمهنيين (كميات كبرى)</option>
+                            <option value="" disabled selected>اختر حجم أو نوع العبوة</option>
+                            <option value="glass-500ml">زيت بكر ممتاز - زجاج فاخر (500 مل)</option>
+                            <option value="glass-1l">زيت بكر ممتاز - زجاج فاخر (1 لتر)</option>
+                            <option value="tin-2l">زيت زيتون بكر - تنك عائلي (2 لتر)</option>
+                            <option value="tin-5l">زيت زيتون بكر - تنك عائلي (5 لتر)</option>
+                            <option value="chef-pro">إصدار الطهاة والمهنيين (كميات كبرى للمطاعم)</option>
                         </select>
                     </div>
                     <div class="form-group">
-                        <label for="quantity">الكمية المطلوبة (عدد العبوات / اللترات)</label>
-                        <input type="text" id="quantity" placeholder="مثال: 5 عبوات / 50 لتر" required>
+                        <label for="quantity">الكمية المطلوبة (العدد بالقطعة أو التنك)</label>
+                        <input type="text" id="quantity" placeholder="مثال: 3 تنك (5 لتر) أو 10 زجاجات" required>
                     </div>
                 </div>
 
                 <div class="price-display-box">
                     <h4>طبيعة التسعير والتوزيع</h4>
-                    <span>يتم تأكيد الثمن الإجمالي والتخفيضات حسب حجم الطلبية وطريقة التوصيل</span>
+                    <span>يتم تأكيد الثمن الإجمالي والتخفيضات عبر الاتصال الهاتفي حسب سعر السوق الحالي</span>
                 </div>
 
                 <div class="form-section-title">3. طريقة الأداء والتوزيع (الشحن)</div>
@@ -161,19 +283,23 @@
                         </select>
                     </div>
                     <div class="form-group">
-                        <label for="delivery-method">طريقة التوزيع / التوصيل</label>
+                        <label for="delivery-method">طريقة الاستلام / التوزيع</label>
                         <select id="delivery-method" required>
-                            <option value="" disabled selected>اختر طريقة الاستلام</option>
-                            <option value="home-delivery">توصيل للمنزل (الشحن الوطني)</option>
-                            <option value="pickup-factory">الاستلام المباشر من المعصرة / المقر بالعطاوية</option>
-                            <option value="distributor-supply">توزيع خاص (للمحلات التجارية والمطاعم)</option>
+                            <option value="" disabled selected>اختر المدينة أو طريقة الاستلام</option>
+                            <option value="pickup-factory">الاستلام المباشر من مقر الشركة / المعصرة (العطاوية)</option>
+                            <option value="delivery-kalaat">الشحن والتوصيل إلى: قلعة السراغنة</option>
+                            <option value="delivery-rabat">الشحن والتوصيل إلى: الرباط</option>
+                            <option value="delivery-casa">الشحن والتوصيل إلى: الدار البيضاء</option>
+                            <option value="delivery-settat">الشحن والتوصيل إلى: سطات</option>
+                            <option value="delivery-marrakech">الشحن والتوصيل إلى: مراكش</option>
+                            <option value="delivery-agadir">الشحن والتوصيل إلى: أكادير</option>
                         </select>
                     </div>
                 </div>
 
                 <div class="form-group full-width" style="margin-top: 15px;">
-                    <label for="address">عنوان التوصيل أو ملاحظات إضافية</label>
-                    <textarea id="address" placeholder="أدخل المدينة، الحي، أو أي تفاصيل تخص الشحن..."></textarea>
+                    <label for="address">عنوان التوصيل المفصل أو ملاحظات إضافية</label>
+                    <textarea id="address" placeholder="أدخل اسم الحي، الشارع، أو تفاصيل إضافية تخص التوصيل..."></textarea>
                 </div>
 
                 <button type="submit" class="btn-submit-order">تأكيد وإرسال الطلب</button>
@@ -206,7 +332,7 @@
             <h4>تواصل معنا</h4>
             <ul>
                 <li>العطاوية، المغرب</li>
-                <li>الهاتف: +212 661 87 32 14</li>
+                <li>الهاتف: <span class="ltr-phone">+212 661 87 32 14</span></li>
                 <li>البريد: info@zitalbadr.ma</li>
             </ul>
         </div>
@@ -215,4 +341,5 @@
 
     <script>function toggleMenu() { document.getElementById('nav-links').classList.toggle('show'); }</script>
 </body>
-</html>
+    </html>
+    
