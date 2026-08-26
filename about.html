@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>من نحن - شركة زيت البدر</title>
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-dark: #143628;
+            --primary-green: #1a4d36;
+            --accent-gold: #c5a059;
+            --accent-gold-hover: #b08d46;
+            --bg-cream: #faf9f5;
+            --text-dark: #2c2c2c;
+            --text-light: #666;
+            --white: #ffffff;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Tajawal', sans-serif; background-color: var(--bg-cream); color: var(--text-dark); line-height: 1.8; }
+
+        /* الهيدر */
+        header {
+            background-color: var(--white);
+            padding: 1rem 7%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        .logo-container { display: flex; align-items: center; gap: 12px; text-decoration: none; }
+        .logo-container img { width: 55px; height: 55px; object-fit: contain; border-radius: 50%; background-color: #f0f0f0; padding: 2px; }
+        .brand-name { font-size: 1.5rem; font-weight: 900; color: var(--primary-dark); }
+        nav ul { list-style: none; display: flex; gap: 35px; align-items: center; }
+        nav ul li a { color: var(--text-dark); text-decoration: none; font-weight: 600; transition: color 0.3s; }
+        nav ul li a:hover { color: var(--accent-gold); }
+
+        /* رأس الصفحة التوضيحي */
+        .page-header {
+            background: linear-gradient(rgba(20, 54, 40, 0.8), rgba(20, 54, 40, 0.8)), url('https://images.unsplash.com/photo-1541604193435-245c58394cf0?q=80&w=1920&auto=format&fit=crop') center/cover no-repeat;
+            padding: 80px 10%;
+            text-align: center;
+            color: var(--white);
+        }
+        .page-header h1 { font-size: 3rem; margin-bottom: 10px; font-weight: 900; }
+        .page-header p { font-size: 1.2rem; color: #e1e1e1; }
+
+        /* محتوى من نحن */
+        .about-content {
+            padding: 80px 10%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: center;
+            margin-bottom: 60px;
+        }
+        .about-text h2 { color: var(--primary-dark); font-size: 2.2rem; margin-bottom: 20px; font-weight: 800; }
+        .about-text p { color: var(--text-light); font-size: 1.15rem; margin-bottom: 15px; line-height: 2; }
+        .about-img img { width: 100%; border-radius: 16px; box-shadow: 0 10px 30px rgba(0,0,0,0.08); }
+
+        /* قيمنا */
+        .values-section {
+            background-color: var(--white);
+            padding: 80px 10%;
+            text-align: center;
+        }
+        .values-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+            max-width: 1200px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .value-card {
+            background-color: var(--bg-cream);
+            padding: 35px;
+            border-radius: 16px;
+            border: 1px solid #eae5d9;
+        }
+        .value-card h3 { color: var(--primary-dark); font-size: 1.3rem; margin-bottom: 10px; font-weight: 700; }
+        .value-card p { color: var(--text-light); font-size: 1rem; }
+
+        /* التذييل */
+        footer {
+            background-color: var(--primary-dark);
+            color: var(--white);
+            padding: 70px 8% 30px 8%;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+        }
+        .footer-col h4 { color: var(--accent-gold); margin-bottom: 20px; font-size: 1.2rem; }
+        .footer-col p, .footer-col ul li { color: #d1d1d1; font-size: 0.95rem; margin-bottom: 12px; }
+        .footer-col ul { list-style: none; }
+        .footer-col ul li a { color: #d1d1d1; text-decoration: none; transition: color 0.3s; }
+        .footer-col ul li a:hover { color: var(--accent-gold); }
+        .footer-bottom { grid-column: 1 / -1; text-align: center; border-top: 1px solid rgba(255, 255, 255, 0.1); padding-top: 25px; margin-top: 20px; color: #aaa; }
+
+        @media (max-width: 768px) {
+            .about-grid { grid-template-columns: 1fr; }
+            nav ul { display: none; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- الهيدر -->
+    <header>
+        <a href="index.html" class="logo-container">
+            <img src="logo.jpg" alt="لوغو زيت البدر">
+            <span class="brand-name">زيت البدر</span>
+        </a>
+        <nav>
+            <ul>
+                <li><a href="index.html">الرئيسية</a></li>
+                <li><a href="about.html" style="color: var(--accent-gold);">من نحن</a></li>
+                <li><a href="#">منتجاتنا</a></li>
+                <li><a href="#">جودتنا</a></li>
+                <li><a href="#">تواصل معنا</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- رأس الصفحة -->
+    <section class="page-header">
+        <h1>قصة نجاح وعراقة أصيلة</h1>
+        <p>تعرف عن قرب على وحدة إنتاج زيت الزيتون البدر وفلسفتنا في تقديم الأفضل.</p>
+    </section>
+
+    <!-- تفاصيل من نحن -->
+    <section class="about-content">
+        <div class="about-grid">
+            <div class="about-text">
+                <h2>منزل الجودة والنقاء: رحلة زيت البدر</h2>
+                <p>تأسست شركة <strong>وحدة إنتاج زيت الزيتون البدر</strong> لتكون عنواناً للأصالة والجودة العالية. نؤمن بأن زيت الزيتون ليس مجرد منتج غذائي، بل هو إرث عريق وثقافة متجذرة في أرضنا الطيبة.</p>
+                <p>نعتمد على جني ثمار الزيتون بعناية فائقة من ضيعاتنا المتميزة في <strong>منطقة تساوت بسفوح جبال الأطلس الكبير</strong>، حيث المناخ الجاف والتربة الغنية يمنحان ثمارنا نكهة لا تُضاهى وخصائص صحية فريدة.</p>
+            </div>
+            <div class="about-img">
+                <img src="https://images.unsplash.com/photo-1598912707044-5d558f890c22?q=80&w=1000&auto=format&fit=crop" alt="ضيعات الزيتون">
+            </div>
+        </div>
+    </section>
+
+    <!-- قيمنا -->
+    <section class="values-section">
+        <h2 style="color: var(--primary-dark); font-size: 2.2rem; font-weight: 800;">قيمنا ومبادئنا</h2>
+        <div class="values-grid">
+            <div class="value-card">
+                <h3>الأصالة والجودة</h3>
+                <p>نلتزم بمعايير صارمة في العصر والتعبئة لضمان زيت بكر ممتاز بنسبة حموضة منخفضة.</p>
+            </div>
+            <div class="value-card">
+                <h3>احترام الطبيعة</h3>
+                <p>نستمد قوتنا من ضيعات تساوت العريقة مع الحفاظ على التوازن البيئي واستدامة الموارد.</p>
+            </div>
+            <div class="value-card">
+                <h3>ثقة العملاء</h3>
+                <p>نسعى دائماً لبناء علاقة طويلة الأمد قائمة على الشفافية وتقديم منتج يفوق التوقعات.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- التذييل -->
+    <footer>
+        <div class="footer-col">
+            <div class="logo-container" style="margin-bottom: 15px;">
+                <img src="logo.jpg" alt="لوغو زيت البدر">
+                <span class="brand-name" style="color: var(--white);">زيت البدر</span>
+            </div>
+            <p>وحدة إنتاج زيت الزيتون البدر: نلتزم بتقديم أجود أنواع الزيتون المغربي الأصيل.</p>
+        </div>
+        <div class="footer-col">
+            <h4>روابط سريعة</h4>
+            <ul>
+                <li><a href="index.html">الرئيسية</a></li>
+                <li><a href="about.html">من نحن</a></li>
+                <li><a href="#">منتجاتنا</a></li>
+                <li><a href="#">تواصل معنا</a></li>
+            </ul>
+        </div>
+        <div class="footer-col">
+            <h4>تواصل معنا</h4>
+            <ul>
+                <li>منطقة تساوت، سفوح الأطلس الكبير، المغرب</li>
+                <li>الهاتف: +212 600 000 000</li>
+                <li>البريد: info@zitalbadr.ma</li>
+            </ul>
+        </div>
+        <div class="footer-bottom">
+            <p>جميع الحقوق محفوظة لشركة وحدة إنتاج زيت الزيتون البدر © 2026</p>
+        </div>
+    </footer>
+
+</body>
+</html>
