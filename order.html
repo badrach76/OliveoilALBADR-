@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>طلب منتج - شركة زيت البدر بالعطاوية</title>
-    <!-- استدعاء الخطوط الفاخرة لتوحيد الهوية -->
     <link href="https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400&family=Tajawal:wght@300;400;500;700;900&display=swap" rel="stylesheet">
     <style>
         :root {
@@ -17,26 +16,14 @@
             --white: #ffffff;
             --shadow: 0 10px 30px rgba(18, 40, 30, 0.06);
         }
-
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body { font-family: 'Tajawal', sans-serif; background-color: var(--bg-main); color: var(--text-main); line-height: 1.9; }
 
-        /* الهيدر المتطابق */
         header {
-            background-color: var(--white);
-            padding: 1.2rem 6%;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            box-shadow: var(--shadow);
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-            border-bottom: 1px solid var(--accent-gold-light);
+            background-color: var(--white); padding: 1.2rem 6%; display: flex; justify-content: space-between; align-items: center; box-shadow: var(--shadow); position: sticky; top: 0; z-index: 1000; border-bottom: 1px solid var(--accent-gold-light);
         }
         .logo-wrapper { display: flex; align-items: center; gap: 14px; text-decoration: none; }
         .logo-wrapper img { height: 52px; width: auto; object-fit: contain; }
-        
         .brand-title { display: flex; flex-direction: column; justify-content: center; }
         .brand-title .ar-name { font-family: 'Amiri', serif; font-size: 1.35rem; font-weight: 700; color: var(--primary-deep); line-height: 1.2; }
         .brand-title .en-name { font-size: 0.75rem; color: var(--accent-gold); font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; line-height: 1.2; }
@@ -46,147 +33,37 @@
         nav ul li a:hover, nav ul li a.active { color: var(--accent-gold); }
         .menu-toggle { display: none; background: none; border: none; cursor: pointer; font-size: 1.8rem; color: var(--primary-deep); }
 
-        /* رأس الصفحة المتطابق */
         .page-header {
             background: linear-gradient(rgba(18, 40, 30, 0.8), rgba(18, 40, 30, 0.65)), url('https://images.unsplash.com/photo-1541604193435-245c58394cf0?q=80&w=1920&auto=format&fit=crop') center/cover no-repeat;
-            padding: 90px 10%;
-            text-align: center;
-            color: var(--white);
+            padding: 90px 10%; text-align: center; color: var(--white);
         }
         .page-header h1 { font-family: 'Amiri', serif; font-size: 3rem; margin-bottom: 10px; font-weight: 700; }
         .page-header p { font-family: 'Amiri', serif; font-size: 1.15rem; color: #eae6df; font-weight: 300; }
 
-        /* محتوى نموذج الطلب */
         .order-content { padding: 90px 8%; max-width: 900px; margin: 0 auto; }
-        
-        .order-form-card {
-            background-color: var(--white);
-            padding: 50px;
-            border-radius: 8px;
-            box-shadow: var(--shadow);
-            border-top: 5px solid var(--accent-gold);
-        }
-
-        .order-form-card h2 {
-            font-family: 'Amiri', serif;
-            color: var(--primary-deep);
-            font-size: 2.2rem;
-            margin-bottom: 10px;
-            font-weight: 700;
-            text-align: center;
-        }
-
-        .order-form-card > p {
-            color: var(--text-muted);
-            text-align: center;
-            margin-bottom: 40px;
-            font-family: 'Amiri', serif;
-            font-size: 1.1rem;
-        }
-
-        .form-section-title {
-            font-family: 'Amiri', serif;
-            color: var(--primary-deep);
-            font-size: 1.3rem;
-            margin: 30px 0 15px 0;
-            padding-bottom: 8px;
-            border-bottom: 1px solid var(--accent-gold-light);
-        }
-
-        .form-row {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 20px;
-        }
-
-        .form-group {
-            margin-bottom: 20px;
-        }
-
-        .form-group.full-width {
-            grid-column: span 2;
-        }
-
-        .form-group label {
-            display: block;
-            margin-bottom: 8px;
-            color: var(--primary-deep);
-            font-weight: 600;
-            font-size: 0.95rem;
-        }
-
+        .order-form-card { background-color: var(--white); padding: 50px; border-radius: 8px; box-shadow: var(--shadow); border-top: 5px solid var(--accent-gold); }
+        .order-form-card h2 { font-family: 'Amiri', serif; color: var(--primary-deep); font-size: 2.2rem; margin-bottom: 10px; font-weight: 700; text-align: center; }
+        .order-form-card > p { color: var(--text-muted); text-align: center; margin-bottom: 40px; font-family: 'Amiri', serif; font-size: 1.1rem; }
+        .form-section-title { font-family: 'Amiri', serif; color: var(--primary-deep); font-size: 1.3rem; margin: 30px 0 15px 0; padding-bottom: 8px; border-bottom: 1px solid var(--accent-gold-light); }
+        .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+        .form-group { margin-bottom: 20px; }
+        .form-group.full-width { grid-column: span 2; }
+        .form-group label { display: block; margin-bottom: 8px; color: var(--primary-deep); font-weight: 600; font-size: 0.95rem; }
         .form-group input, .form-group select, .form-group textarea {
-            width: 100%;
-            padding: 12px 15px;
-            border: 1px solid #ddd;
-            border-radius: 4px;
-            font-family: 'Tajawal', sans-serif;
-            font-size: 1rem;
-            background-color: var(--bg-main);
-            transition: border-color 0.3s;
+            width: 100%; padding: 12px 15px; border: 1px solid #ddd; border-radius: 4px; font-family: 'Tajawal', sans-serif; font-size: 1rem; background-color: var(--bg-main); transition: border-color 0.3s;
         }
-
-        .form-group input:focus, .form-group select:focus, .form-group textarea:focus {
-            outline: none;
-            border-color: var(--accent-gold);
-        }
-
-        .form-group textarea {
-            resize: vertical;
-            height: 100px;
-        }
-
-        .price-display-box {
-            background-color: var(--bg-main);
-            border: 1px dashed var(--accent-gold);
-            padding: 20px;
-            border-radius: 4px;
-            text-align: center;
-            margin: 25px 0;
-        }
-
-        .price-display-box h4 {
-            color: var(--text-muted);
-            font-size: 0.95rem;
-            margin-bottom: 5px;
-        }
-
-        .price-display-box span {
-            color: var(--primary-deep);
-            font-size: 1.6rem;
-            font-weight: 900;
-            font-family: 'Amiri', serif;
-        }
-
+        .form-group input:focus, .form-group select:focus, .form-group textarea:focus { outline: none; border-color: var(--accent-gold); }
+        .form-group textarea { resize: vertical; height: 100px; }
+        .price-display-box { background-color: var(--bg-main); border: 1px dashed var(--accent-gold); padding: 20px; border-radius: 4px; text-align: center; margin: 25px 0; }
+        .price-display-box h4 { color: var(--text-muted); font-size: 0.95rem; margin-bottom: 5px; }
+        .price-display-box span { color: var(--primary-deep); font-size: 1.4rem; font-weight: 900; font-family: 'Amiri', serif; }
         .btn-submit-order {
-            background-color: var(--primary-deep);
-            color: var(--white);
-            padding: 15px;
-            border: none;
-            border-radius: 4px;
-            font-weight: 700;
-            font-size: 1.1rem;
-            cursor: pointer;
-            transition: background 0.3s;
-            width: 100%;
-            margin-top: 10px;
-            box-shadow: 0 4px 15px rgba(18, 40, 30, 0.15);
+            background-color: var(--primary-deep); color: var(--white); padding: 15px; border: none; border-radius: 4px; font-weight: 700; font-size: 1.1rem; cursor: pointer; transition: background 0.3s; width: 100%; margin-top: 10px; box-shadow: 0 4px 15px rgba(18, 40, 30, 0.15);
         }
+        .btn-submit-order:hover { background-color: var(--accent-gold); color: var(--primary-deep); }
 
-        .btn-submit-order:hover {
-            background-color: var(--accent-gold);
-            color: var(--primary-deep);
-        }
-
-        /* التذييل المتطابق */
         footer {
-            background-color: var(--primary-deep);
-            color: var(--white);
-            padding: 80px 8% 30px 8%;
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-            gap: 40px;
-            border-top: 4px solid var(--accent-gold);
+            background-color: var(--primary-deep); color: var(--white); padding: 80px 8% 30px 8%; display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 40px; border-top: 4px solid var(--accent-gold);
         }
         .footer-col h4 { font-family: 'Amiri', serif; color: var(--accent-gold); margin-bottom: 20px; font-size: 1.3rem; font-weight: 700; }
         .footer-col p, .footer-col ul li { font-family: 'Amiri', serif; color: #d1d8d3; font-size: 1rem; margin-bottom: 12px; line-height: 1.8; }
@@ -206,7 +83,6 @@
 </head>
 <body>
 
-    <!-- الهيدر -->
     <header>
         <a href="index.html" class="logo-wrapper">
             <img src="logo.jpg" alt="لوغو زيت البدر">
@@ -227,13 +103,11 @@
         </nav>
     </header>
 
-    <!-- رأس الصفحة -->
     <section class="page-header">
         <h1>حجز وتأكيد الطلبيات</h1>
         <p>املأ استمارة الطلب أدناه لنلبي احتياجاتكم من أجود زيت الزيتون في العطاوية.</p>
     </section>
 
-    <!-- محتوى صفحة الطلبات -->
     <section class="order-content">
         <div class="order-form-card">
             <h2>استمارة طلب المنتجات</h2>
@@ -241,7 +115,6 @@
 
             <form action="#" method="POST" onsubmit="alert('تم إرسال طلبكم بنجاح! سنتواصل معكم قريباً لتأكيد التفاصيل.'); return false;">
                 
-                <!-- معلومات الزبون -->
                 <div class="form-section-title">1. معلومات الزبون / الموزع</div>
                 <div class="form-row">
                     <div class="form-group">
@@ -254,7 +127,6 @@
                     </div>
                 </div>
 
-                <!-- تحديد نوعية الطلب والكمية -->
                 <div class="form-section-title">2. تفاصيل الطلبية والمنتجات</div>
                 <div class="form-row">
                     <div class="form-group">
@@ -272,13 +144,11 @@
                     </div>
                 </div>
 
-                <!-- الثمن الإجمالي التقديري -->
                 <div class="price-display-box">
-                    <h4>طبيعة التسعير</h4>
-                    <span>يتم تأكيد الثمن الإجمالي والتخفيضات حسب حجم الكمية وسعر السوق الحالي</span>
+                    <h4>طبيعة التسعير والتوزيع</h4>
+                    <span>يتم تأكيد الثمن الإجمالي والتخفيضات حسب حجم الطلبية وطريقة التوصيل</span>
                 </div>
 
-                <!-- طريقة الأداء والتوزيع -->
                 <div class="form-section-title">3. طريقة الأداء والتوزيع (الشحن)</div>
                 <div class="form-row">
                     <div class="form-group">
@@ -311,7 +181,6 @@
         </div>
     </section>
 
-    <!-- التذييل -->
     <footer>
         <div class="footer-col">
             <div class="logo-wrapper" style="margin-bottom: 15px;">
@@ -346,5 +215,4 @@
 
     <script>function toggleMenu() { document.getElementById('nav-links').classList.toggle('show'); }</script>
 </body>
-                      </html>
-                          
+</html>
