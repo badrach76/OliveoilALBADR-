@@ -3,19 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>شركة البدر - لإنتاج زيت الزيتون بالعطاوية</title>
-    <!-- استدعاء خط تاجوال العصري من جوجل -->
+    <title>شركة البدر - لإنتاج زيت الزيتون الفاخر بالعطاوية</title>
+    <!-- استدعاء خط تاجوال الراقي -->
     <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;900&display=swap" rel="stylesheet">
     <style>
         :root {
-            --primary-dark: #143628;
-            --primary-green: #1a4d36;
-            --accent-gold: #c5a059;
-            --accent-gold-hover: #b08d46;
-            --bg-cream: #faf9f5;
-            --text-dark: #2c2c2c;
-            --text-light: #666;
+            --bg-main: #f9f8f4;
+            --primary-deep: #0f281e; /* أخضر غامق فاخر جداً */
+            --primary-light: #1b3b2d;
+            --accent-gold: #d4af37; /* ذهبي ملكي نقي */
+            --accent-gold-light: #f4e8c1;
+            --text-main: #2b2b2b;
+            --text-muted: #626262;
             --white: #ffffff;
+            --shadow: 0 10px 30px rgba(15, 40, 30, 0.08);
         }
 
         * {
@@ -26,68 +27,113 @@
 
         body {
             font-family: 'Tajawal', sans-serif;
-            background-color: var(--bg-cream);
-            color: var(--text-dark);
-            line-height: 1.8;
+            background-color: var(--bg-main);
+            color: var(--text-main);
+            line-height: 1.9;
+            overflow-x: hidden;
         }
 
-        /* --- الهيدر الاحترافي --- */
+        /* --- الهيدر الاحترافي الفاخر --- */
         header {
             background-color: var(--white);
-            padding: 0.8rem 7%;
+            padding: 1rem 6%;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
+            box-shadow: var(--shadow);
             position: sticky;
             top: 0;
             z-index: 1000;
+            border-bottom: 2px solid var(--accent-gold-light);
         }
 
-        .logo-container {
+        .logo-wrapper {
             display: flex;
             align-items: center;
             gap: 15px;
             text-decoration: none;
         }
 
-        /* تعديل احترافي لعرض اللوغو كاملاً وبشكل جذاب */
-        .logo-container img {
-            height: 60px; /* ارتفاع متناسق وواضح */
-            width: auto;  /* الحفاظ على الأبعاد الأصلية تماماً بدون قص */
+        .logo-wrapper img {
+            height: 55px;
+            width: auto;
             object-fit: contain;
-            display: block;
         }
 
-        .brand-name {
-            font-size: 1.5rem;
+        .brand-title {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .brand-title span:first-child {
+            font-size: 1.4rem;
             font-weight: 900;
-            color: var(--primary-dark);
+            color: var(--primary-deep);
             letter-spacing: 0.5px;
+        }
+
+        .brand-title span:last-child {
+            font-size: 0.8rem;
+            color: var(--accent-gold);
+            font-weight: 700;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        /* القائمة العلوية وروابط التنقل السلس */
+        nav {
+            display: flex;
+            align-items: center;
         }
 
         nav ul {
             list-style: none;
             display: flex;
-            gap: 35px;
+            gap: 30px;
             align-items: center;
         }
 
         nav ul li a {
-            color: var(--text-dark);
+            color: var(--text-main);
             text-decoration: none;
             font-weight: 600;
-            font-size: 1rem;
+            font-size: 1.05rem;
             transition: color 0.3s ease;
+            position: relative;
         }
 
-        nav ul li a:hover {
+        nav ul li a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -5px;
+            right: 0;
+            background-color: var(--accent-gold);
+            transition: width 0.3s ease;
+        }
+
+        nav ul li a:hover::after, nav ul li a.active::after {
+            width: 100%;
+        }
+
+        nav ul li a:hover, nav ul li a.active {
             color: var(--accent-gold);
         }
 
-        /* --- القسم العلوي (Hero Section) --- */
+        /* زر القائمة الجانبية للشاشات الصغيرة (Mobile Toggle) */
+        .menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-size: 1.8rem;
+            color: var(--primary-deep);
+        }
+
+        /* --- الواجهة الأولى (Hero Section) --- */
         .hero {
-            background: linear-gradient(rgba(20, 54, 40, 0.75), rgba(20, 54, 40, 0.75)), url('https://images.unsplash.com/photo-1598912707044-5d558f890c22?q=80&w=1974&auto=format&fit=crop') center/cover no-repeat;
+            background: linear-gradient(rgba(15, 40, 30, 0.85), rgba(15, 40, 30, 0.7)), url('https://images.unsplash.com/photo-1598912707044-5d558f890c22?q=80&w=1974&auto=format&fit=crop') center/cover no-repeat;
             min-height: 85vh;
             display: flex;
             flex-direction: column;
@@ -100,98 +146,107 @@
 
         .hero h1 {
             font-size: 3.5rem;
-            margin-bottom: 1.5rem;
+            margin-bottom: 1.2rem;
             font-weight: 900;
+            color: var(--white);
             line-height: 1.3;
+        }
+
+        .hero h1 span {
+            color: var(--accent-gold);
         }
 
         .hero p {
             font-size: 1.25rem;
             max-width: 750px;
             margin-bottom: 2.5rem;
-            color: #f1f1f1;
+            color: #e2e8e4;
             font-weight: 300;
-        }
-
-        .btn-primary {
-            background-color: var(--accent-gold);
-            color: var(--white);
-            padding: 14px 38px;
-            border: none;
-            border-radius: 50px;
-            text-decoration: none;
-            font-weight: 700;
-            font-size: 1.1rem;
-            box-shadow: 0 6px 20px rgba(197, 160, 89, 0.4);
-            transition: all 0.3s ease;
-        }
-
-        .btn-primary:hover {
-            background-color: var(--accent-gold-hover);
-            transform: translateY(-3px);
-            box-shadow: 0 8px 25px rgba(197, 160, 89, 0.6);
-        }
-
-        /* --- قسم قصة المصدر --- */
-        .source-story {
-            padding: 100px 8%;
-            background-color: var(--white);
             text-align: center;
         }
 
-        .section-title {
-            font-size: 2.3rem;
-            color: var(--primary-dark);
-            margin-bottom: 1.5rem;
+        .btn-gold {
+            background-color: var(--accent-gold);
+            color: var(--primary-deep);
+            padding: 15px 40px;
+            border: none;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: 800;
+            font-size: 1.1rem;
+            box-shadow: 0 4px 15px rgba(212, 175, 55, 0.3);
+            transition: all 0.3s ease;
+        }
+
+        .btn-gold:hover {
+            background-color: #c29f31;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(212, 175, 55, 0.5);
+        }
+
+        /* --- الأقسام العامة والتنسيق العمودي المتناسق --- */
+        section {
+            padding: 90px 8%;
+        }
+
+        .section-header {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto 60px auto;
+        }
+
+        .section-header h2 {
+            font-size: 2.5rem;
+            color: var(--primary-deep);
+            margin-bottom: 15px;
             font-weight: 800;
         }
 
-        .source-story p.description {
+        .section-header p {
             font-size: 1.15rem;
-            max-width: 900px;
-            margin: 0 auto 4rem auto;
-            color: var(--text-light);
-            line-height: 2;
+            color: var(--text-muted);
+            line-height: 1.8;
         }
 
+        /* --- شبكة الميزات (Features Grid) --- */
         .features-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 30px;
             max-width: 1200px;
             margin: 0 auto;
         }
 
-        .feature-card {
-            background-color: var(--bg-cream);
+        .feature-box {
+            background-color: var(--white);
             padding: 40px 30px;
-            border-radius: 16px;
-            border: 1px solid #eae5d9;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border-radius: 8px;
+            box-shadow: var(--shadow);
+            border-top: 4px solid var(--accent-gold);
+            text-align: right;
+            transition: transform 0.3s ease;
         }
 
-        .feature-card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.06);
+        .feature-box:hover {
+            transform: translateY(-5px);
         }
 
-        .feature-card h3 {
-            color: var(--primary-dark);
-            font-size: 1.3rem;
-            margin-bottom: 12px;
+        .feature-box h3 {
+            color: var(--primary-deep);
+            font-size: 1.35rem;
+            margin-bottom: 15px;
             font-weight: 700;
         }
 
-        .feature-card p {
-            color: var(--text-light);
+        .feature-box p {
+            color: var(--text-muted);
             font-size: 1rem;
+            line-height: 1.8;
         }
 
-        /* --- قسم المنتجات المميزة --- */
-        .featured-products {
-            padding: 100px 8%;
-            background-color: var(--bg-cream);
-            text-align: center;
+        /* --- قسم المنتجات الفاخرة --- */
+        .products-section {
+            background-color: var(--white);
         }
 
         .products-grid {
@@ -199,27 +254,28 @@
             grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
             gap: 35px;
             max-width: 1200px;
-            margin: 40px auto 0 auto;
+            margin: 0 auto;
         }
 
         .product-card {
-            background-color: var(--white);
-            border-radius: 16px;
+            background-color: var(--bg-main);
+            border-radius: 8px;
             overflow: hidden;
-            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.04);
+            box-shadow: var(--shadow);
             border: 1px solid #eae5d9;
             text-align: right;
-            transition: transform 0.3s ease;
+            transition: all 0.3s ease;
         }
 
         .product-card:hover {
-            transform: translateY(-8px);
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(15, 40, 30, 0.12);
         }
 
-        .product-img-wrapper {
-            height: 240px;
+        .product-img {
+            height: 250px;
             overflow: hidden;
-            background-color: #f4f4f4;
+            background-color: #e5e5e5;
         }
 
         .product-card img {
@@ -233,43 +289,46 @@
             transform: scale(1.05);
         }
 
-        .product-content {
-            padding: 25px;
+        .product-details {
+            padding: 30px;
         }
 
-        .product-content h3 {
-            color: var(--primary-dark);
-            font-size: 1.35rem;
-            margin-bottom: 10px;
+        .product-details h3 {
+            color: var(--primary-deep);
+            font-size: 1.4rem;
+            margin-bottom: 12px;
             font-weight: 700;
         }
 
-        .product-content p {
-            color: var(--text-light);
-            font-size: 1rem;
+        .product-details p {
+            color: var(--text-muted);
+            font-size: 1.05rem;
+            line-height: 1.8;
         }
 
-        /* --- التذييل (Footer) --- */
+        /* --- التذييل الفاخر (Footer) --- */
         footer {
-            background-color: var(--primary-dark);
+            background-color: var(--primary-deep);
             color: var(--white);
-            padding: 70px 8% 30px 8%;
+            padding: 80px 8% 30px 8%;
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
             gap: 40px;
+            border-top: 4px solid var(--accent-gold);
         }
 
         .footer-col h4 {
             color: var(--accent-gold);
             margin-bottom: 20px;
-            font-size: 1.2rem;
+            font-size: 1.25rem;
             font-weight: 700;
         }
 
         .footer-col p, .footer-col ul li {
-            color: #d1d1d1;
+            color: #cfd8d2;
             font-size: 0.95rem;
             margin-bottom: 12px;
+            line-height: 1.8;
         }
 
         .footer-col ul {
@@ -277,7 +336,7 @@
         }
 
         .footer-col ul li a {
-            color: #d1d1d1;
+            color: #cfd8d2;
             text-decoration: none;
             transition: color 0.3s;
         }
@@ -291,29 +350,51 @@
             text-align: center;
             border-top: 1px solid rgba(255, 255, 255, 0.1);
             padding-top: 25px;
-            margin-top: 20px;
-            color: #aaa;
+            margin-top: 30px;
+            color: #a3b2a8;
             font-size: 0.9rem;
         }
 
+        /* التصميم المتجاوب للشاشات الصغيرة والهواتف */
         @media (max-width: 768px) {
-            .hero h1 { font-size: 2.5rem; }
-            nav ul { display: none; }
-            header { padding: 1rem 5%; }
+            .hero h1 { font-size: 2.6rem; }
+            nav ul {
+                display: none;
+                flex-direction: column;
+                position: absolute;
+                top: 100%;
+                right: 0;
+                width: 100%;
+                background-color: var(--white);
+                padding: 20px 0;
+                box-shadow: var(--shadow);
+                text-align: center;
+                gap: 15px;
+            }
+            nav ul.show {
+                display: flex;
+            }
+            .menu-toggle {
+                display: block;
+            }
         }
     </style>
 </head>
 <body>
 
-    <!-- الهيدر مع الروابط الصحيحة -->
+    <!-- الهيدر الاحترافي -->
     <header>
-        <a href="index.html" class="logo-container">
+        <a href="index.html" class="logo-wrapper">
             <img src="logo.jpg" alt="لوغو زيت البدر">
-            <span class="brand-name">زيت البدر</span>
+            <div class="brand-title">
+                <span>زيت البدر</span>
+                <span>Al Badr Olive Oil</span>
+            </div>
         </a>
         <nav>
-            <ul>
-                <li><a href="index.html" style="color: var(--accent-gold);">الرئيسية</a></li>
+            <button class="menu-toggle" onclick="toggleMenu()">☰</button>
+            <ul id="nav-links">
+                <li><a href="index.html" class="active">الرئيسية</a></li>
                 <li><a href="about.html">من نحن</a></li>
                 <li><a href="#">منتجاتنا</a></li>
                 <li><a href="#">جودتنا</a></li>
@@ -322,78 +403,82 @@
         </nav>
     </header>
 
-    <!-- الواجهة الرئيسية -->
+    <!-- الواجهة الرئيسية الفاخرة -->
     <section class="hero">
-        <h1>من قلب تساوت والعطاوية... إلى مائدتك</h1>
-        <p>اكتشف النقاء الأصيل لزيت زيتون البدر، المنتج بمعايير الصحة المعتمدة منذ 2020 ليفوق كل توقعاتك.</p>
-        <a href="about.html" class="btn-primary">تعرف على قصتنا</a>
+        <h1>النقاء الأصيل <span>من قلب العطاوية</span></h1>
+        <p>نقدم لكم أرقى أنواع زيت الزيتون المغربي، المعصور بمعايير صحية معتمدة لضمان الجودة العالية على مائدتكم.</p>
+        <a href="about.html" class="btn-gold">اكتشف قصة نجاحنا</a>
     </section>
 
-    <!-- قصة المصدر -->
-    <section class="source-story">
-        <h2 class="section-title">أصالة الجودة من سفوح الأطلس الكبير</h2>
-        <p class="description">
-            نختار أنواع الزيتون المغربي الأصيل: <strong>البيشولي المغربي، المنارة، أو الحوزية</strong> من ضيعات منطقة تساوت المتواجدة في سفوح جبال الأطلس الكبير، إضافة إلى الطقس الجاف والتربة الغنية بالمواد العضوية التي تمنح زيتنا طعماً فريداً وقيمة غذائية عالية.
-        </p>
+    <!-- قسم الميزات والقصة -->
+    <section>
+        <div class="section-header">
+            <h2>إرث من الأصالة والجودة</h2>
+            <p>نختار أنواع الزيتون المغربي الأصيل: البيشولي، المنارة، والحوزية من ضيعات تساوت بسفوح الأطلس الكبير لتستمتع بطعم لا يُضاهى.</p>
+        </div>
 
         <div class="features-grid">
-            <div class="feature-card">
+            <div class="feature-box">
                 <h3>أصناف مغربية مختارة</h3>
-                <p>نعتمد على أجود الأنواع المحلية مثل البيشولي، المنارة، والحوزية.</p>
+                <p>تتم عناية خاصة بانتقاء أفضل ثمار الزيتون المحلي لضمان نكهة غنية وعميقة.</p>
             </div>
-            <div class="feature-card">
-                <h3>مدينة العطاوية</h3>
-                <p>مقر إنتاجنا المعتمد صحياً منذ سنة 2020 وفق أعلى المعايير.</p>
+            <div class="feature-box">
+                <h3>معايير صحية معتمدة</h3>
+                <p>إنتاج مرخص ومراقب وفق توجيهات المكتب الوطني للسلامة الصحية (ONSSA) منذ 2020.</p>
             </div>
-            <div class="feature-card">
-                <h3>تربة وطقس مثاليان</h3>
-                <p>تربة غنية بالمواد العضوية مع طقس جاف يضمنان نقاء الثمار.</p>
+            <div class="feature-box">
+                <h3>ضيعات سفوح الأطلس</h3>
+                <p>بيئة جغرافية فريدة بطقس جاف وتربة غنية بالمواد العضوية الطبيعية.</p>
             </div>
         </div>
     </section>
 
-    <!-- أبرز المنتجات -->
-    <section class="featured-products">
-        <h2 class="section-title">روائع إنتاجنا</h2>
+    <!-- قسم المنتجات -->
+    <section class="products-section">
+        <div class="section-header">
+            <h2>روائع منتجاتنا</h2>
+            <p>عبوات مصممة خصيصاً للحفاظ على خصائص الزيت ونكهته الأصلية حتى تصل إلى مطبخك.</p>
+        </div>
+
         <div class="products-grid">
             <div class="product-card">
-                <div class="product-img-wrapper">
+                <div class="product-img">
                     <img src="https://images.unsplash.com/photo-1474978528675-4a50a4508dc3?q=80&w=1000&auto=format&fit=crop" alt="زيت بكر ممتاز">
                 </div>
-                <div class="product-content">
+                <div class="product-details">
                     <h3>زيت بكر ممتاز - العطاوية</h3>
-                    <p>معصور بعناية فائقة ليحافظ على نكهته الغنية وفوائده الصحية.</p>
+                    <p>معصور على البارد بعناية فائقة ليحافظ على قيمته الغذائية ونكهته الأصلية.</p>
                 </div>
             </div>
             <div class="product-card">
-                <div class="product-img-wrapper">
-                    <img src="https://images.unsplash.com/photo-1474978528675-4a50a4508dc3?q=80&w=1000&auto=format&fit=crop" alt="زيت زيتون عضوي">
+                <div class="product-img">
+                    <img src="https://images.unsplash.com/photo-1474978528675-4a50a4508dc3?q=80&w=1000&auto=format&fit=crop" alt="زيت الزيتون العضوي">
                 </div>
-                <div class="product-content">
+                <div class="product-details">
                     <h3>زيت الزيتون العضوي</h3>
                     <p>مستخلص من أشجار نبتت في تربة غنية وتحت أشعة الشمس الطبيعية.</p>
                 </div>
             </div>
             <div class="product-card">
-                <div class="product-img-wrapper">
-                    <img src="https://images.unsplash.com/photo-1474978528675-4a50a4508dc3?q=80&w=1000&auto=format&fit=crop" alt="عبوة العائلة الفاخرة">
+                <div class="product-img">
+                    <img src="https://images.unsplash.com/photo-1474978528675-4a50a4508dc3?q=80&w=1000&auto=format&fit=crop" alt="عبوة العائلة">
                 </div>
-                <div class="product-content">
+                <div class="product-details">
                     <h3>عبوة العائلة الفاخرة</h3>
-                    <p>الخيار المثالي لتلبية احتياجات مطبخك اليومي بأعلى معايير الجودة.</p>
+                    <p>الخيار الأمثل لتلبية احتياجات مطبخك اليومي بأعلى معايير الجودة والسلامة.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- التذييل مع روابط صحيحة -->
+    <!-- التذييل -->
     <footer>
         <div class="footer-col">
-            <div class="logo-container" style="margin-bottom: 15px;">
-                <img src="logo.jpg" alt="لوغو زيت البدر">
-                <span class="brand-name" style="color: var(--white);">زيت البدر</span>
+            <div class="logo-wrapper" style="margin-bottom: 15px;">
+                <img src="logo.jpg" alt="لوغو زيت البدر" style="height: 45px;">
+                <span style="color: var(--white); font-weight: 900; font-size: 1.2rem;">زيت البدر</span>
             </div>
-            <p>وحدة إنتاج زيت الزيتون البدر بالعطاوية: نلتزم بتقديم أجود أنواع الزيتون المغربي الأصيل.</p>
+            <p>وحدة إنتاج زيت الزيتون البدر بالعطاوية: التزام دائم بالجودة والمعايير الصحية الرسمية.</p>
         </div>
         <div class="footer-col">
             <h4>روابط سريعة</h4>
@@ -416,6 +501,14 @@
             <p>جميع الحقوق محفوظة لشركة وحدة إنتاج زيت الزيتون البدر © 2026</p>
         </div>
     </footer>
+
+    <!-- سكريبت بسيط لتشغيل زر القائمة الجانبية للهواتف -->
+    <script>
+        function toggleMenu() {
+            const navLinks = document.getElementById('nav-links');
+            navLinks.classList.toggle('show');
+        }
+    </script>
 
 </body>
 </html>
