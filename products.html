@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>منتجاتنا - شركة زيت البدر بالعطاوية</title>
-    <!-- استدعاء نفس الخطوط الفاخرة لتوحيد الهوية -->
     <link href="https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400&family=Tajawal:wght@300;400;500;700;900&display=swap" rel="stylesheet">
     <style>
         :root {
@@ -17,26 +16,14 @@
             --white: #ffffff;
             --shadow: 0 10px 30px rgba(18, 40, 30, 0.06);
         }
-
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body { font-family: 'Tajawal', sans-serif; background-color: var(--bg-main); color: var(--text-main); line-height: 1.9; }
 
-        /* الهيدر المتطابق */
         header {
-            background-color: var(--white);
-            padding: 1.2rem 6%;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            box-shadow: var(--shadow);
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-            border-bottom: 1px solid var(--accent-gold-light);
+            background-color: var(--white); padding: 1.2rem 6%; display: flex; justify-content: space-between; align-items: center; box-shadow: var(--shadow); position: sticky; top: 0; z-index: 1000; border-bottom: 1px solid var(--accent-gold-light);
         }
         .logo-wrapper { display: flex; align-items: center; gap: 14px; text-decoration: none; }
         .logo-wrapper img { height: 52px; width: auto; object-fit: contain; }
-        
         .brand-title { display: flex; flex-direction: column; justify-content: center; }
         .brand-title .ar-name { font-family: 'Amiri', serif; font-size: 1.35rem; font-weight: 700; color: var(--primary-deep); line-height: 1.2; }
         .brand-title .en-name { font-size: 0.75rem; color: var(--accent-gold); font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; line-height: 1.2; }
@@ -46,98 +33,31 @@
         nav ul li a:hover, nav ul li a.active { color: var(--accent-gold); }
         .menu-toggle { display: none; background: none; border: none; cursor: pointer; font-size: 1.8rem; color: var(--primary-deep); }
 
-        /* رأس الصفحة المتطابق */
         .page-header {
             background: linear-gradient(rgba(18, 40, 30, 0.8), rgba(18, 40, 30, 0.65)), url('https://images.unsplash.com/photo-1541604193435-245c58394cf0?q=80&w=1920&auto=format&fit=crop') center/cover no-repeat;
-            padding: 90px 10%;
-            text-align: center;
-            color: var(--white);
+            padding: 90px 10%; text-align: center; color: var(--white);
         }
         .page-header h1 { font-family: 'Amiri', serif; font-size: 3rem; margin-bottom: 10px; font-weight: 700; }
         .page-header p { font-family: 'Amiri', serif; font-size: 1.15rem; color: #eae6df; font-weight: 300; }
 
-        /* محتوى المنتجات */
         .products-content { padding: 90px 8%; max-width: 1200px; margin: 0 auto; }
         .section-header { text-align: center; max-width: 800px; margin: 0 auto 60px auto; }
         .section-header h2 { font-family: 'Amiri', serif; font-size: 2.5rem; color: var(--primary-deep); margin-bottom: 15px; font-weight: 700; }
         .section-header p { font-size: 1.1rem; color: var(--text-muted); line-height: 1.9; font-family: 'Amiri', serif; }
 
-        .products-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 35px;
-        }
+        .products-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 35px; }
+        .product-card { background-color: var(--white); border-radius: 6px; overflow: hidden; box-shadow: var(--shadow); border: 1px solid #eae5d9; text-align: right; transition: all 0.3s ease; }
+        .product-card:hover { transform: translateY(-5px); }
+        .product-img { height: 260px; overflow: hidden; background-color: #e5e5e5; }
+        .product-card img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease; }
+        .product-card:hover img { transform: scale(1.05); }
+        .product-details { padding: 30px; }
+        .product-details h3 { font-family: 'Amiri', serif; color: var(--primary-deep); font-size: 1.4rem; margin-bottom: 10px; font-weight: 700; }
+        .product-details p { color: var(--text-muted); font-size: 1.05rem; line-height: 1.8; font-family: 'Amiri', serif; margin-bottom: 15px; }
+        .product-badge { display: inline-block; background-color: var(--accent-gold-light); color: var(--primary-deep); padding: 5px 12px; border-radius: 4px; font-size: 0.85rem; font-weight: 700; }
 
-        .product-card {
-            background-color: var(--white);
-            border-radius: 6px;
-            overflow: hidden;
-            box-shadow: var(--shadow);
-            border: 1px solid #eae5d9;
-            text-align: right;
-            transition: all 0.3s ease;
-        }
-
-        .product-card:hover {
-            transform: translateY(-5px);
-        }
-
-        .product-img {
-            height: 260px;
-            overflow: hidden;
-            background-color: #e5e5e5;
-        }
-
-        .product-card img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.5s ease;
-        }
-
-        .product-card:hover img {
-            transform: scale(1.05);
-        }
-
-        .product-details {
-            padding: 30px;
-        }
-
-        .product-details h3 {
-            font-family: 'Amiri', serif;
-            color: var(--primary-deep);
-            font-size: 1.4rem;
-            margin-bottom: 10px;
-            font-weight: 700;
-        }
-
-        .product-details p {
-            color: var(--text-muted);
-            font-size: 1.05rem;
-            line-height: 1.8;
-            font-family: 'Amiri', serif;
-            margin-bottom: 15px;
-        }
-
-        .product-badge {
-            display: inline-block;
-            background-color: var(--accent-gold-light);
-            color: var(--primary-deep);
-            padding: 5px 12px;
-            border-radius: 4px;
-            font-size: 0.85rem;
-            font-weight: 700;
-        }
-
-        /* التذييل المتطابق */
         footer {
-            background-color: var(--primary-deep);
-            color: var(--white);
-            padding: 80px 8% 30px 8%;
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-            gap: 40px;
-            border-top: 4px solid var(--accent-gold);
+            background-color: var(--primary-deep); color: var(--white); padding: 80px 8% 30px 8%; display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 40px; border-top: 4px solid var(--accent-gold);
         }
         .footer-col h4 { font-family: 'Amiri', serif; color: var(--accent-gold); margin-bottom: 20px; font-size: 1.3rem; font-weight: 700; }
         .footer-col p, .footer-col ul li { font-family: 'Amiri', serif; color: #d1d8d3; font-size: 1rem; margin-bottom: 12px; line-height: 1.8; }
@@ -156,7 +76,6 @@
 </head>
 <body>
 
-    <!-- الهيدر -->
     <header>
         <a href="index.html" class="logo-wrapper">
             <img src="logo.jpg" alt="لوغو زيت البدر">
@@ -171,19 +90,16 @@
                 <li><a href="index.html">الرئيسية</a></li>
                 <li><a href="about.html">من نحن</a></li>
                 <li><a href="products.html" class="active">منتجاتنا</a></li>
-                <li><a href="#">جودتنا</a></li>
-                <li><a href="#">تواصل معنا</a></li>
+                <li><a href="contact.html">تواصل معنا</a></li>
             </ul>
         </nav>
     </header>
 
-    <!-- رأس الصفحة -->
     <section class="page-header">
         <h1>روائع منتجاتنا</h1>
         <p>تشكيلة فاخرة من زيت الزيتون المغربي المعصور بأعلى معايير السلامة الصحية.</p>
     </section>
 
-    <!-- محتوى المنتجات -->
     <section class="products-content">
         <div class="section-header">
             <h2>جودة تحكيها كل قطرة</h2>
@@ -192,9 +108,7 @@
 
         <div class="products-grid">
             <div class="product-card">
-                <div class="product-img">
-                    <img src="https://images.unsplash.com/photo-1474978528675-4a50a4508dc3?q=80&w=1000&auto=format&fit=crop" alt="زيت بكر ممتاز زجاجي">
-                </div>
+                <div class="product-img"><img src="https://images.unsplash.com/photo-1474978528675-4a50a4508dc3?q=80&w=1000&auto=format&fit=crop" alt="زيت بكر ممتاز زجاجي"></div>
                 <div class="product-details">
                     <h3>زيت بكر ممتاز (زجاج فاخر)</h3>
                     <p>مصمم خصيصاً للاستهلاك المباشر والسلطات، يحافظ على النقاء الكامل والنكهة العميقة لزيتون سفوح الأطلس.</p>
@@ -203,9 +117,7 @@
             </div>
 
             <div class="product-card">
-                <div class="product-img">
-                    <img src="https://images.unsplash.com/photo-1474978528675-4a50a4508dc3?q=80&w=1000&auto=format&fit=crop" alt="عبوة تنك اقتصادية">
-                </div>
+                <div class="product-img"><img src="https://images.unsplash.com/photo-1474978528675-4a50a4508dc3?q=80&w=1000&auto=format&fit=crop" alt="عبوة تنك اقتصادية"></div>
                 <div class="product-details">
                     <h3>زيت زيتون بكر (تنك عائلي)</h3>
                     <p>الخيار الأمثل للاستخدام اليومي والطبخ العائلي، معبأ في ظروف تحميه من الضوء والحرارة لضمان الجودة المستدامة.</p>
@@ -214,9 +126,7 @@
             </div>
 
             <div class="product-card">
-                <div class="product-img">
-                    <img src="https://images.unsplash.com/photo-1474978528675-4a50a4508dc3?q=80&w=1000&auto=format&fit=crop" alt="عبوة الطهاة والمحترفين">
-                </div>
+                <div class="product-img"><img src="https://images.unsplash.com/photo-1474978528675-4a50a4508dc3?q=80&w=1000&auto=format&fit=crop" alt="عبوة الطهاة والمحترفين"></div>
                 <div class="product-details">
                     <h3>إصدار الطهاة والمهنيين</h3>
                     <p>عبوة احترافية موجهة للمطاعم والوحدات الغذائية التي تبحث عن الجودة والمعايير المعتمدة من ONSSA.</p>
@@ -226,7 +136,6 @@
         </div>
     </section>
 
-    <!-- التذييل -->
     <footer>
         <div class="footer-col">
             <div class="logo-wrapper" style="margin-bottom: 15px;">
@@ -244,28 +153,20 @@
                 <li><a href="index.html">الرئيسية</a></li>
                 <li><a href="about.html">من نحن</a></li>
                 <li><a href="products.html">منتجاتنا</a></li>
-                <li><a href="#">تواصل معنا</a></li>
+                <li><a href="contact.html">تواصل معنا</a></li>
             </ul>
         </div>
         <div class="footer-col">
             <h4>تواصل معنا</h4>
             <ul>
                 <li>العطاوية، المغرب</li>
-                <li>الهاتف: +212 600 000 000</li>
+                <li>الهاتف: +212 661 87 32 14</li>
                 <li>البريد: info@zitalbadr.ma</li>
             </ul>
         </div>
-        <div class="footer-bottom">
-            <p>جميع الحقوق محفوظة لشركة وحدة إنتاج زيت الزيتون البدر © 2026</p>
-        </div>
+        <div class="footer-bottom"><p>جميع الحقوق محفوظة لشركة وحدة إنتاج زيت الزيتون البدر © 2026</p></div>
     </footer>
 
-    <script>
-        function toggleMenu() {
-            const navLinks = document.getElementById('nav-links');
-            navLinks.classList.toggle('show');
-        }
-    </script>
-
+    <script>function toggleMenu() { document.getElementById('nav-links').classList.toggle('show'); }</script>
 </body>
 </html>
