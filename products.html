@@ -19,6 +19,16 @@
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body { font-family: 'Tajawal', sans-serif; background-color: var(--bg-main); color: var(--text-main); line-height: 1.9; }
 
+        /* أنيميشن الظهور التدريجي للصفحة */
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(25px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        body {
+            animation: fadeInUp 0.7s ease-out forwards;
+        }
+
         header {
             background-color: var(--white); padding: 1.2rem 6%; display: flex; justify-content: space-between; align-items: center; box-shadow: var(--shadow); position: sticky; top: 0; z-index: 1000; border-bottom: 1px solid var(--accent-gold-light);
         }
@@ -53,7 +63,6 @@
         .product-img img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease; }
         .product-card:hover .product-img img { transform: scale(1.05); }
         
-        /* تلميح بصري فوق الصورة ليعرف الزبون أنه يمكنه النقر عليها */
         .click-hint {
             position: absolute; bottom: 12px; right: 12px; background-color: rgba(18, 40, 30, 0.85); color: var(--accent-gold);
             padding: 5px 12px; border-radius: 4px; font-size: 0.8rem; font-weight: 600; font-family: 'Tajawal', sans-serif;
@@ -65,7 +74,7 @@
         .product-details p { color: var(--text-muted); font-size: 1.05rem; line-height: 1.8; font-family: 'Amiri', serif; margin-bottom: 15px; }
         .product-badge { display: inline-block; background-color: var(--accent-gold-light); color: var(--primary-deep); padding: 5px 12px; border-radius: 4px; font-size: 0.85rem; font-weight: 700; }
 
-        /* تنسيق النافذة المنبثقة (Modal) لعرض النبذة عند النقر */
+        /* تنسيق النافذة المنبثقة (Modal) */
         .modal-overlay {
             display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
             background-color: rgba(18, 40, 30, 0.85); z-index: 2000; justify-content: center; align-items: center; padding: 20px;
@@ -77,11 +86,23 @@
         }
         .modal-box h3 { font-family: 'Amiri', serif; color: var(--primary-deep); font-size: 1.8rem; margin-bottom: 15px; }
         .modal-box p { font-family: 'Amiri', serif; color: var(--text-muted); font-size: 1.1rem; line-height: 1.9; margin-bottom: 25px; }
+        
+        /* تنسيق الأزرار داخل النافذة المنبثقة */
+        .modal-buttons {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
         .close-modal {
-            background-color: var(--primary-deep); color: var(--white); border: none; padding: 10px 25px;
+            background-color: #e5e5e5; color: var(--text-main); border: none; padding: 12px 25px;
             border-radius: 4px; font-weight: 700; cursor: pointer; transition: background 0.3s;
         }
-        .close-modal:hover { background-color: var(--accent-gold); color: var(--primary-deep); }
+        .close-modal:hover { background-color: #d1d1d1; }
+        .btn-order-modal {
+            background-color: var(--accent-gold); color: var(--primary-deep); border: none; padding: 12px 25px;
+            border-radius: 4px; font-weight: 800; text-decoration: none; display: inline-block; transition: background 0.3s;
+        }
+        .btn-order-modal:hover { background-color: #b28e46; }
 
         footer {
             background-color: var(--primary-deep); color: var(--white); padding: 80px 8% 30px 8%; display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 40px; border-top: 4px solid var(--accent-gold);
@@ -182,7 +203,10 @@
         <div class="modal-box">
             <h3 id="modalTitle">عنوان المنتج</h3>
             <p id="modalDescription">تفاصيل ونبذة المنتج هنا...</p>
-            <button class="close-modal" onclick="closeModalBtn()">إغلاق</button>
+            <div class="modal-buttons">
+                <a href="order.html" class="btn-order-modal">أطلب الآن 🛒</a>
+                <button class="close-modal" onclick="closeModalBtn()">إغلاق</button>
+            </div>
         </div>
     </div>
 
@@ -237,5 +261,4 @@
         }
     </script>
 </body>
-    </html>
-                                                                                                                         
+</html>
