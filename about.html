@@ -19,6 +19,16 @@
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body { font-family: 'Tajawal', sans-serif; background-color: var(--bg-main); color: var(--text-main); line-height: 1.9; }
 
+        /* أنيميشن الظهور التدريجي للصفحة */
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(25px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        body {
+            animation: fadeInUp 0.7s ease-out forwards;
+        }
+
         header {
             background-color: var(--white); padding: 1.2rem 6%; display: flex; justify-content: space-between; align-items: center; box-shadow: var(--shadow); position: sticky; top: 0; z-index: 1000; border-bottom: 1px solid var(--accent-gold-light);
         }
@@ -44,16 +54,20 @@
         .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; margin-bottom: 80px; }
         .about-text h2 { font-family: 'Amiri', serif; color: var(--primary-deep); font-size: 2.3rem; margin-bottom: 20px; font-weight: 700; }
         .about-text p { font-family: 'Amiri', serif; color: var(--text-muted); font-size: 1.12rem; margin-bottom: 20px; line-height: 1.9; }
-        .about-img img { width: 100%; border-radius: 6px; box-shadow: var(--shadow); }
+        .about-img img { width: 100%; border-radius: 6px; box-shadow: var(--shadow); transition: transform 0.5s ease; }
+        .about-img img:hover { transform: scale(1.02); }
 
         .onssa-badge-box {
             background-color: var(--white); border-right: 6px solid var(--accent-gold); padding: 50px; border-radius: 6px; box-shadow: var(--shadow); margin-bottom: 80px; text-align: right;
+            transition: transform 0.3s ease;
         }
+        .onssa-badge-box:hover { transform: translateY(-3px); }
         .onssa-badge-box h3 { font-family: 'Amiri', serif; color: var(--primary-deep); font-size: 2rem; margin-bottom: 15px; font-weight: 700; }
         .onssa-badge-box p { font-family: 'Amiri', serif; color: var(--text-muted); font-size: 1.1rem; line-height: 1.9; }
 
         .values-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; margin-top: 40px; }
-        .value-card { background-color: var(--white); padding: 40px 30px; border-radius: 6px; box-shadow: var(--shadow); border-top: 4px solid var(--accent-gold); text-align: right; }
+        .value-card { background-color: var(--white); padding: 40px 30px; border-radius: 6px; box-shadow: var(--shadow); border-top: 4px solid var(--accent-gold); text-align: right; transition: transform 0.3s ease; }
+        .value-card:hover { transform: translateY(-5px); }
         .value-card h3 { font-family: 'Amiri', serif; color: var(--primary-deep); font-size: 1.4rem; margin-bottom: 12px; font-weight: 700; }
         .value-card p { font-family: 'Amiri', serif; color: var(--text-muted); font-size: 1.05rem; line-height: 1.8; }
 
