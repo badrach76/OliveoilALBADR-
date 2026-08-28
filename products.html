@@ -19,7 +19,6 @@
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body { font-family: 'Tajawal', sans-serif; background-color: var(--bg-main); color: var(--text-main); line-height: 1.9; }
 
-        /* أنيميشن الظهور التدريجي للصفحة */
         @keyframes fadeInUp {
             from { opacity: 0; transform: translateY(25px); }
             to { opacity: 1; transform: translateY(0); }
@@ -87,7 +86,6 @@
         .modal-box h3 { font-family: 'Amiri', serif; color: var(--primary-deep); font-size: 1.8rem; margin-bottom: 15px; }
         .modal-box p { font-family: 'Amiri', serif; color: var(--text-muted); font-size: 1.1rem; line-height: 1.9; margin-bottom: 25px; }
         
-        /* تنسيق الأزرار داخل النافذة المنبثقة */
         .modal-buttons {
             display: flex;
             gap: 12px;
@@ -159,9 +157,9 @@
         <div class="products-grid">
             <!-- المنتج الأول -->
             <div class="product-card">
-                <div class="product-img" onclick="openModal('زيت بكر ممتاز (زجاج فاخر)', 'تم تعبئة هذا الإصدار في زجاج فاخر مصمم خصيصاً لحماية الزيت من الأشعة والحفاظ على نقائه الكامل. يعتبر الخيار الأمثل للاستهلاك المباشر، السلطات، والأطباق الصحية بفضل نكهته العميقة المستخلصة من أشجار زيتون سفوح الأطلس.')">
+                <div class="product-img" onclick="openModal(event, 'زيت بكر ممتاز (زجاج فاخر)', 'تم تعبئة هذا الإصدار في زجاج فاخر مصمم خصيصاً لحماية الزيت من الأشعة والحفاظ على نقائه الكامل. يعتبر الخيار الأمثل للاستهلاك المباشر، السلطات، والأطباق الصحية بفضل نكهته العميقة المستخلصة من أشجار زيتون سفوح الأطلس.')">
                     <img src="product1000l.jpg" alt="زيت بكر ممتاز زجاجي">
-                    <span class="click-hint">🔍 انقر للاطلاع على النبذة</span>
+                    <span class="click-hint">🔍 انقر هنا</span>
                 </div>
                 <div class="product-details">
                     <h3>زيت بكر ممتاز (زجاج فاخر)</h3>
@@ -172,9 +170,9 @@
 
             <!-- المنتج الثاني -->
             <div class="product-card">
-                <div class="product-img" onclick="openModal('زيت زيتون بكر (تنك عائلي)', 'معبأ في عبوات تنك معدنية محكمة الإغلاق تضمن الحماية التامة من الضوء والحرارة لفترات طويلة. هذا الإصدار مصمم لتلبية الاحتياجات اليومية والطبخ العائلي بجودة عالية ومستدامة وفق معايير السلامة الصحية ONSSA.')">
+                <div class="product-img" onclick="openModal(event, 'زيت زيتون بكر (تنك عائلي)', 'معبأ في عبوات تنك معدنية محكمة الإغلاق تضمن الحماية التامة من الضوء والحرارة لفترات طويلة. هذا الإصدار مصمم لتلبية الاحتياجات اليومية والطبخ العائلي بجودة عالية ومستدامة وفق معايير السلامة الصحية ONSSA.')">
                     <img src="product5000l.jpg" alt="عبوة تنك اقتصادية">
-                    <span class="click-hint">🔍 انقر للاطلاع على النبذة</span>
+                    <span class="click-hint">🔍 انقر هنا</span>
                 </div>
                 <div class="product-details">
                     <h3>زيت زيتون بكر (تنك عائلي)</h3>
@@ -185,9 +183,9 @@
 
             <!-- المنتج الثالث -->
             <div class="product-card">
-                <div class="product-img" onclick="openModal('إصدار الطهاة والمهنيين', 'عبوة احترافية موجهة خصيصاً للمطاعم، الفنادق، والوحدات الغذائية الكبرى التي تبحث عن الجودة الفائقة والموثوقية المرخصة. يوفر أداءً استثنائياً في الطبخ والتحضيرات المهنية الراقية.')">
+                <div class="product-img" onclick="openModal(event, 'إصدار الطهاة والمهنيين', 'عبوة احترافية موجهة خصيصاً للمطاعم، الفنادق، والوحدات الغذائية الكبرى التي تبحث عن الجودة الفائقة والموثوقية المرخصة. يوفر أداءً استثنائياً في الطبخ والتحضيرات المهنية الراقية.')">
                     <img src="product30l.png" alt="عبوة الطهاة والمحترفين">
-                    <span class="click-hint">🔍 انقر للاطلاع على النبذة</span>
+                    <span class="click-hint">🔍 انقر هنا</span>
                 </div>
                 <div class="product-details">
                     <h3>إصدار الطهاة والمهنيين</h3>
@@ -235,7 +233,7 @@
             <h4>تواصل معنا</h4>
             <ul>
                 <li>العطاوية، المغرب</li>
-                <li>الهاتف: <span class="ltr-phone">+212 661 87 32 14</span></li>
+                <li>الهاتف: <span class="ltr-phone">14 32 87 661 212+</span></li>
                 <li>البريد: info@zitalbadr.ma</li>
             </ul>
         </div>
@@ -245,8 +243,9 @@
     <script>
         function toggleMenu() { document.getElementById('nav-links').classList.toggle('show'); }
 
-        // دوال التحكم بالنافذة المنبثقة للنبذة عن المنتجات
-        function openModal(title, text) {
+        // دالة الفتح مع منع تحريك الصفحة (event.preventDefault)
+        function openModal(event, title, text) {
+            event.preventDefault();
             document.getElementById('modalTitle').innerText = title;
             document.getElementById('modalDescription').innerText = text;
             document.getElementById('productModal').style.display = 'flex';
