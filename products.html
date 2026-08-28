@@ -48,13 +48,40 @@
         .products-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 35px; }
         .product-card { background-color: var(--white); border-radius: 6px; overflow: hidden; box-shadow: var(--shadow); border: 1px solid #eae5d9; text-align: right; transition: all 0.3s ease; }
         .product-card:hover { transform: translateY(-5px); }
-        .product-img { height: 260px; overflow: hidden; background-color: #e5e5e5; }
-        .product-card img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease; }
-        .product-card:hover img { transform: scale(1.05); }
+        
+        .product-img { height: 260px; overflow: hidden; background-color: #e5e5e5; cursor: pointer; position: relative; }
+        .product-img img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease; }
+        .product-card:hover .product-img img { transform: scale(1.05); }
+        
+        /* تلميح بصري فوق الصورة ليعرف الزبون أنه يمكنه النقر عليها */
+        .click-hint {
+            position: absolute; bottom: 12px; right: 12px; background-color: rgba(18, 40, 30, 0.85); color: var(--accent-gold);
+            padding: 5px 12px; border-radius: 4px; font-size: 0.8rem; font-weight: 600; font-family: 'Tajawal', sans-serif;
+            backdrop-filter: blur(4px); box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+        }
+
         .product-details { padding: 30px; }
         .product-details h3 { font-family: 'Amiri', serif; color: var(--primary-deep); font-size: 1.4rem; margin-bottom: 10px; font-weight: 700; }
         .product-details p { color: var(--text-muted); font-size: 1.05rem; line-height: 1.8; font-family: 'Amiri', serif; margin-bottom: 15px; }
         .product-badge { display: inline-block; background-color: var(--accent-gold-light); color: var(--primary-deep); padding: 5px 12px; border-radius: 4px; font-size: 0.85rem; font-weight: 700; }
+
+        /* تنسيق النافذة المنبثقة (Modal) لعرض النبذة عند النقر */
+        .modal-overlay {
+            display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background-color: rgba(18, 40, 30, 0.85); z-index: 2000; justify-content: center; align-items: center; padding: 20px;
+            backdrop-filter: blur(5px);
+        }
+        .modal-box {
+            background-color: var(--white); max-width: 600px; width: 100%; padding: 40px; border-radius: 8px;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.3); border-top: 5px solid var(--accent-gold); position: relative; text-align: right;
+        }
+        .modal-box h3 { font-family: 'Amiri', serif; color: var(--primary-deep); font-size: 1.8rem; margin-bottom: 15px; }
+        .modal-box p { font-family: 'Amiri', serif; color: var(--text-muted); font-size: 1.1rem; line-height: 1.9; margin-bottom: 25px; }
+        .close-modal {
+            background-color: var(--primary-deep); color: var(--white); border: none; padding: 10px 25px;
+            border-radius: 4px; font-weight: 700; cursor: pointer; transition: background 0.3s;
+        }
+        .close-modal:hover { background-color: var(--accent-gold); color: var(--primary-deep); }
 
         footer {
             background-color: var(--primary-deep); color: var(--white); padding: 80px 8% 30px 8%; display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 40px; border-top: 4px solid var(--accent-gold);
@@ -65,6 +92,7 @@
         .footer-col ul li a { color: #d1d8d3; text-decoration: none; transition: color 0.3s; }
         .footer-col ul li a:hover { color: var(--accent-gold); }
         .footer-bottom { grid-column: 1 / -1; text-align: center; border-top: 1px solid rgba(255, 255, 255, 0.1); padding-top: 25px; margin-top: 30px; color: #a3b2a8; font-size: 0.9rem; }
+        .ltr-phone { direction: ltr; unicode-bidi: embed; display: inline-block; }
 
         @media (max-width: 768px) {
             .page-header h1 { font-size: 2.5rem; }
@@ -78,7 +106,7 @@
 
     <header>
         <a href="index.html" class="logo-wrapper">
-            <img src="logo1.png" alt="لوغو زيت البدر">
+            <img src="logo.jpg" alt="لوغو زيت البدر">
             <div class="brand-title">
                 <span class="ar-name">زيت البدر</span>
                 <span class="en-name">Al Badr Olive Oil</span>
@@ -98,18 +126,22 @@
 
     <section class="page-header">
         <h1>روائع منتجاتنا</h1>
-        <p>تشكيلة فاخرة من زيت الزيتون المغربي المعصور بأعلى معايير السلامة الصحية.</p>
+        <p>انقر على صورة أي منتج لمعرفة نبذة تفصيلية حول خصائصه وجودته.</p>
     </section>
 
     <section class="products-content">
         <div class="section-header">
             <h2>جودة تحكيها كل قطرة</h2>
-            <p>نقدم لزبنائنا الكرام عبوات متنوعة تلبي كافة الاحتياجات المنزلية والمهنية، مع حفظ كامل للخصائص الغذائية والنكهة الأصلية.</p>
+            <p>نقدم لزبنائنا الكرام عبوات متنوعة تلبي كافة الاحتياجات المنزلية والمهنية، مع حفظ كامل للخصائص الغذائية.</p>
         </div>
 
         <div class="products-grid">
+            <!-- المنتج الأول -->
             <div class="product-card">
-                <div class="product-img"><img src="product1000l.jpg" alt="زيت بكر ممتاز زجاجي"></div>
+                <div class="product-img" onclick="openModal('زيت بكر ممتاز (زجاج فاخر)', 'تم تعبئة هذا الإصدار في زجاج فاخر مصمم خصيصاً لحماية الزيت من الأشعة والحفاظ على نقائه الكامل. يعتبر الخيار الأمثل للاستهلاك المباشر، السلطات، والأطباق الصحية بفضل نكهته العميقة المستخلصة من أشجار زيتون سفوح الأطلس.')">
+                    <img src="https://images.unsplash.com/photo-1474978528675-4a50a4508dc3?q=80&w=1000&auto=format&fit=crop" alt="زيت بكر ممتاز زجاجي">
+                    <span class="click-hint">🔍 انقر للاطلاع على النبذة</span>
+                </div>
                 <div class="product-details">
                     <h3>زيت بكر ممتاز (زجاج فاخر)</h3>
                     <p>مصمم خصيصاً للاستهلاك المباشر والسلطات، يحافظ على النقاء الكامل والنكهة العميقة لزيتون سفوح الأطلس.</p>
@@ -117,8 +149,12 @@
                 </div>
             </div>
 
+            <!-- المنتج الثاني -->
             <div class="product-card">
-                <div class="product-img"><img src="product2000l.jpg" alt="عبوة تنك اقتصادية"></div>
+                <div class="product-img" onclick="openModal('زيت زيتون بكر (تنك عائلي)', 'معبأ في عبوات تنك معدنية محكمة الإغلاق تضمن الحماية التامة من الضوء والحرارة لفترات طويلة. هذا الإصدار مصمم لتلبية الاحتياجات اليومية والطبخ العائلي بجودة عالية ومستدامة وفق معايير السلامة الصحية ONSSA.')">
+                    <img src="https://images.unsplash.com/photo-1474978528675-4a50a4508dc3?q=80&w=1000&auto=format&fit=crop" alt="عبوة تنك اقتصادية">
+                    <span class="click-hint">🔍 انقر للاطلاع على النبذة</span>
+                </div>
                 <div class="product-details">
                     <h3>زيت زيتون بكر (تنك عائلي)</h3>
                     <p>الخيار الأمثل للاستخدام اليومي والطبخ العائلي، معبأ في ظروف تحميه من الضوء والحرارة لضمان الجودة المستدامة.</p>
@@ -126,8 +162,12 @@
                 </div>
             </div>
 
+            <!-- المنتج الثالث -->
             <div class="product-card">
-                <div class="product-img"><img src="product30l.png" alt="عبوة الطهاة والمحترفين"></div>
+                <div class="product-img" onclick="openModal('إصدار الطهاة والمهنيين', 'عبوة احترافية موجهة خصيصاً للمطاعم، الفنادق، والوحدات الغذائية الكبرى التي تبحث عن الجودة الفائقة والموثوقية المرخصة. يوفر أداءً استثنائياً في الطبخ والتحضيرات المهنية الراقية.')">
+                    <img src="https://images.unsplash.com/photo-1474978528675-4a50a4508dc3?q=80&w=1000&auto=format&fit=crop" alt="عبوة الطهاة والمحترفين">
+                    <span class="click-hint">🔍 انقر للاطلاع على النبذة</span>
+                </div>
                 <div class="product-details">
                     <h3>إصدار الطهاة والمهنيين</h3>
                     <p>عبوة احترافية موجهة للمطاعم والوحدات الغذائية التي تبحث عن الجودة والمعايير المعتمدة من ONSSA.</p>
@@ -137,10 +177,19 @@
         </div>
     </section>
 
+    <!-- النافذة المنبثقة (Modal) لعرض النبذة -->
+    <div id="productModal" class="modal-overlay" onclick="closeModal(event)">
+        <div class="modal-box">
+            <h3 id="modalTitle">عنوان المنتج</h3>
+            <p id="modalDescription">تفاصيل ونبذة المنتج هنا...</p>
+            <button class="close-modal" onclick="closeModalBtn()">إغلاق</button>
+        </div>
+    </div>
+
     <footer>
         <div class="footer-col">
             <div class="logo-wrapper" style="margin-bottom: 15px;">
-                <img src="logo1.png" alt="لوغو زيت البدر" style="height: 42px;">
+                <img src="logo.jpg" alt="لوغو زيت البدر" style="height: 42px;">
                 <div class="brand-title">
                     <span class="ar-name" style="color: var(--white);">زيت البدر</span>
                     <span class="en-name">Al Badr Olive Oil</span>
@@ -162,13 +211,31 @@
             <h4>تواصل معنا</h4>
             <ul>
                 <li>العطاوية، المغرب</li>
-                <li>الهاتف: <span class="ltr-phone">14 32 87 661 212+</span></li>
+                <li>الهاتف: <span class="ltr-phone">+212 661 87 32 14</span></li>
                 <li>البريد: info@zitalbadr.ma</li>
             </ul>
         </div>
         <div class="footer-bottom"><p>جميع الحقوق محفوظة لشركة وحدة إنتاج زيت الزيتون البدر © 2026</p></div>
     </footer>
 
-    <script>function toggleMenu() { document.getElementById('nav-links').classList.toggle('show'); }</script>
+    <script>
+        function toggleMenu() { document.getElementById('nav-links').classList.toggle('show'); }
+
+        // دوال التحكم بالنافذة المنبثقة للنبذة عن المنتجات
+        function openModal(title, text) {
+            document.getElementById('modalTitle').innerText = title;
+            document.getElementById('modalDescription').innerText = text;
+            document.getElementById('productModal').style.display = 'flex';
+        }
+        function closeModalBtn() {
+            document.getElementById('productModal').style.display = 'none';
+        }
+        function closeModal(event) {
+            if (event.target.id === 'productModal') {
+                document.getElementById('productModal').style.display = 'none';
+            }
+        }
+    </script>
 </body>
-</html>
+    </html>
+                                                                                                                         
