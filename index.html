@@ -17,9 +17,9 @@
             --shadow: 0 10px 30px rgba(18, 40, 30, 0.06);
         }
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: 'Tajawal', sans-serif; background-color: var(--bg-main); color: var(--text-main); line-height: 1.9; overflow-x: hidden; opacity: 0; }
+        body { font-family: 'Tajawal', sans-serif; background-color: var(--bg-main); color: var(--text-main); line-height: 1.9; overflow-x: hidden; }
 
-        /* شاشة البداية (Splash Screen) مضمونة الظهور ومستقلة */
+        /* شاشة البداية (Splash Screen) ظاهرة وثابتة بشكل افتراضي تماماً */
         #splash-screen {
             position: fixed;
             top: 0;
@@ -31,7 +31,7 @@
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            z-index: 99999;
+            z-index: 999999;
             text-align: center;
             padding: 20px;
             opacity: 1;
@@ -40,11 +40,10 @@
         }
 
         .splash-logo {
-            width: 130px;
+            width: 140px;
             height: auto;
             margin-bottom: 25px;
-            opacity: 0;
-            animation: fadeInElement 1s ease 0.2s forwards;
+            animation: fadeInLogo 1.2s ease forwards;
             filter: drop-shadow(0 0 15px rgba(197, 160, 89, 0.6));
         }
 
@@ -55,15 +54,20 @@
             max-width: 650px;
             line-height: 1.8;
             opacity: 0;
-            animation: fadeInElement 1.5s ease 0.4s forwards;
+            animation: fadeInText 1.5s ease 0.4s forwards;
         }
 
-        @keyframes fadeInElement {
+        @keyframes fadeInLogo {
+            0% { opacity: 0; transform: scale(0.9); }
+            100% { opacity: 1; transform: scale(1); }
+        }
+
+        @keyframes fadeInText {
             0% { opacity: 0; }
             100% { opacity: 1; }
         }
 
-        /* أنيميشن ظهور الصفحة المطابق لحركة الشعار */
+        /* أنيميشن ظهور محتوى الصفحة الرئيسية لاحقاً */
         @keyframes pageScaleUp {
             0% { transform: scale(0.95); opacity: 0; }
             100% { transform: scale(1); opacity: 1; }
@@ -285,19 +289,18 @@
     <script>
         function toggleMenu() { document.getElementById('nav-links').classList.toggle('show'); }
 
-        // استخدام التنفيذ المباشر لضمان ظهور شاشة البداية بوضوح تام وثبات لفترة كافية للقراءة
-        document.addEventListener("DOMContentLoaded", function() {
+        // استخدام تفعيل زمني مباشر ومضمون لضمان ظهور شاشة اللوغو والفترة الزمنية لقراءة النص
+        window.addEventListener('load', function() {
             setTimeout(function() {
                 const splash = document.getElementById('splash-screen');
-                splash.style.opacity = '0';
-                
-                // تفعيل ظهور الصفحة الرئيسية بسلاسة
-                document.body.classList.add('loaded');
-
-                setTimeout(function() {
-                    splash.style.display = 'none';
-                }, 800);
-            }, 3500); // مدة عرض شاشة اللوغو والنص (3.5 ثانية)
+                if(splash) {
+                    splash.style.opacity = '0';
+                    document.body.classList.add('loaded');
+                    setTimeout(function() {
+                        splash.style.display = 'none';
+                    }, 800);
+                }
+            }, 3500); // الشاشة ستظل ثابتة وواضحة لمدة 3.5 ثانية كاملة
         });
     </script>
 </body>
