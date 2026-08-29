@@ -19,7 +19,7 @@
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body { font-family: 'Tajawal', sans-serif; background-color: var(--bg-main); color: var(--text-main); line-height: 1.9; overflow-x: hidden; }
 
-        /* شاشة البداية (Splash Screen) */
+        /* شاشة البداية (Splash Screen) مع أنيميشن الانتقال الراقي */
         #splash-screen {
             position: fixed;
             top: 0;
@@ -34,7 +34,7 @@
             z-index: 9999;
             text-align: center;
             padding: 20px;
-            transition: opacity 0.8s ease, visibility 0.8s ease;
+            transition: opacity 1s cubic-bezier(0.77, 0, 0.175, 1), transform 1s cubic-bezier(0.77, 0, 0.175, 1);
         }
 
         .splash-logo {
@@ -53,7 +53,8 @@
             line-height: 1.8;
             opacity: 0;
             transform: translateY(20px);
-            animation: textFadeIn 2.5s ease 0.5s forwards;
+            /* تم تعديل مدة ظهور الكتابة إلى 1.8 ثانية */
+            animation: textFadeIn 1.8s ease 0.4s forwards;
         }
 
         @keyframes logoScaleUp {
@@ -65,7 +66,7 @@
             to { opacity: 1; transform: translateY(0); }
         }
 
-        /* أنيميشن محتوى الصفحة الرئيسية */
+        /* أنيميشن محتوى الصفحة الرئيسية عند الدخول */
         @keyframes fadeInUp {
             from { opacity: 0; transform: translateY(25px); }
             to { opacity: 1; transform: translateY(0); }
@@ -161,7 +162,7 @@
 </head>
 <body>
 
-    <!-- شاشة البداية (Splash Screen) مع الشعار والعبارة الشعرية المؤثرة -->
+    <!-- شاشة البداية (Splash Screen) مع الانتقال الاحترافي -->
     <div id="splash-screen">
         <img src="logo1.png" alt="شعار زيت البدر" class="splash-logo">
         <div class="splash-text">
@@ -285,15 +286,17 @@
     <script>
         function toggleMenu() { document.getElementById('nav-links').classList.toggle('show'); }
 
-        // كود إخفاء شاشة البداية بسلاسة بعد ثانيتين ونصف لتظهر الصفحة الرئيسية
+        // أنيميشن انتقال راقي واحترافي من شاشة البداية إلى الصفحة الرئيسية بعد قراءة العبارة بتمعن
         window.addEventListener('load', function() {
             setTimeout(function() {
                 const splash = document.getElementById('splash-screen');
                 splash.style.opacity = '0';
-                splash.style.visibility = 'hidden';
-            }, 2500); // مدة عرض شاشة البداية (2.5 ثانية)
+                splash.style.transform = 'scale(1.05)';
+                setTimeout(function() {
+                    splash.style.visibility = 'hidden';
+                }, 1000);
+            }, 3200); // وقت كافٍ لقراءة العبارة بوضوح وراحة
         });
     </script>
 </body>
-                               </html>
-                               
+</html>
