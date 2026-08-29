@@ -58,7 +58,6 @@
         .product-card { background-color: var(--white); border-radius: 6px; overflow: hidden; box-shadow: var(--shadow); border: 1px solid #eae5d9; text-align: right; transition: all 0.3s ease; }
         .product-card:hover { transform: translateY(-5px); }
         
-        /* جعل الحاوية زر تفاعلي يمنع السلوك الافتراضي تماماً */
         .product-img-btn {
             display: block; width: 100%; height: 260px; border: none; background: none; padding: 0;
             overflow: hidden; background-color: #e5e5e5; cursor: pointer; position: relative; text-align: right;
@@ -77,32 +76,54 @@
         .product-details p { color: var(--text-muted); font-size: 1.05rem; line-height: 1.8; font-family: 'Amiri', serif; margin-bottom: 15px; }
         .product-badge { display: inline-block; background-color: var(--accent-gold-light); color: var(--primary-deep); padding: 5px 12px; border-radius: 4px; font-size: 0.85rem; font-weight: 700; }
 
-        /* تنسيق النافذة المنبثقة (Modal) في المنتصف بدقة وثبات تام */
+        /* تنسيق النافذة المنبثقة ومضمونة الظهور */
         .modal-overlay {
-            display: none; position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
-            background-color: rgba(18, 40, 30, 0.85); z-index: 99999; justify-content: center; align-items: center; padding: 20px;
+            display: none; 
+            position: fixed; 
+            top: 0; 
+            left: 0; 
+            width: 100vw; 
+            height: 100vh;
+            background-color: rgba(18, 40, 30, 0.85); 
+            z-index: 999999; 
+            justify-content: center; 
+            align-items: center; 
+            padding: 20px;
             backdrop-filter: blur(5px);
         }
         .modal-box {
-            background-color: var(--white); max-width: 600px; width: 100%; padding: 40px; border-radius: 8px;
-            box-shadow: 0 15px 40px rgba(0,0,0,0.3); border-top: 5px solid var(--accent-gold); position: relative; text-align: right;
+            background-color: var(--white); 
+            max-width: 600px; 
+            width: 100%; 
+            padding: 40px; 
+            border-radius: 8px;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.4); 
+            border-top: 5px solid var(--accent-gold); 
+            position: relative; 
+            text-align: right;
+            animation: modalScaleIn 0.3s ease forwards;
+        }
+        @keyframes modalScaleIn {
+            from { transform: scale(0.9); opacity: 0; }
+            to { transform: scale(1); opacity: 1; }
         }
         .modal-box h3 { font-family: 'Amiri', serif; color: var(--primary-deep); font-size: 1.8rem; margin-bottom: 15px; }
-        .modal-box p { font-family: 'Amiri', serif; color: var(--text-muted); font-size: 1.1rem; line-height: 1.9; margin-bottom: 25px; }
+        .modal-box p { font-family: 'Amiri', serif; color: var(--text-muted); font-size: 1.15rem; line-height: 1.9; margin-bottom: 25px; }
         
         .modal-buttons {
             display: flex;
-            gap: 12px;
+            gap: 15px;
             flex-wrap: wrap;
+            justify-content: flex-start;
         }
         .close-modal {
-            background-color: #e5e5e5; color: var(--text-main); border: none; padding: 12px 25px;
-            border-radius: 4px; font-weight: 700; cursor: pointer; transition: background 0.3s;
+            background-color: #e5e5e5; color: var(--text-main); border: none; padding: 12px 28px;
+            border-radius: 4px; font-weight: 700; font-size: 1rem; cursor: pointer; transition: background 0.3s;
         }
         .close-modal:hover { background-color: #d1d1d1; }
         .btn-order-modal {
-            background-color: var(--accent-gold); color: var(--primary-deep); border: none; padding: 12px 25px;
-            border-radius: 4px; font-weight: 800; text-decoration: none; display: inline-block; transition: background 0.3s;
+            background-color: var(--accent-gold); color: var(--primary-deep); border: none; padding: 12px 28px;
+            border-radius: 4px; font-weight: 800; font-size: 1rem; text-decoration: none; display: inline-block; transition: background 0.3s;
         }
         .btn-order-modal:hover { background-color: #b28e46; }
 
@@ -159,9 +180,8 @@
         </div>
 
         <div class="products-grid">
-            <!-- المنتج الأول -->
             <div class="product-card">
-                <button type="button" class="product-img-btn" onclick="openModal(event, 'زيت بكر ممتاز', 'تم تعبئة هذا الإصدار في زجاج فاخر مصمم خصيصاً لحماية الزيت من الأشعة والحفاظ على نقائه الكامل. يعتبر الخيار الأمثل للاستهلاك المباشر، السلطات، والأطباق الصحية بفضل نكهته العميقة المستخلصة من أشجار زيتون سفوح الأطلس.')">
+                <button type="button" class="product-img-btn" onclick="openModal('زيت بكر ممتاز', 'تم تعبئة هذا الإصدار في زجاج فاخر مصمم خصيصاً لحماية الزيت من الأشعة والحفاظ على نقائه الكامل. يعتبر الخيار الأمثل للاستهلاك المباشر، السلطات، والأطباق الصحية بفضل نكهته العميقة المستخلصة من أشجار زيتون سفوح الأطلس.')">
                     <img src="product1000l.jpg" alt="زيت بكر ممتاز زجاجي">
                     <span class="click-hint">🔍 انقر هنا</span>
                 </button>
@@ -172,9 +192,8 @@
                 </div>
             </div>
 
-            <!-- المنتج الثاني -->
             <div class="product-card">
-                <button type="button" class="product-img-btn" onclick="openModal(event, 'زيت زيتون بكر', 'معبأ في عبوات محكمة الإغلاق تضمن الحماية التامة من الضوء والحرارة لفترات طويلة. هذا الإصدار مصمم لتلبية الاحتياجات اليومية والطبخ العائلي بجودة عالية ومستدامة وفق معايير السلامة الصحية ONSSA.')">
+                <button type="button" class="product-img-btn" onclick="openModal('زيت زيتون بكر', 'معبأ في عبوات محكمة الإغلاق تضمن الحماية التامة من الضوء والحرارة لفترات طويلة. هذا الإصدار مصمم لتلبية الاحتياجات اليومية والطبخ العائلي بجودة عالية ومستدامة وفق معايير السلامة الصحية ONSSA.')">
                     <img src="product5000l.jpg" alt="عبوة تنك اقتصادية">
                     <span class="click-hint">🔍 انقر هنا</span>
                 </button>
@@ -185,9 +204,8 @@
                 </div>
             </div>
 
-            <!-- المنتج الثالث -->
             <div class="product-card">
-                <button type="button" class="product-img-btn" onclick="openModal(event, 'إصدار الطهاة والمهنيين', 'عبوة احترافية موجهة خصيصاً للمطاعم، الفنادق، والوحدات الغذائية الكبرى التي تبحث عن الجودة الفائقة والموثوقية المرخصة. يوفر أداءً استثنائياً في الطبخ والتحضيرات المهنية الراقية.')">
+                <button type="button" class="product-img-btn" onclick="openModal('إصدار الطهاة والمهنيين', 'عبوة احترافية موجهة خصيصاً للمطاعم، الفنادق، والوحدات الغذائية الكبرى التي تبحث عن الجودة الفائقة والموثوقية المرخصة. يوفر أداءً استثنائياً في الطبخ والتحضيرات المهنية الراقية.')">
                     <img src="product30l.png" alt="عبوة الطهاة والمحترفين">
                     <span class="click-hint">🔍 انقر هنا</span>
                 </button>
@@ -200,7 +218,6 @@
         </div>
     </section>
 
-    <!-- النافذة المنبثقة (Modal) لعرض النبذة -->
     <div id="productModal" class="modal-overlay" onclick="closeModal(event)">
         <div class="modal-box">
             <h3 id="modalTitle">عنوان المنتج</h3>
@@ -247,27 +264,21 @@
     <script>
         function toggleMenu() { document.getElementById('nav-links').classList.toggle('show'); }
 
-        // دالة الفتح مع تثبيت موقع التمرير ومنع أي حركة في الشاشة
-        function openModal(event, title, text) {
-            if (event) event.preventDefault();
-            
-            // حفظ موضع التمرير الحالي لمنع أي قفزة
-            const scrollY = window.scrollY;
-            
+        // دالة الفتح الآمنة والمباشرة
+        function openModal(title, text) {
             document.getElementById('modalTitle').innerText = title;
             document.getElementById('modalDescription').innerText = text;
             
             const modal = document.getElementById('productModal');
             modal.style.display = 'flex';
-            
-            // إعادة تأكيد تثبيت مكان الشاشة
-            window.scrollTo(0, scrollY);
         }
 
+        // دالة إغلاق النافذة عبر زر الإغلاق
         function closeModalBtn() {
             document.getElementById('productModal').style.display = 'none';
         }
 
+        // دالة إغلاق النافذة عند النقر في المساحة الداكنة خارج الصندوق
         function closeModal(event) {
             if (event.target.id === 'productModal') {
                 document.getElementById('productModal').style.display = 'none';
