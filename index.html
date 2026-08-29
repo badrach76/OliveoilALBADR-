@@ -19,7 +19,7 @@
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body { font-family: 'Tajawal', sans-serif; background-color: var(--bg-main); color: var(--text-main); line-height: 1.9; overflow-x: hidden; }
 
-        /* شاشة البداية (Splash Screen) ظاهرة وثابتة بشكل افتراضي تماماً */
+        /* شاشة البداية (Splash Screen) ثابتة ومضمونة الظهور */
         #splash-screen {
             position: fixed;
             top: 0;
@@ -43,6 +43,7 @@
             width: 140px;
             height: auto;
             margin-bottom: 25px;
+            opacity: 0;
             animation: fadeInLogo 1.2s ease forwards;
             filter: drop-shadow(0 0 15px rgba(197, 160, 89, 0.6));
         }
@@ -67,10 +68,9 @@
             100% { opacity: 1; }
         }
 
-        /* أنيميشن ظهور محتوى الصفحة الرئيسية لاحقاً */
-        @keyframes pageScaleUp {
-            0% { transform: scale(0.95); opacity: 0; }
-            100% { transform: scale(1); opacity: 1; }
+        @keyframes fadeInPage {
+            from { opacity: 0; transform: scale(0.98); }
+            to { opacity: 1; transform: scale(1); }
         }
 
         @keyframes bounceDown {
@@ -80,7 +80,7 @@
         }
 
         body.loaded {
-            animation: pageScaleUp 1.2s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+            animation: fadeInPage 0.8s ease-out forwards;
         }
 
         header {
@@ -256,8 +256,8 @@
 
     <footer>
         <div class="footer-col">
-            <div class="logo-wrapper" style="margin-bottom: 15px; animation: none;">
-                <img src="logo1.png" alt="لوغو زيت البدر" style="height: 42px; animation: none;">
+            <div class="logo-wrapper" style="margin-bottom: 15px;">
+                <img src="logo1.png" alt="لوغو زيت البدر" style="height: 42px;">
                 <div class="brand-title">
                     <span class="ar-name" style="color: var(--white);">زيت البدر</span>
                     <span class="en-name">Al Badr Olive Oil</span>
@@ -289,7 +289,7 @@
     <script>
         function toggleMenu() { document.getElementById('nav-links').classList.toggle('show'); }
 
-        // استخدام تفعيل زمني مباشر ومضمون لضمان ظهور شاشة اللوغو والفترة الزمنية لقراءة النص
+        // ضمان ظهور شاشة البداية بوضوح تام وثبات لمدة 3.5 ثانية كاملة للقراءة المريحة
         window.addEventListener('load', function() {
             setTimeout(function() {
                 const splash = document.getElementById('splash-screen');
@@ -300,8 +300,9 @@
                         splash.style.display = 'none';
                     }, 800);
                 }
-            }, 3500); // الشاشة ستظل ثابتة وواضحة لمدة 3.5 ثانية كاملة
+            }, 3500);
         });
     </script>
 </body>
-</html>
+    </html>
+    
