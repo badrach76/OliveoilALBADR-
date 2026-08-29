@@ -73,7 +73,7 @@
         .product-details p { color: var(--text-muted); font-size: 1.05rem; line-height: 1.8; font-family: 'Amiri', serif; margin-bottom: 15px; }
         .product-badge { display: inline-block; background-color: var(--accent-gold-light); color: var(--primary-deep); padding: 5px 12px; border-radius: 4px; font-size: 0.85rem; font-weight: 700; }
 
-        /* تنسيق النافذة المنبثقة (Modal) */
+        /* تنسيق النافذة المنبثقة (Modal) ثابتة في المنتصف بدون أي تحريك للشاشة */
         .modal-overlay {
             display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
             background-color: rgba(18, 40, 30, 0.85); z-index: 2000; justify-content: center; align-items: center; padding: 20px;
@@ -155,7 +155,6 @@
         </div>
 
         <div class="products-grid">
-            <!-- المنتج الأول -->
             <div class="product-card">
                 <div class="product-img" onclick="openModal(event, 'زيت بكر ممتاز', 'تم تعبئة هذا الإصدار في زجاج فاخر مصمم خصيصاً لحماية الزيت من الأشعة والحفاظ على نقائه الكامل. يعتبر الخيار الأمثل للاستهلاك المباشر، السلطات، والأطباق الصحية بفضل نكهته العميقة المستخلصة من أشجار زيتون سفوح الأطلس.')">
                     <img src="product1000l.jpg" alt="زيت بكر ممتاز زجاجي">
@@ -168,7 +167,6 @@
                 </div>
             </div>
 
-            <!-- المنتج الثاني -->
             <div class="product-card">
                 <div class="product-img" onclick="openModal(event, 'زيت زيتون بكر', 'معبأ في عبوات محكمة الإغلاق تضمن الحماية التامة من الضوء والحرارة لفترات طويلة. هذا الإصدار مصمم لتلبية الاحتياجات اليومية والطبخ العائلي بجودة عالية ومستدامة وفق معايير السلامة الصحية ONSSA.')">
                     <img src="product5000l.jpg" alt="عبوة تنك اقتصادية">
@@ -181,7 +179,6 @@
                 </div>
             </div>
 
-            <!-- المنتج الثالث -->
             <div class="product-card">
                 <div class="product-img" onclick="openModal(event, 'إصدار الطهاة والمهنيين', 'عبوة احترافية موجهة خصيصاً للمطاعم، الفنادق، والوحدات الغذائية الكبرى التي تبحث عن الجودة الفائقة والموثوقية المرخصة. يوفر أداءً استثنائياً في الطبخ والتحضيرات المهنية الراقية.')">
                     <img src="product30l.png" alt="عبوة الطهاة والمحترفين">
@@ -196,7 +193,6 @@
         </div>
     </section>
 
-    <!-- النافذة المنبثقة (Modal) لعرض النبذة -->
     <div id="productModal" class="modal-overlay" onclick="closeModal(event)">
         <div class="modal-box">
             <h3 id="modalTitle">عنوان المنتج</h3>
@@ -225,7 +221,7 @@
                 <li><a href="index.html">الرئيسية</a></li>
                 <li><a href="about.html">من نحن</a></li>
                 <li><a href="products.html">منتجاتنا</a></li>
-                <li><a href="order.html">اطلب الآن</a></li>
+                <li><a href="order.html">order.html</a></li>
                 <li><a href="contact.html">تواصل معنا</a></li>
             </ul>
         </div>
@@ -243,9 +239,9 @@
     <script>
         function toggleMenu() { document.getElementById('nav-links').classList.toggle('show'); }
 
-        // دالة الفتح مع منع تحريك الصفحة (event.preventDefault)
+        // دالة الفتح المباشرة بدون أي حركة في الشاشة (إلغاء الصعود والنزول)
         function openModal(event, title, text) {
-            event.preventDefault();
+            event.stopPropagation();
             document.getElementById('modalTitle').innerText = title;
             document.getElementById('modalDescription').innerText = text;
             document.getElementById('productModal').style.display = 'flex';
