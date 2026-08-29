@@ -58,14 +58,18 @@
         .product-card { background-color: var(--white); border-radius: 6px; overflow: hidden; box-shadow: var(--shadow); border: 1px solid #eae5d9; text-align: right; transition: all 0.3s ease; }
         .product-card:hover { transform: translateY(-5px); }
         
-        .product-img { height: 260px; overflow: hidden; background-color: #e5e5e5; cursor: pointer; position: relative; }
-        .product-img img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease; }
-        .product-card:hover .product-img img { transform: scale(1.05); }
+        /* جعل الحاوية زر تفاعلي يمنع السلوك الافتراضي تماماً */
+        .product-img-btn {
+            display: block; width: 100%; height: 260px; border: none; background: none; padding: 0;
+            overflow: hidden; background-color: #e5e5e5; cursor: pointer; position: relative; text-align: right;
+        }
+        .product-img-btn img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease; }
+        .product-card:hover .product-img-btn img { transform: scale(1.05); }
         
         .click-hint {
             position: absolute; bottom: 12px; right: 12px; background-color: rgba(18, 40, 30, 0.85); color: var(--accent-gold);
             padding: 5px 12px; border-radius: 4px; font-size: 0.8rem; font-weight: 600; font-family: 'Tajawal', sans-serif;
-            backdrop-filter: blur(4px); box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+            backdrop-filter: blur(4px); box-shadow: 0 2px 8px rgba(0,0,0,0.2); pointer-events: none;
         }
 
         .product-details { padding: 30px; }
@@ -73,10 +77,10 @@
         .product-details p { color: var(--text-muted); font-size: 1.05rem; line-height: 1.8; font-family: 'Amiri', serif; margin-bottom: 15px; }
         .product-badge { display: inline-block; background-color: var(--accent-gold-light); color: var(--primary-deep); padding: 5px 12px; border-radius: 4px; font-size: 0.85rem; font-weight: 700; }
 
-        /* تنسيق النافذة المنبثقة (Modal) ثابتة في المنتصف بدون أي تحريك للشاشة */
+        /* تنسيق النافذة المنبثقة (Modal) في المنتصف بدقة وثبات تام */
         .modal-overlay {
-            display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-            background-color: rgba(18, 40, 30, 0.85); z-index: 2000; justify-content: center; align-items: center; padding: 20px;
+            display: none; position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
+            background-color: rgba(18, 40, 30, 0.85); z-index: 99999; justify-content: center; align-items: center; padding: 20px;
             backdrop-filter: blur(5px);
         }
         .modal-box {
@@ -155,11 +159,12 @@
         </div>
 
         <div class="products-grid">
+            <!-- المنتج الأول -->
             <div class="product-card">
-                <div class="product-img" onclick="openModal(event, 'زيت بكر ممتاز', 'تم تعبئة هذا الإصدار في زجاج فاخر مصمم خصيصاً لحماية الزيت من الأشعة والحفاظ على نقائه الكامل. يعتبر الخيار الأمثل للاستهلاك المباشر، السلطات، والأطباق الصحية بفضل نكهته العميقة المستخلصة من أشجار زيتون سفوح الأطلس.')">
+                <button type="button" class="product-img-btn" onclick="openModal(event, 'زيت بكر ممتاز', 'تم تعبئة هذا الإصدار في زجاج فاخر مصمم خصيصاً لحماية الزيت من الأشعة والحفاظ على نقائه الكامل. يعتبر الخيار الأمثل للاستهلاك المباشر، السلطات، والأطباق الصحية بفضل نكهته العميقة المستخلصة من أشجار زيتون سفوح الأطلس.')">
                     <img src="product1000l.jpg" alt="زيت بكر ممتاز زجاجي">
                     <span class="click-hint">🔍 انقر هنا</span>
-                </div>
+                </button>
                 <div class="product-details">
                     <h3>زيت بكر ممتاز</h3>
                     <p>مصمم خصيصاً للاستهلاك المباشر والسلطات، يحافظ على النقاء الكامل والنكهة العميقة لزيتون سفوح الأطلس.</p>
@@ -167,11 +172,12 @@
                 </div>
             </div>
 
+            <!-- المنتج الثاني -->
             <div class="product-card">
-                <div class="product-img" onclick="openModal(event, 'زيت زيتون بكر', 'معبأ في عبوات محكمة الإغلاق تضمن الحماية التامة من الضوء والحرارة لفترات طويلة. هذا الإصدار مصمم لتلبية الاحتياجات اليومية والطبخ العائلي بجودة عالية ومستدامة وفق معايير السلامة الصحية ONSSA.')">
+                <button type="button" class="product-img-btn" onclick="openModal(event, 'زيت زيتون بكر', 'معبأ في عبوات محكمة الإغلاق تضمن الحماية التامة من الضوء والحرارة لفترات طويلة. هذا الإصدار مصمم لتلبية الاحتياجات اليومية والطبخ العائلي بجودة عالية ومستدامة وفق معايير السلامة الصحية ONSSA.')">
                     <img src="product5000l.jpg" alt="عبوة تنك اقتصادية">
                     <span class="click-hint">🔍 انقر هنا</span>
-                </div>
+                </button>
                 <div class="product-details">
                     <h3>زيت زيتون بكر</h3>
                     <p>الخيار الأمثل للاستخدام اليومي والطبخ العائلي، معبأ في ظروف تحميه من الضوء والحرارة لضمان الجودة المستدامة.</p>
@@ -179,11 +185,12 @@
                 </div>
             </div>
 
+            <!-- المنتج الثالث -->
             <div class="product-card">
-                <div class="product-img" onclick="openModal(event, 'إصدار الطهاة والمهنيين', 'عبوة احترافية موجهة خصيصاً للمطاعم، الفنادق، والوحدات الغذائية الكبرى التي تبحث عن الجودة الفائقة والموثوقية المرخصة. يوفر أداءً استثنائياً في الطبخ والتحضيرات المهنية الراقية.')">
+                <button type="button" class="product-img-btn" onclick="openModal(event, 'إصدار الطهاة والمهنيين', 'عبوة احترافية موجهة خصيصاً للمطاعم، الفنادق، والوحدات الغذائية الكبرى التي تبحث عن الجودة الفائقة والموثوقية المرخصة. يوفر أداءً استثنائياً في الطبخ والتحضيرات المهنية الراقية.')">
                     <img src="product30l.png" alt="عبوة الطهاة والمحترفين">
                     <span class="click-hint">🔍 انقر هنا</span>
-                </div>
+                </button>
                 <div class="product-details">
                     <h3>إصدار الطهاة والمهنيين</h3>
                     <p>عبوة احترافية موجهة للمطاعم والوحدات الغذائية التي تبحث عن الجودة والمعايير المعتمدة من ONSSA.</p>
@@ -193,13 +200,14 @@
         </div>
     </section>
 
+    <!-- النافذة المنبثقة (Modal) لعرض النبذة -->
     <div id="productModal" class="modal-overlay" onclick="closeModal(event)">
         <div class="modal-box">
             <h3 id="modalTitle">عنوان المنتج</h3>
             <p id="modalDescription">تفاصيل ونبذة المنتج هنا...</p>
             <div class="modal-buttons">
                 <a href="order.html" class="btn-order-modal">أطلب الآن 🛒</a>
-                <button class="close-modal" onclick="closeModalBtn()">إغلاق</button>
+                <button type="button" class="close-modal" onclick="closeModalBtn()">إغلاق</button>
             </div>
         </div>
     </div>
@@ -221,7 +229,7 @@
                 <li><a href="index.html">الرئيسية</a></li>
                 <li><a href="about.html">من نحن</a></li>
                 <li><a href="products.html">منتجاتنا</a></li>
-                <li><a href="order.html">order.html</a></li>
+                <li><a href="order.html">اطلب الآن</a></li>
                 <li><a href="contact.html">تواصل معنا</a></li>
             </ul>
         </div>
@@ -239,16 +247,27 @@
     <script>
         function toggleMenu() { document.getElementById('nav-links').classList.toggle('show'); }
 
-        // دالة الفتح المباشرة بدون أي حركة في الشاشة (إلغاء الصعود والنزول)
+        // دالة الفتح مع تثبيت موقع التمرير ومنع أي حركة في الشاشة
         function openModal(event, title, text) {
-            event.stopPropagation();
+            if (event) event.preventDefault();
+            
+            // حفظ موضع التمرير الحالي لمنع أي قفزة
+            const scrollY = window.scrollY;
+            
             document.getElementById('modalTitle').innerText = title;
             document.getElementById('modalDescription').innerText = text;
-            document.getElementById('productModal').style.display = 'flex';
+            
+            const modal = document.getElementById('productModal');
+            modal.style.display = 'flex';
+            
+            // إعادة تأكيد تثبيت مكان الشاشة
+            window.scrollTo(0, scrollY);
         }
+
         function closeModalBtn() {
             document.getElementById('productModal').style.display = 'none';
         }
+
         function closeModal(event) {
             if (event.target.id === 'productModal') {
                 document.getElementById('productModal').style.display = 'none';
