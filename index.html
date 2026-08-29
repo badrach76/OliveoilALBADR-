@@ -19,21 +19,23 @@
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body { font-family: 'Tajawal', sans-serif; background-color: var(--bg-main); color: var(--text-main); line-height: 1.9; overflow-x: hidden; opacity: 0; }
 
-        /* شاشة البداية (Splash Screen) مع ظهور متزامن للوغو والنص بدون صعود من الأسفل */
+        /* شاشة البداية (Splash Screen) مضمونة الظهور ومستقلة */
         #splash-screen {
             position: fixed;
             top: 0;
             left: 0;
-            width: 100%;
-            height: 100%;
+            width: 100vw;
+            height: 100vh;
             background-color: var(--primary-deep);
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            z-index: 9999;
+            z-index: 99999;
             text-align: center;
             padding: 20px;
+            opacity: 1;
+            visibility: visible;
             transition: opacity 0.8s ease, visibility 0.8s ease;
         }
 
@@ -42,7 +44,7 @@
             height: auto;
             margin-bottom: 25px;
             opacity: 0;
-            animation: fadeInElement 1.2s ease 0.2s forwards;
+            animation: fadeInElement 1s ease 0.2s forwards;
             filter: drop-shadow(0 0 15px rgba(197, 160, 89, 0.6));
         }
 
@@ -53,8 +55,7 @@
             max-width: 650px;
             line-height: 1.8;
             opacity: 0;
-            /* تم جعل ظهور النص معتمداً على الظهور التدريجي الصافي بدون أي حركة صعود أو إزاحة */
-            animation: fadeInElement 1.8s ease 0.4s forwards;
+            animation: fadeInElement 1.5s ease 0.4s forwards;
         }
 
         @keyframes fadeInElement {
@@ -160,7 +161,7 @@
 </head>
 <body>
 
-    <!-- شاشة البداية (Splash Screen) مع ظهور متزامن للوغو والنص -->
+    <!-- شاشة البداية (Splash Screen) -->
     <div id="splash-screen">
         <img src="logo1.png" alt="شعار زيت البدر" class="splash-logo">
         <div class="splash-text">
@@ -284,18 +285,19 @@
     <script>
         function toggleMenu() { document.getElementById('nav-links').classList.toggle('show'); }
 
-        // الانتقال الاحترافي المطابق للوغو
-        window.addEventListener('load', function() {
+        // استخدام التنفيذ المباشر لضمان ظهور شاشة البداية بوضوح تام وثبات لفترة كافية للقراءة
+        document.addEventListener("DOMContentLoaded", function() {
             setTimeout(function() {
                 const splash = document.getElementById('splash-screen');
                 splash.style.opacity = '0';
                 
+                // تفعيل ظهور الصفحة الرئيسية بسلاسة
                 document.body.classList.add('loaded');
 
                 setTimeout(function() {
-                    splash.style.visibility = 'hidden';
+                    splash.style.display = 'none';
                 }, 800);
-            }, 3200); 
+            }, 3500); // مدة عرض شاشة اللوغو والنص (3.5 ثانية)
         });
     </script>
 </body>
