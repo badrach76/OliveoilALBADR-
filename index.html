@@ -19,7 +19,7 @@
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body { font-family: 'Tajawal', sans-serif; background-color: var(--bg-main); color: var(--text-main); line-height: 1.9; overflow-x: hidden; opacity: 0; }
 
-        /* شاشة البداية (Splash Screen) */
+        /* شاشة البداية (Splash Screen) مع ظهور متزامن للوغو والنص بدون صعود من الأسفل */
         #splash-screen {
             position: fixed;
             top: 0;
@@ -41,7 +41,8 @@
             width: 130px;
             height: auto;
             margin-bottom: 25px;
-            animation: logoScaleUp 1.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+            opacity: 0;
+            animation: fadeInElement 1.2s ease 0.2s forwards;
             filter: drop-shadow(0 0 15px rgba(197, 160, 89, 0.6));
         }
 
@@ -52,20 +53,16 @@
             max-width: 650px;
             line-height: 1.8;
             opacity: 0;
-            transform: translateY(20px);
-            animation: textFadeIn 1.8s ease 0.4s forwards;
+            /* تم جعل ظهور النص معتمداً على الظهور التدريجي الصافي بدون أي حركة صعود أو إزاحة */
+            animation: fadeInElement 1.8s ease 0.4s forwards;
         }
 
-        @keyframes logoScaleUp {
-            0% { transform: scale(0.5); opacity: 0; }
-            100% { transform: scale(1); opacity: 1; }
+        @keyframes fadeInElement {
+            0% { opacity: 0; }
+            100% { opacity: 1; }
         }
 
-        @keyframes textFadeIn {
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        /* أنيميشن ظهور الصفحة مطابقة تماماً لحركة تكبير وظهور اللوغو */
+        /* أنيميشن ظهور الصفحة المطابق لحركة الشعار */
         @keyframes pageScaleUp {
             0% { transform: scale(0.95); opacity: 0; }
             100% { transform: scale(1); opacity: 1; }
@@ -163,7 +160,7 @@
 </head>
 <body>
 
-    <!-- شاشة البداية (Splash Screen) -->
+    <!-- شاشة البداية (Splash Screen) مع ظهور متزامن للوغو والنص -->
     <div id="splash-screen">
         <img src="logo1.png" alt="شعار زيت البدر" class="splash-logo">
         <div class="splash-text">
@@ -287,13 +284,12 @@
     <script>
         function toggleMenu() { document.getElementById('nav-links').classList.toggle('show'); }
 
-        // أنيميشن الانتقال وظهور الصفحة مطابقتان لطريقة ظهور اللوغو
+        // الانتقال الاحترافي المطابق للوغو
         window.addEventListener('load', function() {
             setTimeout(function() {
                 const splash = document.getElementById('splash-screen');
                 splash.style.opacity = '0';
                 
-                // تفعيل أنيميشن تكبير الصفحة مطابَقاً للوغو
                 document.body.classList.add('loaded');
 
                 setTimeout(function() {
