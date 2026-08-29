@@ -17,7 +17,7 @@
             --shadow: 0 10px 30px rgba(18, 40, 30, 0.06);
         }
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: 'Tajawal', sans-serif; background-color: var(--bg-main); color: var(--text-main); line-height: 1.9; overflow-x: hidden; }
+        body { font-family: 'Tajawal', sans-serif; background-color: var(--bg-main); color: var(--text-main); line-height: 1.9; overflow-x: hidden; opacity: 0; }
 
         /* شاشة البداية (Splash Screen) */
         #splash-screen {
@@ -34,7 +34,7 @@
             z-index: 9999;
             text-align: center;
             padding: 20px;
-            transition: opacity 1s cubic-bezier(0.77, 0, 0.175, 1), transform 1s cubic-bezier(0.77, 0, 0.175, 1);
+            transition: opacity 0.8s ease, visibility 0.8s ease;
         }
 
         .splash-logo {
@@ -65,18 +65,10 @@
             to { opacity: 1; transform: translateY(0); }
         }
 
-        /* أنيميشن الانبثاق القوي من العمق إلى السطح (3D Depth Pop-up) */
-        @keyframes emergeFromDepth {
-            0% {
-                opacity: 0;
-                transform: scale(0.8) perspective(1000px) translateZ(-300px);
-                filter: blur(8px);
-            }
-            100% {
-                opacity: 1;
-                transform: scale(1) perspective(1000px) translateZ(0);
-                filter: blur(0);
-            }
+        /* أنيميشن ظهور الصفحة مطابقة تماماً لحركة تكبير وظهور اللوغو */
+        @keyframes pageScaleUp {
+            0% { transform: scale(0.95); opacity: 0; }
+            100% { transform: scale(1); opacity: 1; }
         }
 
         @keyframes bounceDown {
@@ -85,9 +77,8 @@
             60% { transform: translateY(-5px); }
         }
 
-        /* تطبيق الانبثاق القوي على جسم الصفحة بالكامل فور انتهاء شاشة البداية */
         body.loaded {
-            animation: emergeFromDepth 1.2s cubic-bezier(0.165, 0.84, 0.44, 1) forwards;
+            animation: pageScaleUp 1.2s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
         }
 
         header {
@@ -172,7 +163,7 @@
 </head>
 <body>
 
-    <!-- شاشة البداية (Splash Screen) مع العبارة الأدبية -->
+    <!-- شاشة البداية (Splash Screen) -->
     <div id="splash-screen">
         <img src="logo1.png" alt="شعار زيت البدر" class="splash-logo">
         <div class="splash-text">
@@ -296,19 +287,18 @@
     <script>
         function toggleMenu() { document.getElementById('nav-links').classList.toggle('show'); }
 
-        // أنيميشن الانتقال الراقي وانبثاق الصفحة من العمق
+        // أنيميشن الانتقال وظهور الصفحة مطابقتان لطريقة ظهور اللوغو
         window.addEventListener('load', function() {
             setTimeout(function() {
                 const splash = document.getElementById('splash-screen');
                 splash.style.opacity = '0';
-                splash.style.transform = 'scale(1.05)';
                 
-                // إضافة فئة الانبثاق لجسم الصفحة لجعلها تبرز من العمق إلى السطح
+                // تفعيل أنيميشن تكبير الصفحة مطابَقاً للوغو
                 document.body.classList.add('loaded');
 
                 setTimeout(function() {
                     splash.style.visibility = 'hidden';
-                }, 1000);
+                }, 800);
             }, 3200); 
         });
     </script>
