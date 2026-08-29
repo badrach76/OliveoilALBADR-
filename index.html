@@ -17,9 +17,9 @@
             --shadow: 0 10px 30px rgba(18, 40, 30, 0.06);
         }
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: 'Tajawal', sans-serif; background-color: var(--bg-main); color: var(--text-main); line-height: 1.9; overflow-x: hidden; }
+        body { font-family: 'Tajawal', sans-serif; background-color: var--bg-main); color: var(--text-main); line-height: 1.9; overflow-x: hidden; }
 
-        /* شاشة البداية بفيديو يملأ الشاشة بالكامل */
+        /* شاشة البداية الفاخرة المضمونة 100% */
         #splash-screen {
             position: fixed;
             top: 0;
@@ -28,24 +28,47 @@
             height: 100vh;
             background-color: var(--primary-deep);
             display: flex;
+            flex-direction: column;
             justify-content: center;
             align-items: center;
             z-index: 999999;
+            text-align: center;
+            padding: 20px;
             opacity: 1;
             visibility: visible;
             transition: opacity 1s cubic-bezier(0.77, 0, 0.175, 1), transform 1s cubic-bezier(0.77, 0, 0.175, 1);
         }
 
-        .splash-fullscreen-video {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            z-index: 1;
+        .splash-logo-img {
+            width: 150px;
+            height: auto;
+            object-fit: contain;
+            margin-bottom: 25px;
+            filter: drop-shadow(0 0 20px rgba(197, 160, 89, 0.6));
+            animation: logoZoomIn 1.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
         }
 
+        .splash-brand-text {
+            font-family: 'Amiri', serif;
+            color: var(--accent-gold-light);
+            font-size: 1.6rem;
+            font-weight: 700;
+            opacity: 0;
+            transform: translateY(15px);
+            animation: textFadeIn 1.2s ease 0.5s forwards;
+            letter-spacing: 1px;
+        }
+
+        @keyframes logoZoomIn {
+            0% { transform: scale(0.6); opacity: 0; }
+            100% { transform: scale(1); opacity: 1; }
+        }
+
+        @keyframes textFadeIn {
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* أنيميشن ظهور محتوى الصفحة الرئيسية بسلاسة تامة وتناسق مذهل */
         @keyframes pageSmoothReveal {
             0% {
                 opacity: 0;
@@ -149,11 +172,11 @@
 </head>
 <body>
 
-    <!-- شاشة البداية بفيديو ملء الشاشة -->
     <div id="splash-screen">
-        <video autoplay muted playsinline class="splash-fullscreen-video" id="splashVideo">
-            <source src="logoalbadrved.mp4" type="video/mp4">
-        </video>
+        <img src="logo1.png" alt="شعار زيت البدر" class="splash-logo-img">
+        <div class="splash-brand-text">
+            "حين يتجلى نور البدر في ليلة الاكتمال، ليمتزج بنور قطرات الذهب الصافي من زيت الزيتون... يولد النقاء الأصيل."
+        </div>
     </div>
 
     <header>
@@ -272,9 +295,9 @@
     <script>
         function toggleMenu() { document.getElementById('nav-links').classList.toggle('show'); }
 
+        // إدارة ظهور شاشة البداية في الزيارة الأولى والانتقال الاحترافي للرئيسية
         window.addEventListener('DOMContentLoaded', function() {
             const splash = document.getElementById('splash-screen');
-            const video = document.getElementById('splashVideo');
             
             if (sessionStorage.getItem('badr_visited')) {
                 if (splash) { splash.style.display = 'none'; }
@@ -282,36 +305,17 @@
             } else {
                 sessionStorage.setItem('badr_visited', 'true');
                 
-                if (video) {
-                    // محاولة تشغيل الفيديو مع التعامل مع قيود المتصفحات
-                    let playPromise = video.play();
-                    if (playPromise !== undefined) {
-                        playPromise.catch(error => {
-                            console.log("Auto-play was prevented:", error);
-                        });
-                    }
-
-                    // الانتقال السلس فور انتهاء الفيديو تماماً
-                    video.onended = function() {
-                        fadeOutSplash();
-                    };
-                }
-
-                // مؤقت احتياطي (في حال لم يتم تفعيل حدث الendenend لسبب ما في المتصفح)
+                // بقاء الشاشة الفاخرة لمدة 3.5 ثانية للاستمتاع بالشعار والعبارة ثم الانتقال السلس
                 setTimeout(function() {
-                    fadeOutSplash();
-                }, 5000);
-            }
-
-            function fadeOutSplash() {
-                if (splash && splash.style.display !== 'none') {
-                    splash.style.opacity = '0';
-                    splash.style.transform = 'scale(1.03)';
-                    document.body.classList.add('loaded');
-                    setTimeout(function() {
-                        splash.style.display = 'none';
-                    }, 1000);
-                }
+                    if (splash) {
+                        splash.style.opacity = '0';
+                        splash.style.transform = 'scale(1.03)';
+                        document.body.classList.add('loaded');
+                        setTimeout(function() {
+                            splash.style.display = 'none';
+                        }, 1000);
+                    }
+                }, 3500);
             }
         });
     </script>
