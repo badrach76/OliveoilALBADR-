@@ -19,7 +19,7 @@
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body { font-family: 'Tajawal', sans-serif; background-color: var(--bg-main); color: var(--text-main); line-height: 1.9; overflow-x: hidden; }
 
-        /* شاشة البداية (Splash Screen) ثابتة ومضمونة الظهور */
+        /* شاشة البداية (Splash Screen) */
         #splash-screen {
             position: fixed;
             top: 0;
@@ -55,7 +55,7 @@
             max-width: 650px;
             line-height: 1.8;
             opacity: 0;
-            animation: fadeInText 2.5s ease 0.4s forwards;
+            animation: fadeInText 1.5s ease 0.4s forwards;
         }
 
         @keyframes fadeInLogo {
@@ -271,7 +271,7 @@
                 <li><a href="index.html">الرئيسية</a></li>
                 <li><a href="about.html">من نحن</a></li>
                 <li><a href="products.html">منتجاتنا</a></li>
-                <li><a href="order.html">اطلب الآن</a></li>
+                <li><a href="order.html">order.html</a></li>
                 <li><a href="contact.html">تواصل معنا</a></li>
             </ul>
         </div>
@@ -289,20 +289,31 @@
     <script>
         function toggleMenu() { document.getElementById('nav-links').classList.toggle('show'); }
 
-        // ضمان ظهور شاشة البداية بوضوح تام وثبات لمدة 3.5 ثانية كاملة للقراءة المريحة
-        window.addEventListener('load', function() {
-            setTimeout(function() {
-                const splash = document.getElementById('splash-screen');
-                if(splash) {
-                    splash.style.opacity = '0';
-                    document.body.classList.add('loaded');
-                    setTimeout(function() {
-                        splash.style.display = 'none';
-                    }, 800);
+        // التحقق من sessionStorage لمعرفة ما إذا كانت هذه هي الزيارة الأولى في الجلسة الحالية
+        window.addEventListener('DOMContentLoaded', function() {
+            const splash = document.getElementById('splash-screen');
+            
+            if (sessionStorage.getItem('badr_visited')) {
+                // إذا تمت زيارة الموقع مسبقاً في هذه الجلسة، قم بإخفاء الشاشة فوراً دون انتظار
+                if (splash) {
+                    splash.style.display = 'none';
                 }
-            }, 3500);
+                document.body.classList.add('loaded');
+            } else {
+                // إذا كانت الزيارة الأولى، اعرض الشاشة ثم قم بتخزين العلامة وإخفاء الشاشة بعد 3.5 ثانية
+                sessionStorage.setItem('badr_visited', 'true');
+                
+                setTimeout(function() {
+                    if(splash) {
+                        splash.style.opacity = '0';
+                        document.body.classList.add('loaded');
+                        setTimeout(function() {
+                            splash.style.display = 'none';
+                        }, 800);
+                    }
+                }, 3500);
+            }
         });
     </script>
 </body>
-    </html>
-    
+</html>
