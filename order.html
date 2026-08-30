@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>طلب منتج - شركة زيت البدر بالعطاوية</title>
+    <title>اطلب الآن - شركة زيت البدر بالعطاوية</title>
     <link href="https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400&family=Tajawal:wght@300;400;500;700;900&display=swap" rel="stylesheet">
     <style>
         :root {
@@ -17,28 +17,22 @@
             --shadow: 0 10px 30px rgba(18, 40, 30, 0.06);
         }
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: 'Tajawal', sans-serif; background-color: var(--bg-main); color: var(--text-main); line-height: 1.9; overflow-x: hidden; }
+        body { font-family: 'Tajawal', sans-serif; background-color: var(--bg-main); color: var(--text-main); line-height: 1.9; }
 
-        /* حركة الظهور التدريجي السلسة */
         @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(25px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+            from { opacity: 0; transform: translateY(25px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        body {
+            animation: fadeInUp 0.7s ease-out forwards;
         }
 
         header {
             background-color: var(--white); padding: 1.2rem 6%; display: flex; justify-content: space-between; align-items: center; box-shadow: var(--shadow); position: sticky; top: 0; z-index: 1000; border-bottom: 1px solid var(--accent-gold-light);
-            animation: fadeInUp 0.6s ease-out forwards;
         }
         .logo-wrapper { display: flex; align-items: center; gap: 14px; text-decoration: none; }
-        .logo-wrapper img { height: 52px; width: auto; object-fit: contain; transition: transform 0.4s ease; }
-        .logo-wrapper:hover img { transform: scale(1.05); }
-
+        .logo-wrapper img { height: 52px; width: auto; object-fit: contain; }
         .brand-title { display: flex; flex-direction: column; justify-content: center; }
         .brand-title .ar-name { font-family: 'Amiri', serif; font-size: 1.35rem; font-weight: 700; color: var(--primary-deep); line-height: 1.2; }
         .brand-title .en-name { font-size: 0.75rem; color: var(--accent-gold); font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; line-height: 1.2; }
@@ -49,63 +43,56 @@
         .menu-toggle { display: none; background: none; border: none; cursor: pointer; font-size: 1.8rem; color: var(--primary-deep); }
 
         .page-header {
-            background: linear-gradient(rgba(18, 40, 30, 0.8), rgba(18, 40, 30, 0.65)), url('https://images.unsplash.com/photo-1541604193435-245c58394cf0?q=80&w=1920&auto=format&fit=crop') center/cover no-repeat;
+            background: linear-gradient(rgba(18, 40, 30, 0.8), rgba(18, 40, 30, 0.65)), url('https://images.unsplash.com/photo-1474979266404-7eaacbcd87c5?q=80&w=1920&auto=format&fit=crop') center/cover no-repeat;
             padding: 90px 10%; text-align: center; color: var(--white);
-            animation: fadeInUp 0.8s ease-out forwards;
         }
         .page-header h1 { font-family: 'Amiri', serif; font-size: 3rem; margin-bottom: 10px; font-weight: 700; }
         .page-header p { font-family: 'Amiri', serif; font-size: 1.15rem; color: #eae6df; font-weight: 300; }
 
-        .order-content { padding: 90px 8%; max-width: 950px; margin: 0 auto; }
-        .order-form-card {
-            background-color: var(--white); padding: 50px; border-radius: 8px; box-shadow: var(--shadow); border-top: 5px solid var(--accent-gold);
-            animation: fadeInUp 1s ease-out forwards;
-        }
-        .order-form-card h2 { font-family: 'Amiri', serif; color: var(--primary-deep); font-size: 2.2rem; margin-bottom: 10px; font-weight: 700; text-align: center; }
-        .order-form-card > p { color: var(--text-muted); text-align: center; margin-bottom: 40px; font-family: 'Amiri', serif; font-size: 1.1rem; }
-        .form-section-title { font-family: 'Amiri', serif; color: var(--primary-deep); font-size: 1.3rem; margin: 30px 0 15px 0; padding-bottom: 8px; border-bottom: 1px solid var(--accent-gold-light); }
-        .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
-        .form-group { margin-bottom: 20px; }
-        .form-group.full-width { grid-column: span 2; }
-        .form-group label { display: block; margin-bottom: 8px; color: var(--primary-deep); font-weight: 600; font-size: 0.95rem; }
+        .order-content { padding: 80px 8%; max-width: 900px; margin: 0 auto; }
+        .order-form-box { background-color: var(--white); padding: 50px; border-radius: 8px; box-shadow: var(--shadow); border-top: 5px solid var(--accent-gold); }
         
+        .form-group { margin-bottom: 25px; }
+        .form-group label { display: block; font-family: 'Amiri', serif; font-size: 1.2rem; color: var(--primary-deep); margin-bottom: 8px; font-weight: 700; }
         .form-group input, .form-group select, .form-group textarea {
-            width: 100%; padding: 14px 18px; border: 1.5px solid #dcd6c8; border-radius: 6px; font-family: 'Tajawal', sans-serif; font-size: 1.02rem; color: var(--primary-deep); background-color: var(--white);
-            transition: all 0.3s cubic-bezier(0.165, 0.84, 0.44, 1);
-        }
-        .form-group select {
-            appearance: none; background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%2312281e' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e"); background-repeat: no-repeat; background-position: left 15px center; background-size: 16px; cursor: pointer;
+            width: 100%; padding: 14px; border: 1px solid #dcd6c8; border-radius: 4px; font-family: 'Tajawal', sans-serif; font-size: 1rem; background-color: #fcfbf7; color: var(--text-main); transition: border-color 0.3s;
         }
         .form-group input:focus, .form-group select:focus, .form-group textarea:focus {
-            outline: none; border-color: var(--accent-gold); box-shadow: 0 0 0 4px rgba(197, 160, 89, 0.15); transform: translateY(-1px);
+            outline: none; border-color: var(--accent-gold); background-color: var(--white);
         }
-        .products-selection-container { display: flex; flex-direction: column; gap: 15px; margin-bottom: 25px; }
-        
-        .product-option-row {
-            display: grid; grid-template-columns: 2fr 1fr; align-items: center; background-color: var(--bg-main); border: 1.5px solid #eae5d9; padding: 15px 20px; border-radius: 6px; gap: 20px;
-            transition: all 0.3s cubic-bezier(0.165, 0.84, 0.44, 1);
+
+        /* تصحيح اتجاه حقل الهاتف لمنع انعكاس الأرقام */
+        .phone-input {
+            direction: ltr;
+            text-align: right;
         }
-        .product-option-row:hover {
-            border-color: var(--accent-gold); transform: translateX(-4px); box-shadow: 0 4px 12px rgba(18, 40, 30, 0.04); background-color: #fff;
+
+        /* صندوق توضيح الكميات حسب طريقة الاستلام */
+        .shipping-info-box {
+            background-color: #f4f1ea;
+            border-right: 4px solid var(--accent-gold);
+            padding: 20px;
+            border-radius: 4px;
+            margin-bottom: 25px;
+            font-family: 'Amiri', serif;
+            font-size: 1.05rem;
+            color: var(--primary-deep);
+            display: none;
         }
-        .checkbox-label { display: flex; align-items: center; gap: 12px; cursor: pointer; font-weight: 600; color: var(--primary-deep); font-size: 1.05rem; }
-        .checkbox-label input[type="checkbox"] { width: 20px; height: 20px; accent-color: var(--primary-deep); cursor: pointer; }
-        .product-qty-input { padding: 10px 12px; border: 1px solid #dcd6c8; border-radius: 4px; font-family: 'Tajawal', sans-serif; font-size: 0.95rem; background-color: var(--white); text-align: center; }
-        
-        .price-display-box { background-color: var(--bg-main); border: 1.5px dashed var(--accent-gold); padding: 20px; border-radius: 6px; text-align: center; margin: 25px 0; transition: transform 0.3s ease; }
-        .price-display-box:hover { transform: scale(1.01); }
-        .price-display-box h4 { color: var(--text-muted); font-size: 0.95rem; margin-bottom: 5px; }
-        .price-display-box span { color: var(--primary-deep); font-size: 1.15rem; font-weight: 700; font-family: 'Amiri', serif; }
-        
-        .btn-submit-order {
-            background-color: var(--primary-deep); color: var(--white); padding: 16px; border: none; border-radius: 6px; font-weight: 700; font-size: 1.1rem; cursor: pointer; width: 100%; margin-top: 10px;
-            box-shadow: 0 6px 20px rgba(18, 40, 30, 0.2);
-            transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+        .shipping-info-box ul {
+            margin-top: 10px;
+            padding-right: 20px;
         }
-        .btn-submit-order:hover {
-            background-color: var(--accent-gold); color: var(--primary-deep); transform: translateY(-4px); box-shadow: 0 10px 25px rgba(197, 160, 89, 0.4);
+        .shipping-info-box li {
+            margin-bottom: 6px;
         }
-                footer {
+
+        .btn-submit {
+            background-color: var(--accent-gold); color: var(--primary-deep); width: 100%; padding: 16px; border: none; border-radius: 4px; font-weight: 800; font-size: 1.15rem; cursor: pointer; box-shadow: 0 4px 15px rgba(197, 160, 89, 0.3); transition: all 0.3s;
+        }
+        .btn-submit:hover { background-color: #b28e46; transform: translateY(-2px); }
+
+        footer {
             background-color: var(--primary-deep); color: var(--white); padding: 80px 8% 30px 8%; display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 40px; border-top: 4px solid var(--accent-gold);
         }
         .footer-col h4 { font-family: 'Amiri', serif; color: var(--accent-gold); margin-bottom: 20px; font-size: 1.3rem; font-weight: 700; }
@@ -117,9 +104,8 @@
         .ltr-phone { direction: ltr; unicode-bidi: embed; display: inline-block; }
 
         @media (max-width: 768px) {
-            .form-row { grid-template-columns: 1fr; }
-            .product-option-row { grid-template-columns: 1fr; gap: 10px; }
-            .form-group.full-width { grid-column: span 1; }
+            .page-header h1 { font-size: 2.5rem; }
+            .order-form-box { padding: 25px; }
             nav ul { display: none; flex-direction: column; position: absolute; top: 100%; right: 0; width: 100%; background-color: var(--white); padding: 20px 0; box-shadow: var(--shadow); text-align: center; gap: 15px; }
             nav ul.show { display: flex; }
             .menu-toggle { display: block; }
@@ -127,6 +113,7 @@
     </style>
 </head>
 <body>
+
     <header>
         <a href="index.html" class="logo-wrapper">
             <img src="logo1.png" alt="لوغو زيت البدر">
@@ -148,89 +135,61 @@
     </header>
 
     <section class="page-header">
-        <h1>حجز وتأكيد الطلبيات عبر واتساب</h1>
-        <p>اختر منتجاتك المتعددة، وحدد كمياتها، وأرسل طلبيتك مباشرة إلى هاتف الشركة.</p>
+        <h1>حجز وإ اقتناء المنتجات</h1>
+        <p>املأ النموذج أدناه لتأكيد طلبك وسنقوم بالتواصل معك في أقرب وقت.</p>
     </section>
 
     <section class="order-content">
-        <div class="order-form-card">
-            <h2>استمارة الطلب المباشر</h2>
-            <p>املأ البيانات أدناه، وعند الضغط على التأكيد سيتم تحويلك تلقائياً إلى واتساب الشركة.</p>
-
-            <form id="orderForm" onsubmit="sendOrderToWhatsApp(event)">
-                <div class="form-section-title">1. معلومات الزبون / الموزع</div>
-                <div class="form-row">
-                    <div class="form-group">
-                        <label for="fullname">الاسم الكامل أو اسم الشركة</label>
-                        <input type="text" id="fullname" placeholder="أدخل اسمك أو اسم المؤسسة" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="phone">رقم الهاتف (للتواصل)</label>
-                        <input type="tel" id="phone" placeholder="+212 6..." required>
-                    </div>
+        <div class="order-form-box">
+            <form onsubmit="submitOrder(event)">
+                <div class="form-group">
+                    <label for="fullName">الاسم الكامل:</label>
+                    <input type="text" id="fullName" required placeholder="أدخل اسمك الكريم">
                 </div>
 
-                <div class="form-section-title">2. اختر المنتجات وحدد الكميات المطلوبة لكل نوع</div>
-                <div class="products-selection-container">
-                    <div class="product-option-row">
-                        <label class="checkbox-label"><input type="checkbox" name="product" value="زيت بكر ممتاز - زجاج فاخر (500 مل)"> زيت بكر ممتاز - زجاج فاخر (500 مل)</label>
-                        <input type="text" class="product-qty-input" placeholder="الكمية">
-                    </div>
-                    <div class="product-option-row">
-                        <label class="checkbox-label"><input type="checkbox" name="product" value="زيت بكر ممتاز - زجاج فاخر (1 لتر)"> زيت بكر ممتاز - زجاج فاخر (1 لتر)</label>
-                        <input type="text" class="product-qty-input" placeholder="الكمية">
-                    </div>
-                    <div class="product-option-row">
-                        <label class="checkbox-label"><input type="checkbox" name="product" value="زيت زيتون بكر - تنك عائلي (2 لتر)"> زيت زيتون بكر - تنك عائلي (2 لتر)</label>
-                        <input type="text" class="product-qty-input" placeholder="الكمية">
-                    </div>
-                    <div class="product-option-row">
-                        <label class="checkbox-label"><input type="checkbox" name="product" value="زيت زيتون بكر - تنك عائلي (5 لتر)"> زيت زيتون بكر - تنك عائلي (5 لتر)</label>
-                        <input type="text" class="product-qty-input" placeholder="الكمية">
-                    </div>
-                    <div class="product-option-row">
-                        <label class="checkbox-label"><input type="checkbox" name="product" value="إصدار الطهاة والمهنيين (كميات كبرى)"> إصدار الطهاة والمهنيين (كميات كبرى للمطاعم)</label>
-                        <input type="text" class="product-qty-input" placeholder="الكمية">
-                    </div>
+                <div class="form-group">
+                    <label for="phone">رقم الهاتف:</label>
+                    <!-- تم ضبط اتجاه حقل الهاتف لضمان كتابة الأرقام بالترتيب الصحيح 06xxxxxxxx -->
+                    <input type="tel" id="phone" class="phone-input" required placeholder="06XXXXXXXX">
                 </div>
 
-                <div class="price-display-box">
-                    <h4>ملاحظة التسعير</h4>
-                    <span>سيتم تأكيد السعر الإجمالي والتخفيضات معك عبر واتساب فور استلام الطلب</span>
+                <div class="form-group">
+                    <label for="city">المدينة / المنطقة:</label>
+                    <input type="text" id="city" required placeholder="مثال: مراكش، الدار البيضاء، العطاوية...">
                 </div>
 
-                <div class="form-section-title">3. طريقة الأداء والتوزيع (الشحن)</div>
-                <div class="form-row">
-                    <div class="form-group">
-                        <label for="payment-method">طريقة الأداء المفضلة</label>
-                        <select id="payment-method" required>
-                            <option value="" disabled selected>اختر طريقة الأداء</option>
-                            <option value="الدفع عند الاستلام (نقداً)">الدفع عند الاستلام (نقداً)</option>
-                            <option value="تحويل بنكي مسبق">تحويل بنكي مسبق</option>
-                            <option value="الأداء المباشر بمقر الشركة بالعطاوية">الأداء المباشر بمقر الشركة (العطاوية)</option>
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <label for="delivery-method">طريقة الاستلام / التوزيع</label>
-                        <select id="delivery-method" required>
-                            <option value="" disabled selected>اختر طريقة الاستلام أو المدينة</option>
-                            <option value="الاستلام المباشر من مقر المعصرة (العطاوية)">الاستلام المباشر من مقر الشركة / المعصرة (العطاوية)</option>
-                            <option value="الشحن إلى: قلعة السراغنة">الشحن والتوصيل إلى: قلعة السراغنة</option>
-                            <option value="الشحن إلى: الرباط">الشحن والتوصيل إلى: الرباط</option>
-                            <option value="الشحن إلى: الدار البيضاء">الشحن والتوصيل إلى: الدار البيضاء</option>
-                            <option value="الشحن إلى: سطات">الشحن والتوصيل إلى: سطات</option>
-                            <option value="الشحن إلى: مراكش">الشحن والتوصيل إلى: مراكش</option>
-                            <option value="الشحن إلى: أكادير">الشحن والتوصيل إلى: أكادير</option>
-                        </select>
-                    </div>
+                <div class="form-group">
+                    <label for="deliveryMethod">طريقة الاستلام:</label>
+                    <select id="deliveryMethod" onchange="toggleShippingInfo()" required>
+                        <option value="">-- اختر طريقة الاستلام --</option>
+                        <option value="shipping">شحن وتوصيل (يضاف مصاريف الشحن)</option>
+                        <option value="pickup">اقتناء مباشر من المعصرة (بدون شحن)</option>
+                    </select>
                 </div>
 
-                <div class="form-group full-width" style="margin-top: 15px;">
-                    <label for="address">عنوان التوصيل المفصل أو ملاحظات إضافية</label>
-                    <textarea id="address" placeholder="أدخل اسم الحي، الشارع، أو تفاصيل إضافية تخص التوصيل..."></textarea>
+                <!-- صندوق توضيح الكميات ومصاريف الشحن بناءً على الاختيار -->
+                <div id="shippingInfoBox" class="shipping-info-box">
+                    <span id="boxTitle">ملاحظة الطلب:</span>
+                    <ul id="boxDetails"></ul>
                 </div>
 
-                <button type="submit" class="btn-submit-order">إرسال الطلبية عبر واتساب 💬</button>
+                <div class="form-group">
+                    <label for="productChoice">المنتج المطلوب:</label>
+                    <select id="productChoice" required>
+                        <option value="">-- اختر الصنف --</option>
+                        <option value="500ml">زيت بكر ممتاز (عبوة 500 مل)</option>
+                        <option value="1l">زيت بكر ممتاز (عبوة 1 لتر)</option>
+                        <option value="5l">زيت زيتون بكر (عبوة 5 لتر)</option>
+                        <option value="chef">إصدار الطهاة والمهنيين (عبوات خاصة)</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="notes">ملاحظات إضافية (اختياري):</label>
+                    <textarea id="notes" rows="4" placeholder="أي تفاصيل إضافية بخصوص العنوان أو وقت التوصيل..."></textarea>
+                </div>
+
+                <button type="submit" class="btn-submit">تأكيد وإرسال الطلب 🛒</button>
             </form>
         </div>
     </section>
@@ -252,7 +211,7 @@
                 <li><a href="index.html">الرئيسية</a></li>
                 <li><a href="about.html">من نحن</a></li>
                 <li><a href="products.html">منتجاتنا</a></li>
-                <li><a href="order.html" class="active">اطلب الآن</a></li>
+                <li><a href="order.html">اطلب الآن</a></li>
                 <li><a href="contact.html">تواصل معنا</a></li>
             </ul>
         </div>
@@ -260,7 +219,7 @@
             <h4>تواصل معنا</h4>
             <ul>
                 <li>العطاوية، المغرب</li>
-                <li>الهاتف: <span class="ltr-phone">+212 661 87 32 14</span></li>
+                <li>الهاتف: <span class="ltr-phone">14 32 87 661 212+</span></li>
                 <li>البريد: info@zitalbadr.ma</li>
             </ul>
         </div>
@@ -269,36 +228,44 @@
 
     <script>
         function toggleMenu() { document.getElementById('nav-links').classList.toggle('show'); }
-        function sendOrderToWhatsApp(event) {
-            event.preventDefault();
-            const name = document.getElementById('fullname').value;
-            const phone = document.getElementById('phone').value;
-            const payment = document.getElementById('payment-method').value;
-            const delivery = document.getElementById('delivery-method').value;
-            const notes = document.getElementById('address').value;
-            let productsText = "";
-            const rows = document.querySelectorAll('.product-option-row');
-            rows.forEach(row => {
-                const checkbox = row.querySelector('input[type="checkbox"]');
-                const qtyInput = row.querySelector('.product-qty-input');
-                if (checkbox.checked) {
-                    const qty = qtyInput.value ? qtyInput.value : "الكمية غير محددة";
-                    productsText += `- ${checkbox.value} (الكمية: ${qty})\n`;
-                }
-            });
-            if (productsText === "") {
-                alert("الرجاء اختيار منتج واحد على الأقل وتحديد كميته.");
-                return;
+
+        // دالة تحديث التنبيهات والكميات حسب طريقة الاستلام المحددة
+        function toggleShippingInfo() {
+            const method = document.getElementById('deliveryMethod').value;
+            const box = document.getElementById('shippingInfoBox');
+            const boxTitle = document.getElementById('boxTitle');
+            const boxDetails = document.getElementById('boxDetails');
+
+            if (method === 'shipping') {
+                box.style.display = 'block';
+                boxTitle.innerText = "شروط الشحن والتوصيل:";
+                boxDetails.innerHTML = `
+                    <li><strong>الكميات المحددة للشحن:</strong></li>
+                    <li>• 500 مل: 40 عبوة كحد أدنى</li>
+                    <li>• 1 لتر: 20 عبوة كحد أدنى</li>
+                    <li>• 5 لتر: 4 عبوات كحد أدنى</li>
+                    <li>• الطهاة: 10 عبوات كحد أدنى</li>
+                    <li><em>(يتم إضافة مصاريف الشحن والتوصيل حسب المدينة)</em></li>
+                `;
+            } else if (method === 'pickup') {
+                box.style.display = 'block';
+                boxTitle.innerText = "شروط الاقتناء من المعصرة:";
+                boxDetails.innerHTML = `
+                    <li><strong>الكمية غير محددة عند الاقتناء مباشرة من المعصرة.</strong></li>
+                    <li>• يمكنك أخذ الكمية التي تناسبك بدون مصاريف شحن.</li>
+                    <li>• مرحبا بكم بمقر وحدتنا بالعطاوية.</li>
+                `;
+            } else {
+                box.style.display = 'none';
             }
-            let message = `*طلب جديد عبر موقع زيت البدر 🫒*\n\n`;
-            message += `*1. معلومات الزبون:*\n▪️ الاسم: ${name}\n▪️ الهاتف: ${phone}\n\n`;
-            message += `*2. المنتجات والكميات المطلوبة:*\n${productsText}\n`;
-            message += `*3. طريقة الأداء والاستلام:*\n▪️ الأداء: ${payment}\n▪️ الاستلام/التوزيع: ${delivery}\n`;
-            if (notes) { message += `▪️ العنوان/ملاحظات: ${notes}\n`; }
-            window.open(`https://wa.me/212661873214?text=${encodeURIComponent(message)}`, '_blank');
+        }
+
+        function submitOrder(event) {
+            event.preventDefault();
+            alert('تم إرسال طلبك بنجاح! سنتواصل معك هاتفياً في أقرب وقت لتأكيد التفاصيل.');
+            event.target.reset();
+            document.getElementById('shippingInfoBox').style.display = 'none';
         }
     </script>
 </body>
 </html>
-            
-        
