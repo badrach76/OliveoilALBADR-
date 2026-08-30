@@ -67,24 +67,18 @@
             text-align: right;
         }
 
-        /* صندوق توضيح الشروط والكميات */
+        /* صندوق توضيح الشروط والكميات يظهر ديناميكياً عند اختيار الصنف والشحن */
         .shipping-info-box {
             background-color: #f4f1ea;
             border-right: 4px solid var(--accent-gold);
-            padding: 20px;
+            padding: 18px 20px;
             border-radius: 4px;
+            margin-top: -12px;
             margin-bottom: 25px;
             font-family: 'Amiri', serif;
             font-size: 1.05rem;
             color: var(--primary-deep);
             display: none;
-        }
-        .shipping-info-box ul {
-            margin-top: 10px;
-            padding-right: 20px;
-        }
-        .shipping-info-box li {
-            margin-bottom: 6px;
         }
 
         .btn-submit {
@@ -135,7 +129,7 @@
     </header>
 
     <section class="page-header">
-        <h1>حجز وإ اقتناء المنتجات</h1>
+        <h1>حجز واقتناء المنتجات</h1>
         <p>اختر طريقة الاستلام وحدد الكميات المناسبة لطلبيتك من عبواتنا الأصلية.</p>
     </section>
 
@@ -170,21 +164,15 @@
                         <option value="marrakech">مراكش</option>
                         <option value="casablanca">الدار البيضاء</option>
                         <option value="rabat">الرباط / سلا</option>
-                        <option value="fes">فيس / مكناس</option>
+                        <option value="fes">فاس / مكناس</option>
                         <option value="agadir">أكادير</option>
                         <option value="other">مدن أخرى (تأكيد عبر الهاتف)</option>
                     </select>
                 </div>
 
-                <!-- صندوق توضيح الشروط والكميات حسب طريقة الاستلام -->
-                <div id="shippingInfoBox" class="shipping-info-box">
-                    <span id="boxTitle">توضيح الطلب:</span>
-                    <ul id="boxDetails"></ul>
-                </div>
-
                 <div class="form-group">
                     <label for="productChoice">الصنف المطلوب:</label>
-                    <select id="productChoice" onchange="updateQuantityHint()" required>
+                    <select id="productChoice" onchange="updateProductSelection()" required>
                         <option value="">-- اختر صنف العبوة --</option>
                         <option value="500ml">عبوة 500 مل</option>
                         <option value="1l">عبوة 1 لتر</option>
@@ -192,6 +180,9 @@
                         <option value="special">عبوات خاصة (إصدار الطهاة)</option>
                     </select>
                 </div>
+
+                <!-- صندوق توضيح الشروط والكميات يظهر ديناميكياً عند اختيار الصنف في حالة الشحن -->
+                <div id="shippingInfoBox" class="shipping-info-box"></div>
 
                 <div class="form-group">
                     <label for="quantity">الكمية:</label>
@@ -247,67 +238,46 @@
         function toggleDeliveryOptions() {
             const method = document.getElementById('deliveryMethod').value;
             const cityGroup = document.getElementById('cityGroup');
-            const box = document.getElementById('shippingInfoBox');
-            const boxTitle = document.getElementById('boxTitle');
-            const boxDetails = document.getElementById('boxDetails');
 
             if (method === 'shipping') {
                 cityGroup.style.display = 'block';
                 document.getElementById('citySelect').setAttribute('required', 'true');
-                
-                box.style.display = 'block';
-                boxTitle.innerText = "شروط الشحن والتوصيل الخارجي:";
-                boxDetails.innerHTML = `
-                    <li>• يضاف مصاريف الشحن والتوصيل حسب المدينة المتاحة.</li>
-                    <li>• الحد الأدنى المسموح به للشحن لكل صنف:</li>
-                    <li>&nbsp;&nbsp;&nbsp;- عبوة 500 مل: أقل عدد يتم توصيله هو <strong>40</strong> عبوة.</li>
-                    <li>&nbsp;&nbsp;&nbsp;- عبوة 1 لتر: أقل عدد يتم توصيله هو <strong>20</strong> عبوة.</li>
-                    <li>&nbsp;&nbsp;&nbsp;- عبوة 5 لتر: أقل عدد يتم توصيله هو <strong>4</strong> عبوات.</li>
-                    <li>&nbsp;&nbsp;&nbsp;- العبوات الخاصة (الطهاة): أقل عدد يتم توصيله هو <strong>10</strong> عبوات.</li>
-                `;
-            } else if (method === 'pickup') {
-                cityGroup.style.display = 'none';
-                document.getElementById('citySelect').removeAttribute('required');
-                
-                box.style.display = 'block';
-                boxTitle.innerText = "شروط الاقتناء المباشر من المعصرة:";
-                boxDetails.innerHTML = `
-                    <li>• <strong>الكمية غير محددة عند الاقتناء مباشرة من المعصرة.</strong></li>
-                    <li>• يمكنك أخذ الكمية التي ترغب بها وبدون أي مصاريف إضافية للشحن.</li>
-                `;
             } else {
                 cityGroup.style.display = 'none';
-                box.style.display = 'none';
+                document.getElementById('citySelect').removeAttribute('required');
             }
-            updateQuantityHint();
+            updateProductSelection();
         }
 
-        function updateQuantityHint() {
+        function updateProductSelection() {
             const method = document.getElementById('deliveryMethod').value;
             const product = document.getElementById('productChoice').value;
+            const box = document.getElementById('shippingInfoBox');
             const hint = document.getElementById('qtyHint');
             const qtyInput = document.getElementById('quantity');
 
-            if (method === 'shipping') {
-                if (product === '500ml') {
-                    qtyInput.min = 40;
-                    hint.innerText = "الحد الأدنى للشحن لهذا الصنف هو 40 عبوة.";
-                } else if (product === '1l') {
-                    qtyInput.min = 20;
-                    hint.innerText = "الحد الأدنى للشحن لهذا الصنف هو 20 عبوة.";
-                } else if (product === '5l') {
-                    qtyInput.min = 4;
-                    hint.innerText = "الحد الأدنى للشحن لهذا الصنف هو 4 عبوات.";
-                } else if (product === 'special') {
-                    qtyInput.min = 10;
-                    hint.innerText = "الحد الأدنى للشحن لهذه العبوات هو 10 عبوات.";
+            if (method === 'shipping' && product !== '') {
+                box.style.display = 'block';
+                let minQty = 0;
+                let textDesc = '';
+
+                if (product === '500ml') { minQty = 40; textDesc = 'عبوة 500 مل'; }
+                else if (product === '1l') { minQty = 20; textDesc = 'عبوة 1 لتر'; }
+                else if (product === '5l') { minQty = 4; textDesc = 'عبوة 5 لتر'; }
+                else if (product === 'special') { minQty = 10; textDesc = 'العبوات الخاصة (الطهاة)'; }
+
+                qtyInput.min = minQty;
+                box.innerHTML = `<strong>شروط التوصيل والشحن الخارجي:</strong><br>• يضاف مصاريف الشحن والتوصيل حسب المدينة المتاحة.<br>• الحد الأدنى المسموح به للشحن بالنسبة لـ <strong>${textDesc}</strong> هو <strong>${minQty}</strong> عبوات، ويُضاف مصاريف الشحن والتوصيل بناءً على الوجهة.`;
+                hint.innerText = `الحد الأدنى المقبول للشحن الخارجي لهذا الصنف هو ${minQty} عبوات.`;
+            } else {
+                box.style.display = 'none';
+                if (method === 'pickup') {
+                    qtyInput.min = 1;
+                    hint.innerText = "الكمية غير محددة عند الاقتناء مباشرة من المعصرة وبدون مصاريف شحن.";
                 } else {
                     qtyInput.min = 1;
                     hint.innerText = "";
                 }
-            } else {
-                qtyInput.min = 1;
-                hint.innerText = "الكمية غير محددة عند الاقتناء من المعصرة مباشرة.";
             }
         }
 
@@ -318,16 +288,29 @@
             const qty = parseInt(document.getElementById('quantity').value);
 
             if (method === 'shipping') {
-                if (product === '500ml' && qty < 40) { alert('عذراً، أقل عدد للشحن بالنسبة لعبوة 500 مل هو 40 عبوة.'); return; }
-                if (product === '1l' && qty < 20) { alert('عذراً، أقل عدد للشحن بالنسبة لعبوة 1 لتر هو 20 عبوة.'); return; }
-                if (product === '5l' && qty < 4) { alert('عذراً، أقل عدد للشحن بالنسبة لعبوة 5 لتر هو 4 عبوات.'); return; }
-                if (product === 'special' && qty < 10) { alert('عذراً، أقل عدد للشحن بالنسبة للعبوات الخاصة هو 10 عبوات.'); return; }
+                if (product === '500ml' && qty < 40) { 
+                    alert('عذراً، لا يمكن قبول أقل من 40 عبوة بالنسبة لصنف 500 مل عند اختيار الشحن والتوصيل الخارجي.'); 
+                    return; 
+                }
+                if (product === '1l' && qty < 20) { 
+                    alert('عذراً، لا يمكن قبول أقل من 20 عبوة بالنسبة لصنف 1 لتر عند اختيار الشحن والتوصيل الخارجي.'); 
+                    return; 
+                }
+                if (product === '5l' && qty < 4) { 
+                    alert('عذراً، لا يمكن قبول أقل من 4 عبوات بالنسبة لصنف 5 لتر عند اختيار الشحن والتوصيل الخارجي.'); 
+                    return; 
+                }
+                if (product === 'special' && qty < 10) { 
+                    alert('عذراً، لا يمكن قبول أقل من 10 عبوات بالنسبة للعبوات الخاصة (الطهاة) عند اختيار الشحن والتوصيل الخارجي.'); 
+                    return; 
+                }
             }
 
             alert('تم إرسال طلبك بنجاح! سنتواصل معك هاتفياً في أقرب وقت لتأكيد التفاصيل ومصاريف الشحن.');
             event.target.reset();
             document.getElementById('shippingInfoBox').style.display = 'none';
             document.getElementById('cityGroup').style.display = 'none';
+            document.getElementById('qtyHint').innerText = '';
         }
     </script>
 </body>
