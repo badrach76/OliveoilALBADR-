@@ -76,7 +76,7 @@
         .product-details p { color: var(--text-muted); font-size: 1.05rem; line-height: 1.8; font-family: 'Amiri', serif; margin-bottom: 15px; }
         .product-badge { display: inline-block; background-color: var(--accent-gold-light); color: var(--primary-deep); padding: 5px 12px; border-radius: 4px; font-size: 0.85rem; font-weight: 700; }
 
-        /* تنسيق النافذة المنبثقة ومضمونة الظهور */
+        /* تنسيق النافذة المنبثقة (Modal) */
         .modal-overlay {
             display: none; 
             position: fixed; 
@@ -180,10 +180,13 @@
         </div>
 
         <div class="products-grid">
+            <!-- المنتج الأول -->
             <div class="product-card">
                 <button type="button" class="product-img-btn" onclick="openModal('زيت بكر ممتاز', 'تم تعبئة هذا الإصدار في زجاج فاخر مصمم خصيصاً لحماية الزيت من الأشعة والحفاظ على نقائه الكامل. يعتبر الخيار الأمثل للاستهلاك المباشر، السلطات، والأطباق الصحية بفضل نكهته العميقة المستخلصة من أشجار زيتون سفوح الأطلس.')">
                     <img src="product1000l.jpg" alt="زيت بكر ممتاز زجاجي">
                     <span class="click-hint">🔍 انقر هنا</span>
+                </button>
+                <button type="button" class="product-img-btn" style="height:auto; background:none; padding: 20px 0 0 0;" onclick="openModal('زيت بكر ممتاز', 'تم تعبئة هذا الإصدار في زجاج فاخر مصمم خصيصاً لحماية الزيت من الأشعة والحفاظ على نقائه الكامل. يعتبر الخيار الأمثل للاستهلاك المباشر، السلطات، والأطباق الصحية بفضل نكهته العميقة المستخلصة من أشجار زيتون سفوح الأطلس.')">
                 </button>
                 <div class="product-details">
                     <h3>زيت بكر ممتاز</h3>
@@ -192,6 +195,7 @@
                 </div>
             </div>
 
+            <!-- المنتج الثاني -->
             <div class="product-card">
                 <button type="button" class="product-img-btn" onclick="openModal('زيت زيتون بكر', 'معبأ في عبوات محكمة الإغلاق تضمن الحماية التامة من الضوء والحرارة لفترات طويلة. هذا الإصدار مصمم لتلبية الاحتياجات اليومية والطبخ العائلي بجودة عالية ومستدامة وفق معايير السلامة الصحية ONSSA.')">
                     <img src="product5000l.jpg" alt="عبوة تنك اقتصادية">
@@ -204,6 +208,7 @@
                 </div>
             </div>
 
+            <!-- المنتج الثالث -->
             <div class="product-card">
                 <button type="button" class="product-img-btn" onclick="openModal('إصدار الطهاة والمهنيين', 'عبوة احترافية موجهة خصيصاً للمطاعم، الفنادق، والوحدات الغذائية الكبرى التي تبحث عن الجودة الفائقة والموثوقية المرخصة. يوفر أداءً استثنائياً في الطبخ والتحضيرات المهنية الراقية.')">
                     <img src="product30l.png" alt="عبوة الطهاة والمحترفين">
@@ -218,6 +223,7 @@
         </div>
     </section>
 
+    <!-- النافذة المنبثقة (Modal) -->
     <div id="productModal" class="modal-overlay" onclick="closeModal(event)">
         <div class="modal-box">
             <h3 id="modalTitle">عنوان المنتج</h3>
@@ -264,10 +270,13 @@
     <script>
         function toggleMenu() { document.getElementById('nav-links').classList.toggle('show'); }
 
-        // دالة الفتح الآمنة والمباشرة
+        // دالة الفتح مع الصعود التلقائي إلى أعلى الصفحة لرؤية النافذة بوضوح
         function openModal(title, text) {
             document.getElementById('modalTitle').innerText = title;
             document.getElementById('modalDescription').innerText = text;
+            
+            // صعود الشاشة بسلاسة إلى أعلى الصفحة لكي تظهر النافذة المنبثقة في المنتصف بدقة
+            window.scrollTo({ top: 0, behavior: 'smooth' });
             
             const modal = document.getElementById('productModal');
             modal.style.display = 'flex';
@@ -278,7 +287,7 @@
             document.getElementById('productModal').style.display = 'none';
         }
 
-        // دالة إغلاق النافذة عند النقر في المساحة الداكنة خارج الصندوق
+        // دالة إغلاق النافذة عند النقر خارج الصندوق
         function closeModal(event) {
             if (event.target.id === 'productModal') {
                 document.getElementById('productModal').style.display = 'none';
