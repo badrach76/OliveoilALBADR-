@@ -17,15 +17,7 @@
             --shadow: 0 10px 30px rgba(18, 40, 30, 0.06);
         }
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        
-        /* الصفحة ظاهرة بشكل طبيعي وآمن لتجنب أي شاشة سوداء أو فارغة */
-        body { 
-            font-family: 'Tajawal', sans-serif; 
-            background-color: var(--bg-main); 
-            color: var(--text-main); 
-            line-height: 1.9; 
-            overflow-x: hidden; 
-        }
+        body { font-family: 'Tajawal', sans-serif; background-color: var(--bg-main); color: var(--text-main); line-height: 1.9; overflow-x: hidden; }
 
         /* شاشة البداية الفاخرة */
         #splash-screen {
@@ -63,7 +55,7 @@
             font-weight: 700;
             opacity: 0;
             transform: translateY(15px);
-            animation: textFadeIn 8s ease 1s forwards;
+            animation: textFadeIn 2.5s ease 0.4s forwards;
             letter-spacing: 1px;
             max-width: 700px;
             line-height: 1.8;
@@ -168,8 +160,166 @@
 
     <!-- شاشة البداية الفاخرة -->
     <div id="splash-screen">
-        <img src="logo1.png" alt="شعار زيت البدر" class="splash-logo-img">
-        <div class="splash-brand-text">
+        <img src="logo1.png" alt="شعار زيت البدر" class="splash-logo-img" id="splashLogo">
+        <div class="splash-brand-text" id="splashText">
+            "حين يمتزج نور القمر ليلة البدر بنور قطرات زيت الزيتون الذهبية الصافية... يولد النقاء الأصيل."
+        </div>
+    </div>
+
+    <header>
+        <a href="index.html" class="logo-wrapper">
+            <img src="logo1.png" alt="لوغو زيت البدر">
+            <div class="brand-title">
+                <span class="ar-name">زيت البدر</span>
+                <span class="en-name">Al Badr Olive Oil</span>
+            </div>
+        </a>
+        <nav>
+            <button class="menu-toggle" onclick="toggleMenu()">☰</button>
+            <ul id="nav-links">
+                <li><a href="index.html" class="active">الرئيسية</a></li>
+                <li><a href="about.html">من نحن</a></li>
+                <li><a href="products.html">منتجاتنا</a></li>
+                <li><a href="order.html">اطلب الآن</a></li>
+                <li><a href="contact.html">تواصل معنا</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <h1>النقاء الأصيل <span>من قلب العطاوية</span></h1>
+        <p>نقدم لكم أرقى أنواع زيت الزيتون المغربي، المعصور بمعايير صحية معتمدة لضمان الجودة العالية على مائدتكم.</p>
+        <a href="about.html" class="btn-gold">اكتشف قصة نجاحنا</a>
+        
+        <a href="#features" class="scroll-down-indicator">
+            <span>↓</span>
+        </a>
+    </section>
+
+    <section id="features">
+        <div class="section-header">
+            <h2>إرث من الأصالة والجودة</h2>
+            <p>نختار أنواع الزيتون المغربي الأصيل: البيشولي، المنارة، والحوزية من ضيعات تساوت بسفوح الأطلس الكبير لتستمتع بطعم لا يُضاهى.</p>
+        </div>
+        <div class="features-grid">
+            <div class="feature-box">
+                <h3>أصناف مغربية مختارة</h3>
+                <p>تتم عناية خاصة بانتقاء أفضل ثمار الزيتون المحلي لضمان نكهة غنية وعميقة.</p>
+            </div>
+            <div class="feature-box">
+                <h3>معايير صحية معتمدة</h3>
+                <p>إنتاج مرخص ومراقب وفق توجيهات المكتب الوطني للسلامة الصحية (ONSSA) منذ 2020.</p>
+            </div>
+            <div class="feature-box">
+                <h3>ضيعات سفوح الأطلس</h3>
+                <p>بيئة جغرافية فريدة بطقس جاف وتربة غنية بالمواد العضوية الطبيعية.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="products-section">
+        <div class="section-header">
+            <h2>روائع منتجاتنا</h2>
+            <p>عبوات مصممة خصيصاً للحفاظ على خصائص الزيت ونكهته الأصلية حتى تصل إلى مطبخك.</p>
+        </div>
+        <div class="products-grid">
+            <div class="product-card">
+                <div class="product-img"><img src="indeximg6.png" alt="زيت بكر ممتاز"></div>
+                <div class="product-details">
+                    <h3>زيت بكر ممتاز - العطاوية</h3>
+                    <p>معصور على البارد بعناية فائقة ليحافظ على قيمته الغذائية ونكهته الأصلية.</p>
+                </div>
+            </div>
+            <div class="product-card">
+                <div class="product-img"><img src="infeximg2.png" alt="زيت الزيتون العضوي"></div>
+                <div class="product-details">
+                    <h3>زيت الزيتون العضوي</h3>
+                    <p>مستخلص من أشجار نبتت في تربة غنية وتحت أشعة الشمس الطبيعية.</p>
+                </div>
+            </div>
+            <div class="product-card">
+                <div class="product-img"><img src="indeximg1.png" alt="عبوة العائلة"></div>
+                <div class="product-details">
+                    <h3>عبوة العائلة الفاخرة</h3>
+                    <p>الخيار الأمثل لتلبية احتياجات مطبخك اليومي بأعلى معايير الجودة والسلامة.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-col">
+            <div class="logo-wrapper" style="margin-bottom: 15px;">
+                <img src="logo1.png" alt="لوغو زيت البدر" style="height: 42px;">
+                <div class="brand-title">
+                    <span class="ar-name" style="color: var(--white);">زيت البدر</span>
+                    <span class="en-name">Al Badr Olive Oil</span>
+                </div>
+            </div>
+            <p>وحدة إنتاج زيت الزيتون البدر بالعطاوية: التزام دائم بالجودة والمعايير الصحية الرسمية.</p>
+        </div>
+        <div class="footer-col">
+            <h4>روابط سريعة</h4>
+            <ul>
+                <li><a href="index.html">الرئيسية</a></li>
+                <li><a href="about.html">من نحن</a></li>
+                <li><a href="products.html">منتجاتنا</a></li>
+                <li><a href="order.html">اطلب الآن</a></li>
+                <li><a href="contact.html">تواصل معنا</a></li>
+            </ul>
+        </div>
+        <div class="footer-col">
+            <h4>تواصل معنا</h4>
+            <ul>
+                <li>العطاوية، المغرب</li>
+                <li>الهاتف: <span class="ltr-phone">14 32 87 661 212+</span></li>
+                <li>البريد: info@zitalbadr.ma</li>
+            </ul>
+        </div>
+        <div class="footer-bottom"><p>جميع الحقوق محفوظة لشركة وحدة إنتاج زيت الزيتون البدر © 2026</p></div>
+    </footer>
+
+    <script>
+        function toggleMenu() { document.getElementById('nav-links').classList.toggle('show'); }
+
+        window.addEventListener('DOMContentLoaded', function() {
+            const splash = document.getElementById('splash-screen');
+            const splashText = document.getElementById('splashText');
+            
+            if (sessionStorage.getItem('badr_visited')) {
+                // إذا كانت عودة للصفحة الرئيسية في نفس الجلسة: إخفاء النص فوراً وإظهار اللوغو فقط لمدة 0.8 ثانية
+                if (splashText) {
+                    splashText.style.display = 'none';
+                }
+                
+                setTimeout(function() {
+                    if (splash) {
+                        splash.style.opacity = '0';
+                        splash.style.visibility = 'hidden';
+                        setTimeout(function() {
+                            splash.style.display = 'none';
+                        }, 500);
+                    }
+                }, 800); // 0.8 ثانية للوغو فقط
+            } else {
+                // الزيارة الأولى: تخزين العلامة وعرض الشاشة الكاملة (باللوغو والنص) لمدة 5 ثوانٍ
+                sessionStorage.setItem('badr_visited', 'true');
+                
+                setTimeout(function() {
+                    if (splash) {
+                        splash.style.opacity = '0';
+                        splash.style.visibility = 'hidden';
+                        setTimeout(function() {
+                            splash.style.display = 'none';
+                        }, 800);
+                    }
+                }, 5000); // 5 ثوانٍ كاملة للزيارة الأولى
+            }
+        });
+    </script>
+</body>
+</html>
+>
             "حين يمتزج نور البدر بنور قطرات زيت الزيتون الذهبية... يولد النقاء الأصيل."
         </div>
     </div>
