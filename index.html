@@ -19,7 +19,7 @@
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body { font-family: 'Tajawal', sans-serif; background-color: var(--bg-main); color: var(--text-main); line-height: 1.9; overflow-x: hidden; }
 
-        /* شاشة البداية الافتراضية بالـ GIF المتحرك */
+        /* شاشة البداية باللون الأساسي لضمان ظهور الفيديو كاملاً وبأعلى جودة */
         #splash-screen {
             position: fixed;
             top: 0;
@@ -27,31 +27,35 @@
             width: 100vw;
             height: 100vh;
             background-color: var(--primary-deep);
-            background-image: url('badr-intro.gif');
-            background-size: cover;
-            background-position: center;
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
             z-index: 999999;
             text-align: center;
-            padding: 30px;
+            padding: 20px;
             opacity: 1;
             visibility: visible;
-            transition: opacity 0.8s ease, visibility 1.5s ease;
+            transition: opacity 0.8s ease, visibility 0.8s ease;
         }
 
-        /* طبقة عتمة خفيفة لتحسين المظهر */
-        #splash-screen::before {
-            content: '';
+        /* حاوية الفيديو لضمان ظهوره كاملاً وبأبعاده الأصلية الواضحة دون قص */
+        .splash-video-container {
             position: absolute;
             top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(18, 40, 30, 0.45);
+            display: flex;
+            justify-content: center;
+            align-items: center;
             z-index: 1;
         }
 
-        /* حاوية محتوى الشاشة (لتغيير ما يظهر بين الفيديو والنص) */
+        .splash-video-container img {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain; /* يضمن ظهور الفيديو كاملاً دون قص وبأعلى وضوح */
+        }
+
+        /* حاوية النص أو اللوغو عند العودة */
         .splash-content {
             position: relative;
             z-index: 2;
@@ -84,6 +88,7 @@
             line-height: 1.8;
             text-shadow: 0 2px 10px rgba(0,0,0,0.8);
             animation: textFadeIn 0.8s ease forwards;
+            padding: 0 20px;
         }
 
         @keyframes logoZoomIn {
@@ -186,6 +191,11 @@
 
     <!-- شاشة البداية المتحركة -->
     <div id="splash-screen">
+        <!-- عرض الفيديو بالكامل وبجودة عالية كصورة متحركة -->
+        <div class="splash-video-container" id="splashVideoContainer">
+            <img src="badr-intro.gif" alt="عرض ترحيبي">
+        </div>
+
         <div class="splash-content">
             <!-- اللوغو فقط عند العودة -->
             <img src="logo1.png" alt="شعار زيت البدر" id="splashLogo" class="splash-logo-only">
@@ -314,12 +324,13 @@
 
         window.addEventListener('DOMContentLoaded', function() {
             const splash = document.getElementById('splash-screen');
+            const videoContainer = document.getElementById('splashVideoContainer');
             const splashLogo = document.getElementById('splashLogo');
             const splashText = document.getElementById('splashText');
             
             if (sessionStorage.getItem('badr_visited')) {
-                // حالة العودة: إلغاء خلفية الـ GIF وإظهار اللوغو فقط لمدة 0.8 ثانية
-                splash.style.backgroundImage = 'none';
+                // حالة العودة: إخفاء الفيديو وعرض اللوغو فقط لمدة 0.8 ثانية
+                if (videoContainer) videoContainer.style.display = 'none';
                 if (splashText) splashText.style.display = 'none';
                 if (splashLogo) splashLogo.style.display = 'block';
                 
@@ -336,15 +347,15 @@
                 // الزيارة الأولى: تخزين علامة الزيارة
                 sessionStorage.setItem('badr_visited', 'true');
                 
-                // الخطوة 1: عرض فيديو الـ GIF لوحده لمدة 5 ثوانٍ (مع إخفاء النص واللوغو)
+                // الخطوة 1: عرض الفيديو كاملاً وبجودة عالية لمدة 5 ثوانٍ
                 if (splashLogo) splashLogo.style.display = 'none';
                 if (splashText) splashText.style.display = 'none';
 
-                // الخطوة 2: بعد انتهاء الـ 5 ثوانٍ، يختفي الـ GIF ويظهر النص الترحيبي لمدة 5 ثوانٍ أخرى
+                // الخطوة 2: بعد انتهاء الـ 5 ثوانٍ، يختفي الفيديو ويظهر النص الترحيبي لمدة 5 ثوانٍ أخرى
                 setTimeout(function() {
-                    splash.style.backgroundImage = 'none'; // إزالة الـ GIF عند انتهائه
-                    if (splashText) splashText.style.display = 'block'; // إظهار النص
-                }, 5000); // بعد 5 ثوانٍ من تشغيل الفيديو
+                    if (videoContainer) videoContainer.style.display = 'none'; // إخفاء الفيديو عند اكتماله
+                    if (splashText) splashText.style.display = 'block'; // إظهار النص الترحيبي
+                }, 5000); // بعد 5 ثوانٍ من اكتمال الفيديو
 
                 // الخطوة 3: إغلاق شاشة البداية بالكامل بعد انتهاء النص (5 ثواني فيديو + 5 ثواني نص = 10 ثواني إجمالي)
                 setTimeout(function() {
@@ -355,7 +366,7 @@
                             splash.style.display = 'none';
                         }, 800);
                     }
-                }, 10000); // المجموع الكلي 10 ثوانٍ (5 فيديو + 5 نص)
+                }, 10000); // المجموع الكلي 10 ثوانٍ
             }
         });
     </script>
