@@ -19,7 +19,7 @@
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body { font-family: 'Tajawal', sans-serif; background-color: var(--bg-main); color: var(--text-main); line-height: 1.9; overflow-x: hidden; }
 
-        /* شاشة البداية باللون الأساسي لضمان ظهور الفيديو كاملاً وبأعلى جودة */
+        /* شاشة البداية */
         #splash-screen {
             position: fixed;
             top: 0;
@@ -39,7 +39,7 @@
             transition: opacity 0.8s ease, visibility 0.8s ease;
         }
 
-        /* حاوية الفيديو لضمان ظهوره كاملاً وبأبعاده الأصلية الواضحة دون قص */
+        /* حاوية الفيديو ليملأ الشاشة بالكامل باحترافية */
         .splash-video-container {
             position: absolute;
             top: 0; left: 0; width: 100%; height: 100%;
@@ -47,12 +47,13 @@
             justify-content: center;
             align-items: center;
             z-index: 1;
+            background-color: var(--primary-deep);
         }
 
         .splash-video-container img {
-            max-width: 100%;
-            max-height: 100%;
-            object-fit: contain; /* يضمن ظهور الفيديو كاملاً دون قص وبأعلى وضوح */
+            width: 100%;
+            height: 100%;
+            object-fit: cover; /* يملأ الشاشة بالكامل */
         }
 
         /* حاوية النص أو اللوغو عند العودة */
@@ -191,7 +192,7 @@
 
     <!-- شاشة البداية المتحركة -->
     <div id="splash-screen">
-        <!-- عرض الفيديو بالكامل وبجودة عالية كصورة متحركة -->
+        <!-- الفيديو يملأ الشاشة بالكامل -->
         <div class="splash-video-container" id="splashVideoContainer">
             <img src="badr-intro.gif" alt="عرض ترحيبي">
         </div>
@@ -199,7 +200,7 @@
         <div class="splash-content">
             <!-- اللوغو فقط عند العودة -->
             <img src="logo1.png" alt="شعار زيت البدر" id="splashLogo" class="splash-logo-only">
-            <!-- النص الترحيبي الفخم في الزيارة الأولى -->
+            <!-- النص الترحيبي الفخم في الزيارة الأولى (لمدة 5 ثوانٍ بعد الفيديو) -->
             <div class="splash-brand-text" id="splashText">
                 "حين يمتزج نور القمر ليلة البدر بنور قطرات زيت الزيتون الذهبية الصافية... يولد النقاء الأصيل."
             </div>
@@ -347,17 +348,17 @@
                 // الزيارة الأولى: تخزين علامة الزيارة
                 sessionStorage.setItem('badr_visited', 'true');
                 
-                // الخطوة 1: عرض الفيديو كاملاً وبجودة عالية لمدة 5 ثوانٍ
+                // الخطوة 1: عرض الفيديو لملء الشاشة لمدة 7 ثوانٍ كاملة
                 if (splashLogo) splashLogo.style.display = 'none';
                 if (splashText) splashText.style.display = 'none';
 
-                // الخطوة 2: بعد انتهاء الـ 5 ثوانٍ، يختفي الفيديو ويظهر النص الترحيبي لمدة 5 ثوانٍ أخرى
+                // الخطوة 2: بعد انتهاء الـ 7 ثوانٍ، يختفي الفيديو ويظهر النص الترحيبي لمدة 5 ثوانٍ أخرى
                 setTimeout(function() {
-                    if (videoContainer) videoContainer.style.display = 'none'; // إخفاء الفيديو عند اكتماله
+                    if (videoContainer) videoContainer.style.display = 'none'; // إخفاء الفيديو تماماً
                     if (splashText) splashText.style.display = 'block'; // إظهار النص الترحيبي
-                }, 5000); // بعد 5 ثوانٍ من اكتمال الفيديو
+                }, 7000); // بعد 7 ثوانٍ من تشغيل الفيديو
 
-                // الخطوة 3: إغلاق شاشة البداية بالكامل بعد انتهاء النص (5 ثواني فيديو + 5 ثواني نص = 10 ثواني إجمالي)
+                // الخطوة 3: إغلاق شاشة البداية بالكامل بعد انتهاء النص (7 ثواني فيديو + 5 ثواني نص = 12 ثانية إجمالي)
                 setTimeout(function() {
                     if (splash) {
                         splash.style.opacity = '0';
@@ -366,7 +367,7 @@
                             splash.style.display = 'none';
                         }, 800);
                     }
-                }, 10000); // المجموع الكلي 10 ثوانٍ
+                }, 12000); // المجموع الكلي 12 ثانية
             }
         });
     </script>
