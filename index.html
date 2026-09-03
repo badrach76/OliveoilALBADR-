@@ -18,44 +18,6 @@
         }
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body { font-family: 'Tajawal', sans-serif; background-color: var(--bg-main); color: var(--text-main); line-height: 1.9; overflow-x: hidden; }
-
-        /* شاشة البداية */
-        #splash-screen {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100vw;
-            height: 100vh;
-            background-color: var(--primary-deep);
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            z-index: 999999;
-            text-align: center;
-            padding: 20px;
-            opacity: 1;
-            visibility: visible;
-            transition: opacity 0.8s ease, visibility 0.8s ease;
-        }
-
-        /* حاوية الفيديو ليملأ الشاشة بالكامل باحترافية */
-        .splash-video-container {
-            position: absolute;
-            top: 0; left: 0; width: 100%; height: 100%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            z-index: 1;
-            background-color: var(--primary-deep);
-        }
-
-        .splash-video-container img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover; /* يملأ الشاشة بالكامل */
-        }
-
         /* حاوية النص أو اللوغو عند العودة */
         .splash-content {
             position: relative;
