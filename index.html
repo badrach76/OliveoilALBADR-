@@ -39,21 +39,6 @@
             animation: logoZoomIn 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
         }
 
-        /* النص الترحيبي الفخم */
-        .splash-brand-text {
-            font-family: 'Amiri', serif;
-            color: var(--accent-gold-light);
-            font-size: 1.6rem;
-            font-weight: 700;
-            display: none;
-            letter-spacing: 1px;
-            max-width: 750px;
-            line-height: 1.8;
-            text-shadow: 0 2px 10px rgba(0,0,0,0.8);
-            animation: textFadeIn 0.8s ease forwards;
-            padding: 0 20px;
-        }
-
         @keyframes logoZoomIn {
             0% { transform: scale(0.6); opacity: 0; }
             100% { transform: scale(1); opacity: 1; }
@@ -309,28 +294,20 @@
             } else {
                 // الزيارة الأولى: تخزين علامة الزيارة
                 sessionStorage.setItem('badr_visited', 'true');
-                
-                // الخطوة 1: عرض الفيديو لملء الشاشة لمدة 7 ثوانٍ كاملة
-                if (splashLogo) splashLogo.style.display = 'none';
-                if (splashText) splashText.style.display = 'none';
-
-                // الخطوة 2: بعد انتهاء الـ 7 ثوانٍ، يختفي الفيديو ويظهر النص الترحيبي لمدة 5 ثوانٍ أخرى
-                setTimeout(function() {
-                    if (videoContainer) videoContainer.style.display = 'none'; // إخفاء الفيديو تماماً
-                    if (splashText) splashText.style.display = 'block'; // إظهار النص الترحيبي
-                }, 7000); // بعد 7 ثوانٍ من تشغيل الفيديو
-
-                // الخطوة 3: إغلاق شاشة البداية بالكامل بعد انتهاء النص (7 ثواني فيديو + 5 ثواني نص = 12 ثانية إجمالي)
-                setTimeout(function() {
-                    if (splash) {
-                        splash.style.opacity = '0';
-                        splash.style.visibility = 'hidden';
-                        setTimeout(function() {
-                            splash.style.display = 'none';
-                        }, 800);
-                    }
-                }, 12000); // المجموع الكلي 12 ثانية
-            }
+                    /* النص الترحيبي الفخم */
+        .splash-brand-text {
+            font-family: 'Amiri', serif;
+            color: var(--accent-gold-light);
+            font-size: 1.6rem;
+            font-weight: 700;
+            display: none;
+            letter-spacing: 1px;
+            max-width: 750px;
+            line-height: 1.8;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.8);
+            animation: textFadeIn 0.8s ease forwards;
+            padding: 0 20px;
+        }
         });
     </script>
 </body>
